@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <YButton type="primary" icon="search" shape="round">按钮</YButton>
+    </div>
+
+    <YInput prefix="123123" suffix="234234" placeholder="round" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import YButton from "./components/yys-button.vue";
+import YCheckbox from "./components/yys-checkbox.vue";
+import YInput from "./components/yys-input.vue";
+import YSelect from "./components/yys-select.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    YButton,
+    YCheckbox,
+    YInput,
+    YSelect,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
