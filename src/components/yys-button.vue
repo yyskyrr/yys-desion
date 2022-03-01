@@ -1,5 +1,6 @@
 <template>
   <button
+    @click="onClick"
     :disabled="disabled"
     type="button"
     class="ant-btn"
@@ -35,6 +36,14 @@ export default {
   mounted() {
     console.log(this.$slots);
     console.log(this.disabled);
+  },
+  updated() {
+    this.text = this.$slots.default[0].text;
+  },
+  methods: {
+    onClick() {
+      this.$emit("click");
+    },
   },
   components: {},
 };

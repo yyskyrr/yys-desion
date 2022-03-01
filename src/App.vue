@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div>
-      <YButton type="primary" icon="search" shape="round">按钮</YButton>
-    </div>
-
-    <YInput prefix="123123" suffix="234234" placeholder="round" />
+    <YButton type="primary" size="small" @click="toggleChecked">
+      {{ !checked ? "Check" : "Uncheck" }}
+    </YButton>
+    <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>
+    <YInput allowClear placeholder="round" />
   </div>
 </template>
 
@@ -21,6 +21,21 @@ export default {
     YCheckbox,
     YInput,
     YSelect,
+  },
+  data() {
+    return {
+      checked: true,
+      disabled: false,
+    };
+  },
+  methods: {
+    toggleChecked() {
+      this.checked = !this.checked;
+      console.log(this.checked);
+    },
+    onChange(e) {
+      console.log("e", e);
+    },
   },
 };
 </script>
