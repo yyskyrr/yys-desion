@@ -1,7 +1,7 @@
 {
-  "name": "yys",
+  "name": "yys-design",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -14,10 +14,11 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
-    "less-loader": "^6.0.0",
     "@vue/cli-service": "~4.5.15",
     "babel-eslint": "^10.1.0",
-    "vue-template-compiler": "^2.6.11"
+    "less-loader": "^6.0.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-cli": "^4.9.2"
   },
   "eslintConfig": {
     "root": true,
@@ -33,6 +34,7 @@
     },
     "rules": {}
   },
+  "main": "dist/sumFunction.js",
   "browserslist": [
     "> 1%",
     "last 2 versions",

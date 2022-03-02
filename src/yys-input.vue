@@ -52,6 +52,10 @@ export default {
     size: String,
     icon: String,
   },
+  updated() {
+    this.$emit("change", this.value);
+  },
+  methods: {},
   computed: {},
   mounted() {
     console.log(this.$slots);

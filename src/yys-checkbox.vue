@@ -30,6 +30,9 @@ export default {
   mounted() {
     console.log(this.$slots);
   },
+  updated() {
+    this.text = this.$slots.default[0].text;
+  },
   methods: {
     onChange(val) {
       this.$emit("change", val);
