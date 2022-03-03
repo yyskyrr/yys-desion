@@ -1,6 +1,6 @@
 {
   "name": "yys-design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -34,7 +34,7 @@
     },
     "rules": {}
   },
-  "main": "dist/sumFunction.js",
+  "main": "src/index.js",
   "browserslist": [
     "> 1%",
     "last 2 versions",
