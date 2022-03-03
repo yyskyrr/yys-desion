@@ -6,16 +6,17 @@
         :disabled="disabled"
         type="checkbox"
         class="ant-checkbox-input"
-        :checked="checked || defaultChecked" />
-      <span class="ant-checkbox-inner"> </span
-    ></span>
-    <span> {{ text }} </span>
+        :checked="checked || defaultChecked"
+        style="background-color: red"
+      />
+    </span>
+    <span class="ant-checkbox-text"> {{ text }} </span>
   </label>
 </template>
 
 <script>
 export default {
-  name: "button",
+  name: "yys-checkbox",
   data() {
     return {
       text: this.$slots.default[0].text,
@@ -56,5 +57,14 @@ export default {
   display: inline-block;
   line-height: unset;
   cursor: pointer;
+}
+.ant-checkbox-input {
+  width: 16px;
+  background: red;
+  height: 16px;
+  vertical-align: middle;
+}
+.ant-checkbox-text {
+  vertical-align: middle;
 }
 </style>

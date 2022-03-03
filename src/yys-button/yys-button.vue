@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "button",
+  name: "yys-button",
   data() {
     return {
       text: this.$slots.default[0].text,

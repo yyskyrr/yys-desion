@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: "button",
+  name: "yys-input",
   data() {
     return {
       value: this.$slots.default,
