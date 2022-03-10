@@ -4,9 +4,10 @@
     <input
       v-model="value"
       :placeholder="placeholder"
-      :class="`${prefix ? `ant-prefix-input` : ''} ${
-        size ? `ant-input-${size}` : ''
-      }`"
+      :class="{
+        'ant-prefix-input':prefix,
+        [`ant-input-${size}`]:size
+      }"
       class="ant-input"
     />
     <span class="ant-input-suffix" style="right: 12px"

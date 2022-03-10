@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <YButton type="primary" size="small" @click="toggleChecked">
-      {{ !checked ? "Check" : "Uncheck" }}
+    <YButton type="primary" @click="onClick">
+      <div>12345</div>
     </YButton>
+    <YButton size="large" type="primary">Primary</YButton>
+    <YButton size="small" type="primary">Primary</YButton>
+    <YButton type="primary" disabled>Primary</YButton>
+    <YButton>Default</YButton>
+    <YButton type="dashed">Default</YButton>
+    <YButton type="danger">Default</YButton>
+    <YButton type="link">Default</YButton>
+    <YButton type="dashed" disabled>Default</YButton>
 
     <!-- <icon-filter /> -->
 
-    <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>
-    <YInput @change="onChange" allowClear placeholder="round" />
+<!--    <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>-->
+<!--    <YInput @change="onChange" allowClear placeholder="round" />-->
   </div>
 </template>
 
@@ -35,6 +43,9 @@ export default {
     };
   },
   methods: {
+    onClick(){
+      console.log(123)
+    },
     toggleChecked() {
       this.checked = !this.checked;
       console.log(this.checked);

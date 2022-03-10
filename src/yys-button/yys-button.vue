@@ -4,10 +4,14 @@
     :disabled="disabled"
     type="button"
     class="ant-btn"
-    :class="`${type ? `ant-btn-${type}` : ''} 
-    ${disabled ? `ant-btn-disabled` : ''} ${ghost ? `ant-btn-ghost` : ''} ${
-      size ? `ant-btn-${size}` : ''
-    } ${block ? `ant-btn-block` : ''} ${shape ? `ant-btn-${shape}` : ''}`"
+    :class = "{
+       'ant-btn-disabled' : disabled,
+       'ant-btn-ghost' : ghost,
+       'ant-btn-block' : block,
+       [`ant-btn-${type}`] : type,
+       [`ant-btn-${shape}`] : shape,
+       [`ant-btn-${size}`] : size,
+     }"
   >
     {{ text }}
   </button>
@@ -51,6 +55,7 @@ export default {
 
 <style lang="less" scoped>
 .ant-btn {
+  margin: 10px;
   line-height: 1.499;
   position: relative;
   display: inline-block;
