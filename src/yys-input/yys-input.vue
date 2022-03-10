@@ -1,23 +1,23 @@
 <template>
-  <div class="ant-input-affix-wrapper">
-    <span class="ant-input-prefix" style="left: 12px">{{ prefix }}</span>
+  <div class="yys-input-affix-wrapper">
+    <span class="yys-input-prefix" style="left: 12px">{{ prefix }}</span>
     <input
       v-model="value"
       :placeholder="placeholder"
       :class="{
-        'ant-prefix-input':prefix,
-        [`ant-input-${size}`]:size
+        'yys-prefix-input':prefix,
+        [`yys-input-${size}`]:size
       }"
-      class="ant-input"
+      class="yys-input"
     />
-    <span class="ant-input-suffix" style="right: 12px"
+    <span class="yys-input-suffix" style="right: 12px"
       >{{ suffix }}
       <i
         @click="value = ''"
         v-if="allowClear && value"
         aria-label="图标: close-circle"
         tabindex="-1"
-        class="anticon anticon-close-circle ant-input-clear-icon"
+        class="anticon anticon-close-circle yys-input-clear-icon"
         ><svg
           viewBox="64 64 896 896"
           data-icon="close-circle"
@@ -79,14 +79,14 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.ant-input-clear-icon {
+.yys-input-clear-icon {
   color: rgba(0, 0, 0, 0.25);
   font-size: 12px;
   cursor: pointer;
   transition: color 0.3s;
   vertical-align: 0;
 }
-.ant-input {
+.yys-input {
   box-sizing: border-box;
   margin: 0;
   font-variant: tabular-nums;
@@ -112,17 +112,17 @@ export default {
     outline: 0;
     border-color: #1890ff;
   }
-  &.ant-input-large {
+  &.yys-input-large {
     height: 40px;
     padding: 6px 11px;
     font-size: 16px;
   }
-  &.ant-input-small {
+  &.yys-input-small {
     height: 24px;
     padding: 1px 7px;
   }
 }
-.ant-input-affix-wrapper {
+.yys-input-affix-wrapper {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -136,13 +136,13 @@ export default {
   display: inline-block;
   width: 100%;
   text-align: start;
-  .ant-prefix-input {
+  .yys-prefix-input {
     position: relative;
     text-align: inherit;
     padding: 0 30px;
   }
-  .ant-input-prefix,
-  .ant-input-suffix {
+  .yys-input-prefix,
+  .yys-input-suffix {
     position: absolute;
     top: 50%;
     z-index: 2;

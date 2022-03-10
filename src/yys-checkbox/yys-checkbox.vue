@@ -1,16 +1,16 @@
 <template>
-  <label class="ant-checkbox-wrapper">
-    <span class="ant-checkbox ant-checkbox-checked">
+  <label class="yys-checkbox-wrapper">
+    <span class="yys-checkbox yys-checkbox-checked">
       <input
         @change="onChange"
         :disabled="disabled"
         type="checkbox"
-        class="ant-checkbox-input"
+        class="yys-checkbox-input"
         :checked="checked || defaultChecked"
         style="background-color: red"
       />
     </span>
-    <span class="ant-checkbox-text"> {{ text }} </span>
+    <span class="yys-checkbox-text"> {{ text }} </span>
   </label>
 </template>
 
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.ant-checkbox-wrapper {
+.yys-checkbox-wrapper {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -58,13 +58,13 @@ export default {
   line-height: unset;
   cursor: pointer;
 }
-.ant-checkbox-input {
+.yys-checkbox-input {
   width: 16px;
   background: red;
   height: 16px;
   vertical-align: middle;
 }
-.ant-checkbox-text {
+.yys-checkbox-text {
   vertical-align: middle;
 }
 </style>
