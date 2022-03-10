@@ -11,11 +11,11 @@
     <YButton type="danger">Default</YButton>
     <YButton type="link">Default</YButton>
     <YButton type="dashed" disabled>Default</YButton>
-
-    <!-- <icon-filter /> -->
-
     <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>
     <YInput @change="onChange" allowClear placeholder="round" />
+
+    <YahooFilled />
+    <component is="YahooFilled" mode="out-in"></component>
   </div>
 </template>
 
