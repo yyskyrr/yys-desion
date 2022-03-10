@@ -14,8 +14,8 @@
 
     <!-- <icon-filter /> -->
 
-<!--    <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>-->
-<!--    <YInput @change="onChange" allowClear placeholder="round" />-->
+    <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>
+    <YInput @change="onChange" allowClear placeholder="round" />
   </div>
 </template>
 
