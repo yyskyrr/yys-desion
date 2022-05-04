@@ -10,7 +10,7 @@
         style="background-color: red"
       />
     </span>
-    <span class="yys-checkbox-text"> {{ text }} </span>
+    <slot class="yys-checkbox-text"></slot>
   </label>
 </template>
 
@@ -18,9 +18,7 @@
 export default {
   name: "yys-checkbox",
   data() {
-    return {
-      text: this.$slots.default[0].text,
-    };
+    return {};
   },
   props: {
     disabled: Boolean,
@@ -28,12 +26,7 @@ export default {
     defaultChecked: Boolean,
   },
   computed: {},
-  mounted() {
-    console.log(this.$slots);
-  },
-  updated() {
-    this.text = this.$slots.default[0].text;
-  },
+  mounted() {},
   methods: {
     onChange(val) {
       this.$emit("change", val);
@@ -44,27 +37,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.yys-checkbox-wrapper {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
-  font-variant: tabular-nums;
-  line-height: 1.5;
-  list-style: none;
-  font-feature-settings: "tnum";
-  display: inline-block;
-  line-height: unset;
-  cursor: pointer;
-}
-.yys-checkbox-input {
-  width: 16px;
-  background: red;
-  height: 16px;
-  vertical-align: middle;
-}
-.yys-checkbox-text {
-  vertical-align: middle;
-}
+
 </style>
