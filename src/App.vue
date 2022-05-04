@@ -49,6 +49,12 @@
         <v-icon name="fan"></v-icon>
       </template>
     </YInput>
+
+    <YSelect :value="selectValue">
+      <YOption value="a">Lucy1</YOption>
+      <YOption value="b">Lucy2</YOption>
+      <YOption value="c">Lucy3</YOption>
+    </YSelect>
   </div>
 </template>
 
@@ -56,8 +62,7 @@
 import YButton from "./yys-button/yys-button";
 import YCheckbox from "./yys-checkbox/yys-checkbox";
 import YInput from "./yys-input/yys-input";
-
-// import YSelect from "./yys-select/yys-select";
+import YSelect from "./yys-select/yys-select";
 
 export default {
   name: "App",
@@ -65,7 +70,7 @@ export default {
     YButton,
     YCheckbox,
     YInput,
-    // YSelect,
+    YSelect,
   },
   created() {},
   data() {
@@ -73,6 +78,7 @@ export default {
       value: "value",
       checked: true,
       disabled: false,
+      selectValue: "a",
     };
   },
   methods: {
