@@ -1,13 +1,17 @@
 <template>
   <div>
-    <YInput @focus="onfocus" @blur="onblur" v-model="label" />
+    <YInput @click="onClick" @focus="onfocus" @blur="onblur" v-model="label">
+      <template #suffix>
+        <v-icon name="angle-down"></v-icon>
+      </template>
+    </YInput>
     <div v-show="isFocus" class="yys-option-box">
       <div
-        class="yys-option-item"
-        v-for="(item, index) in optionsList"
-        :key="index"
-        @mousedown="onSelect(item)"
-        :class="{
+          class="yys-option-item"
+          v-for="(item, index) in optionsList"
+          :key="index"
+          @mousedown="onSelect(item)"
+          :class="{
           'yys-option-selected': currentValue === item.value,
         }"
       >
@@ -19,6 +23,7 @@
 
 <script>
 import YInput from "../yys-input/yys-input";
+
 export default {
   name: "yys-select",
   data() {
@@ -30,11 +35,13 @@ export default {
     };
   },
   props: {
-    value: { type: String || Number, default: "" },
+    value: {type: String || Number, default: ""},
   },
   methods: {
+    onClick() {
+      this.isFocus = !this.isFocus;
+    },
     onfocus() {
-      this.isFocus = true;
     },
     onblur() {
       this.isFocus = false;
@@ -64,6 +71,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .yys-input {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+  cursor: pointer;
+}
+
 .yys-option-box {
   background-color: #ffffff;
   box-sizing: border-box;
@@ -79,15 +92,18 @@ export default {
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   transition: all 0.3s;
+
   .yys-option-item {
     height: 32px;
     width: 100%;
     text-align: center;
     cursor: pointer;
     line-height: 32px;
+
     &:hover {
       background-color: #f5f5f5;
     }
+
     &.yys-option-selected {
       background-color: #e6f7ff;
     }

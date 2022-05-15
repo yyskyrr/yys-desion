@@ -5,29 +5,37 @@
     </YButton>
     <YButton size="large" type="primary">largePrimary</YButton>
     <YButton size="small" type="primary">smallPrimary</YButton>
-    <br />
+    <br/>
     <YButton type="danger" disabled>disabled</YButton>
     <YButton>Default</YButton>
     <YButton type="dashed">dashed</YButton>
     <YButton type="danger" ghost>dashed</YButton>
-    <br />
+    <br/>
     <YButton type="danger">danger</YButton>
     <YButton type="dashed" disabled>dashedDisabled</YButton>
     <YButton type="link">link</YButton>
-    <br />
+    <br/>
 
     <YButton type="primary" shape="circle">A</YButton>
     <YButton shape="circle" icon="code"></YButton>
     <YButton icon="search">搜索</YButton>
-    <br />
+    <br/>
 
     <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>
     <div style="height: 10px"></div>
 
-    <YInput v-model="value" allowClear placeholder="normal" />
-    <YInput @change="onChange" size="large" allowClear placeholder="large" />
-    <YInput @change="onChange" size="small" allowClear placeholder="small" />
-    <YInput @change="onChange">
+    <YInput v-model="value" allowClear placeholder="normal"/>
+    <YInput @change="onChange" size="large" allowClear placeholder="large"/>
+    <YInput @change="onChange" size="small" allowClear placeholder="small"/>
+    <YInput @change="onChange" placeholder="icons">
+      <template #prefix>
+        <v-icon name="user"></v-icon>
+      </template>
+      <template #suffix>
+        <v-icon name="fan"></v-icon>
+      </template>
+    </YInput>
+    <YInput disabled @change="onChange" placeholder="disabled">
       <template #prefix>
         <v-icon name="user"></v-icon>
       </template>
@@ -36,11 +44,12 @@
       </template>
     </YInput>
     <YInput
-      @focus="onFocus"
-      @blur="onBlur"
-      @input="onInput"
-      @click="onClick"
-      @change="onChange"
+        @focus="onFocus"
+        @blur="onBlur"
+        @input="onInput"
+        @click="onClick"
+        @change="onChange"
+        placeholder="events"
     >
       <template #prefix>
         <v-icon name="user"></v-icon>
@@ -72,7 +81,8 @@ export default {
     YInput,
     YSelect,
   },
-  created() {},
+  created() {
+  },
   data() {
     return {
       value: "value",

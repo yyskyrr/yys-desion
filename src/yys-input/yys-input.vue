@@ -4,30 +4,32 @@
       <slot name="prefix"></slot>
     </span>
     <input
-      :style="{
+        :style="{
         paddingLeft: ($slots.prefix ? 30 : 11) + 'px',
       }"
-      :value="value"
-      @click="handleClick"
-      @blur="handleBlur"
-      @focus="handleFocus"
-      @change="handleChange"
-      @input="handleInput"
-      :placeholder="placeholder"
-      :class="{
+        :disabled="disabled"
+        :value="value"
+        @click="handleClick"
+        @blur="handleBlur"
+        @focus="handleFocus"
+        @change="handleChange"
+        @input="handleInput"
+        :placeholder="placeholder"
+        :class="{
         'yys-prefix-input': prefix,
         [`yys-input-${size}`]: size,
+        'yys-input-disabled': disabled,
       }"
-      class="yys-input"
+        class="yys-input"
     />
     <span class="yys-input-suffix" style="right: 12px">
       <slot name="suffix"></slot>
       <!--        class="anticon anticon-close-circle yys-input-clear-icon"-->
       <v-icon
-        style="cursor: pointer"
-        @click="value = ''"
-        v-if="allowClear && value"
-        name="window-close"
+          style="cursor: pointer"
+          @click="value = ''"
+          v-if="allowClear && value"
+          name="window-close"
       ></v-icon>
     </span>
   </div>
