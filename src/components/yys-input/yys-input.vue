@@ -70,8 +70,8 @@ export default {
   },
   computed: {},
   mounted() {
-    console.log(this.$slots);
-    console.log(this.value);
+    // console.log(this.$slots);
+    // console.log(this.value);
   },
   components: {},
 };

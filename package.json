@@ -17,7 +17,7 @@
     "@vue/cli-plugin-babel": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
     "babel-eslint": "^10.1.0",
-    "less-loader": "^6.0.0",
+    "less-loader": "^7.3.0",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11",
     "webpack-cli": "^4.9.2"
