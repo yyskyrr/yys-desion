@@ -51,9 +51,11 @@ export default {
     flex-shrink: 0;
     border-right: 1px solid #efeeee;
     div{
+      font-size: 13px;
       white-space: nowrap;
       padding-left: 20px;
       cursor: pointer;
+      color: #000000d9;
       line-height: 50px;
       &:hover{
         color: #008cfa;
