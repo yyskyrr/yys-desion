@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import YSelect from "./components/yys-select/yys-select";
+import YSelect from "../components/yys-select/yys-select";
 
 export default {
   name: "App",

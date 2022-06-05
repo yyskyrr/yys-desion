@@ -33,6 +33,10 @@
   border-radius: 4px;
   transition: all 0.3s;
 
+  &::-webkit-input-placeholder {
+    color: #bfbfc5;
+  }
+
   &:hover {
     border-color: #1890ff;
   }
@@ -68,19 +72,52 @@
   padding: 0;
   color: rgba(0, 0, 0, 0.65);
   font-size: 14px;
-  font-variant: tabular-nums;
   line-height: 1.5;
   list-style: none;
-  font-feature-settings: "tnum";
   position: relative;
   display: inline-block;
   width: 100%;
   text-align: start;
 
+  & > :not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+
   .yys-prefix-input {
     position: relative;
     text-align: inherit;
     padding: 0 30px;
+  }
+
+  .yys-input-addonBefore {
+    position: absolute;
+    height: calc(100% - 2px);
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(-50%);
+    background-color: #fafafa;
+    padding: 0 11px;
+    border: 1px solid #d9d9d9;
+    border-right: 0;
+  }
+
+  .yys-input-addonAfter {
+    position: absolute;
+    right: -1px;
+    height: calc(100% - 2px);
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(-50%);
+    background-color: #fafafa;
+    padding: 0 11px;
+    border: 1px solid #d9d9d9;
+    border-left: 0;
   }
 
   .yys-input-prefix,
@@ -93,6 +130,64 @@
     color: rgba(0, 0, 0, 0.65);
     line-height: 0;
     transform: translateY(-50%);
+  }
+
+  .yys-input-enterButton {
+    background-color: #1890ff;
+  }
+
+  .yys-input-tooltip {
+    background: #404040;
+    max-width: 250px;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    bottom: 40px;
+    border-radius: 4px;
+    left: 0;
+    word-wrap: break-word;
+
+    &:before {
+      position: absolute;
+      bottom: -2.5px;
+      left: 10px;
+      display: block;
+      width: 5px;
+      height: 5px;
+      margin: auto;
+      background-color: #404040;
+      content: "";
+      pointer-events: auto;
+      transform: rotate(45deg)
+    }
+  }
+
+  .yys-btn {
+    margin-right: -12px;
+    border-radius: 0
+  }
+
+  .yys-textarea-suffix {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  .yys-textarea-count {
+    text-align: right;
+    color: #00000073;
+    display: block;
+  }
+}
+
+y-input-group {
+  .yys-input {
+    border-radius: 0;
+  }
+
+  .yys-input-affix-wrapper:first-child {
+    margin-right: -1px;
   }
 }
 
@@ -129,6 +224,13 @@
     border-color: #40a9ff;
   }
 
+  &.yys-btn-text {
+    color: #000000d9;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
   &.yys-btn-primary {
     color: #fff;
     background-color: #1890ff;
@@ -140,6 +242,27 @@
       color: #1890ff;
       background: transparent !important;
       border-color: #1890ff;
+    }
+  }
+
+  &.yys-btn-dangerous {
+    color: #ff4d4f;
+    background: #fff;
+    border-color: #ff4d4f;
+
+    &.yys-btn-primary {
+      color: #fff;
+      background: #ff7875;
+      border-color: #ff7875;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+      box-shadow: 0 2px #0000000b;
+    }
+
+    &.yys-btn-link {
+      color: #ff4d4f;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
     }
   }
 
@@ -162,6 +285,12 @@
     background-color: #fff;
     border-color: #d9d9d9;
     border-style: dashed;
+
+    &.yys-btn-dangerous {
+      color: #ff4d4f;
+      background: #fff;
+      border-color: #ff4d4f;
+    }
   }
 
   &.yys-btn-link {
@@ -178,6 +307,20 @@
     text-shadow: none;
     box-shadow: none;
     cursor: not-allowed;
+
+    &.yys-btn-link {
+      color: #c9c9c9;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    &.yys-btn-text {
+      color: #c9c9c9;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
   }
 
   &.yys-btn-ghost {
@@ -210,6 +353,16 @@
     padding-left: 0;
     text-align: center;
     border-radius: 50%;
+
+    &.yys-btn-small {
+      min-width: 24px;
+      border-radius: 50%;
+    }
+
+    &.yys-btn-large {
+      min-width: 40px;
+      border-radius: 50%;
+    }
   }
 
   &.yys-btn-round {
@@ -217,6 +370,26 @@
     padding: 0 16px;
     font-size: 14px;
     border-radius: 32px;
+
+    &.yys-btn-small {
+      height: 24px;
+      padding: 0 12px;
+      font-size: 14px;
+      border-radius: 24px;
+    }
+
+    &.yys-btn-large {
+      height: 40px;
+      padding: 6.4px 20px;
+      font-size: 16px;
+      border-radius: 40px;
+    }
+  }
+
+  .yys-btn-loadingBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -230,8 +403,12 @@
   line-height: 1.5;
   list-style: none;
   display: inline-block;
-  line-height: unset;
   cursor: pointer;
+
+  &.yys-disabled-text {
+    color: #00000040;
+    cursor: not-allowed;
+  }
 }
 
 .yys-checkbox-input {
@@ -243,4 +420,35 @@
 
 .yys-checkbox-text {
   vertical-align: middle;
+}
+
+.yys-textarea {
+  box-sizing: border-box;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  padding: 4px 11px;
+  font-size: 14px;
+  width: 100%;
+  line-height: 20px;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  font-family: "Microsoft YaHei UI";
+
+  &::-webkit-input-placeholder {
+    color: #bfbfc5;
+    line-height: 20px;
+  }
+
+  &:hover {
+    border-color: #1890ff;
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: #1890ff;
+  }
+
+
 }

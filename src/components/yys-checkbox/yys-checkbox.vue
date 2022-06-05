@@ -1,16 +1,15 @@
 <template>
-  <label class="yys-checkbox-wrapper">
+  <label class="yys-checkbox-wrapper" :class="{'yys-disabled-text': disabled}">
     <span class="yys-checkbox yys-checkbox-checked">
       <input
-        @change="onChange"
-        :disabled="disabled"
-        type="checkbox"
-        class="yys-checkbox-input"
-        :checked="checked || defaultChecked"
-        style="background-color: red"
+          @change="onChange"
+          :disabled="disabled"
+          type="checkbox"
+          class="yys-checkbox-input"
+          :checked="checked || defaultChecked"
       />
     </span>
-    <slot class="yys-checkbox-text"></slot>
+    <slot class=" yys-checkbox-text"></slot>
   </label>
 </template>
 
@@ -26,7 +25,8 @@ export default {
     defaultChecked: Boolean,
   },
   computed: {},
-  mounted() {},
+  mounted() {
+  },
   methods: {
     onChange(val) {
       this.$emit("change", val);
@@ -36,6 +36,6 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 
 </style>

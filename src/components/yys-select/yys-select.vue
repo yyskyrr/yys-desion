@@ -1,8 +1,8 @@
 <template>
   <div>
-    <YInput @click="onClick" @focus="onfocus" @blur="onblur" v-model="label">
+    <YInput style="cursor: pointer" @click="onClick" @focus="onfocus" @blur="onblur" v-model="label">
       <template #suffix>
-        <v-icon name="angle-down"></v-icon>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
       </template>
     </YInput>
     <div v-show="isFocus" class="yys-option-box">
@@ -70,8 +70,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-/deep/ .yys-input {
+<style lang="scss" scoped>
+> > > .yys-input {
   color: transparent;
   text-shadow: 0 0 0 #000;
   cursor: pointer;

@@ -1,8 +1,10 @@
 <template>
   <div class="app">
     <div class="side">
-      <div v-for="(item,index) in componentList" :key="index" @click="currentIndex=index" :style="{backgroundColor:currentIndex===index?'#e0f6fe':''}">
-        {{ item }}</div>
+      <div v-for="(item,index) in componentList" :key="index" @click="currentIndex=index"
+           :style="{backgroundColor:currentIndex===index?'#e0f6fe':''}">
+        {{ item }}
+      </div>
     </div>
 
     <div class="content">
@@ -15,10 +17,10 @@
 </template>
 
 <script>
-import Button from "./button";
-import Checkbox from "./checkbox";
-import Input from "./input";
-import Select from "./select";
+import Button from "./pages/button";
+import Checkbox from "./pages/checkbox";
+import Input from "./pages/input";
+import Select from "./pages/select";
 
 export default {
   name: "App",
@@ -32,37 +34,40 @@ export default {
   },
   data() {
     return {
-      componentList:['button 按钮','checkbox 多选框','input 输入框','select 选择框',],
-      currentIndex :0
+      componentList: ['button 按钮', 'checkbox 多选框', 'input 输入框', 'select 选择框',],
+      currentIndex: 0
     };
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
-<style lang="less" scoped>
-.app{
+<style lang="scss" scoped>
+.app {
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  .side{
+  min-height: 100vh;
+
+  .side {
     width: 250px;
     flex-shrink: 0;
     border-right: 1px solid #efeeee;
-    div{
+
+    div {
       font-size: 13px;
       white-space: nowrap;
       padding-left: 20px;
       cursor: pointer;
       color: #000000d9;
       line-height: 50px;
-      &:hover{
+
+      &:hover {
         color: #008cfa;
       }
     }
   }
-  .content{
+
+  .content {
     padding: 20px;
   }
 }
