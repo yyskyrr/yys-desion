@@ -413,9 +413,46 @@ y-input-group {
 
 .yys-checkbox-input {
   width: 16px;
-  background: red;
   height: 16px;
-  vertical-align: middle;
+  vertical-align: bottom;
+  position: relative;
+  cursor: pointer;
+
+  //&:after {
+  //  position: absolute;
+  //  top: 0;
+  //  background-color: white;
+  //  border-radius: 2px;
+  //  color: #000;
+  //  width: 17px;
+  //  height: 17px;
+  //  display: inline-block;
+  //  visibility: visible;
+  //  padding-left: 0px;
+  //  text-align: center;
+  //  content: ' ';
+  //  box-sizing: border-box;
+  //  border: 1px solid #d9d9d9;
+  //}
+  //
+  //&:checked::after {
+  //  background-color: #1890ff;
+  //  content: '✓';
+  //  font-size: 12px;
+  //  font-weight: bold;
+  //  color: white;
+  //}
+}
+
+.yys-checkbox-indeterminate:before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1890ff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .yys-checkbox-text {
@@ -451,4 +488,10 @@ y-input-group {
   }
 
 
+}
+
+.yys-checkbox-group {
+  .yys-checkbox:not(:last-child) {
+    margin-right: 8px;
+  }
 }

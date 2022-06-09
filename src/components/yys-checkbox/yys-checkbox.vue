@@ -6,10 +6,11 @@
           :disabled="disabled"
           type="checkbox"
           class="yys-checkbox-input"
+          :class="{'yys-checkbox-indeterminate':indeterminate}"
           :checked="checked || defaultChecked"
       />
     </span>
-    <slot class=" yys-checkbox-text"></slot>
+    <slot class="yys-checkbox-text"></slot>
   </label>
 </template>
 
@@ -23,6 +24,7 @@ export default {
     disabled: Boolean,
     checked: Boolean,
     defaultChecked: Boolean,
+    indeterminate: Boolean
   },
   computed: {},
   mounted() {
