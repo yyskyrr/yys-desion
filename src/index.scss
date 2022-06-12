@@ -39,11 +39,13 @@
 
   &:hover {
     border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
   &:focus {
     outline: 0;
     border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
   &.yys-input-large {
@@ -63,6 +65,7 @@
     border-color: #d9d9d9;
     box-shadow: none;
     cursor: not-allowed;
+    user-select: none
   }
 }
 
@@ -183,11 +186,32 @@
 
 y-input-group {
   .yys-input {
-    border-radius: 0;
+    border-radius: 0 !important;
+
+    &:hover {
+      z-index: 1;
+    }
+
+    &:focus {
+      z-index: 1;
+
+    }
   }
 
-  .yys-input-affix-wrapper:first-child {
+  & > .yys-input-affix-wrapper:first-child, .yys-select:first-child {
     margin-right: -1px;
+
+    .yys-input {
+      border-radius: 4px 0 0 4px !important;
+
+    }
+  }
+
+  & > .yys-input-affix-wrapper:last-child, & > .yys-select:last-child {
+    .yys-input {
+      border-radius: 0px 4px 4px 0px !important;
+
+    }
   }
 }
 
@@ -493,5 +517,59 @@ y-input-group {
 .yys-checkbox-group {
   .yys-checkbox:not(:last-child) {
     margin-right: 8px;
+  }
+}
+
+.yys-select {
+  display: inline-block;
+  position: relative;
+
+  .select-box {
+    .yys-input {
+      cursor: pointer;
+      caret-color: transparent;
+      user-select: none !important;
+
+      &.yys-input-disabled {
+        cursor: not-allowed;
+      }
+    }
+
+
+  }
+
+  .yys-option-box {
+    z-index: 10;
+    position: absolute;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    padding: 4px 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px 2px #ebebeb;
+
+    .yys-option-item {
+      height: 32px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      line-height: 32px;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+
+      &.yys-option-selected {
+        background-color: #e6f7ff;
+      }
+    }
   }
 }

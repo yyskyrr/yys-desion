@@ -19,9 +19,10 @@
         width,
         borderRadius: $slots.addonAfter || addonAfter?0:'4px'
       }"
+        ref="inputRef"
         :disabled="disabled"
         :value="value"
-        :type="showPassword?'':'password'"
+        :type="showPassword? 'password': null"
         @click="handleClick"
         @blur="handleBlur"
         @focus="handleFocus"
@@ -43,11 +44,11 @@
         <i v-if="loading&&!enterButton" class="fa fa-circle-o-notch fa-spin " aria-hidden="true"></i>
         <i v-if="search&&!enterButton" class="fa fa-search" style="cursor:pointer;" aria-hidden="true"></i>
 
-        <i @click="showPassword=false" style="cursor: pointer;color: #bfbfbf" v-if="password && showPassword"
+        <i @click="showPassword=true" style="cursor: pointer;color: #bfbfbf" v-if="password && !showPassword"
            class="fa fa-eye"
            aria-hidden="true"></i>
 
-         <i @click="showPassword=true" style="cursor: pointer;color: #bfbfbf" v-if="password && !showPassword"
+         <i @click="showPassword=false" style="cursor: pointer;color: #bfbfbf" v-if="password && showPassword"
             class="fa fa-eye-slash"
             aria-hidden="true"></i>
 
@@ -75,7 +76,7 @@ export default {
   data() {
     return {
       showTooltip: false,
-      showPassword: true,
+      showPassword: false,
       marginLeft: 0,
       marginRight: 0,
       width: '100%'
@@ -118,6 +119,7 @@ export default {
       this.$emit("blur", event);
     },
     handleFocus(event) {
+      this.$refs.inputRef.focus()
       this.showTooltip = true
       this.$emit("focus", event);
     },
@@ -140,6 +142,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 
 </style>

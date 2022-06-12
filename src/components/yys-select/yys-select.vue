@@ -1,10 +1,17 @@
 <template>
-  <div>
-    <YInput style="cursor: pointer" @click="onClick" @focus="onfocus" @blur="onblur" v-model="label">
-      <template #suffix>
-        <i class="fa fa-angle-down" aria-hidden="true"></i>
-      </template>
-    </YInput>
+  <div class="yys-select">
+    <div class="select-box" @click="onClick" @focus="onfocus">
+      <YInput v-if="loading" :disabled="disabled"
+              v-model="label" @blur="onblur" ref="YinputRef" loading>
+      </YInput>
+
+      <YInput ref="YinputRef" v-else :disabled="disabled" v-model="label" @blur="onblur">
+        <template #suffix>
+          <i @click="clickDownIcon" style="cursor: pointer" class="fa fa-angle-down" aria-hidden="true"></i>
+        </template>
+      </YInput>
+    </div>
+
     <div v-show="isFocus" class="yys-option-box">
       <div
           class="yys-option-item"
@@ -36,19 +43,33 @@ export default {
   },
   props: {
     value: {type: String || Number, default: ""},
+    disabled: Boolean,
+    loading: Boolean
+  },
+  model: {
+    prop: 'value',
+    event: 'change'
   },
   methods: {
-    onClick() {
+    clickDownIcon() {
+      // this.$refs.YinputRef.handleFocus()
+      this.onClick()
+    },
+    onClick(e) {
       this.isFocus = !this.isFocus;
+      this.$emit("click", e);
     },
     onfocus() {
     },
-    onblur() {
+    onblur(e) {
       this.isFocus = false;
+      this.$emit("blur", e);
     },
     onSelect(item) {
       this.currentValue = item.value;
       this.label = item.label;
+
+      this.$emit("change", item.value);
     },
   },
   computed: {},
@@ -62,7 +83,6 @@ export default {
         value: item.data.attrs.value,
       });
     });
-    console.log(this.$slots.default);
   },
   components: {
     YInput,
@@ -70,43 +90,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-> > > .yys-input {
-  color: transparent;
-  text-shadow: 0 0 0 #000;
-  cursor: pointer;
-}
+<style>
 
-.yys-option-box {
-  background-color: #ffffff;
-  box-sizing: border-box;
-  margin: 0;
-  list-style: none;
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  padding: 4px 11px;
-  color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
-  line-height: 1.5;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
-  transition: all 0.3s;
-
-  .yys-option-item {
-    height: 32px;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    line-height: 32px;
-
-    &:hover {
-      background-color: #f5f5f5;
-    }
-
-    &.yys-option-selected {
-      background-color: #e6f7ff;
-    }
-  }
-}
 </style>

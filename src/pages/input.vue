@@ -47,9 +47,29 @@
 
     <p>输入框组合</p>
     <y-input-group>
-      <y-input style="width: 20%" v-model:value="value1"/>
-      <y-input style="width: 30%" v-model:value="value2"/>
+      <YInput style="width: 20%" v-model:value="value1"/>
+      <YInput style="width: 30%" v-model:value="value2"/>
     </y-input-group>
+    <br><br>
+    <y-input-group>
+      <YSelect style="width: 50%" v-model:value="value11">
+        <YOption value="Zhejiang">Zhejiang</YOption>
+        <YOption value="Jiangsu">Jiangsu</YOption>
+      </YSelect>
+      <YInput style="width: 50%" v-model:value="value12"/>
+    </y-input-group>
+    <br><br>
+    <y-input-group>
+      <YSelect style="width: 50%" v-model:value="value13">
+        <YOption value="Zhejiang">Zhejiang</YOption>
+        <YOption value="Jiangsu">Jiangsu</YOption>
+      </YSelect>
+      <YSelect style="width: 50%" v-model:value="value14">
+        <YOption value="Zhejiang">Zhejiang</YOption>
+        <YOption value="Jiangsu">Jiangsu</YOption>
+      </YSelect>
+    </y-input-group>
+
 
     <p>输入时格式化展示</p>
     <YInput placeholder="Input a number" :formatValue="formatValue" v-model:value="value3" tooltip/>
@@ -112,11 +132,13 @@
 import YInput from "../components/yys-input/yys-input";
 import YTextarea from "../components/yys-input/yys-textarea";
 import YButton from "../components/yys-button/yys-button";
+import YSelect from "../components/yys-select/yys-select";
 
 export default {
   name: "App",
   components: {
     YInput,
+    YSelect,
     YTextarea,
     YButton,
   },
@@ -140,6 +162,10 @@ export default {
       value8: "mysite",
       value9: "",
       value10: "test value",
+      value11: "Zhejiang",
+      value12: "Xihu District, Hangzhou",
+      value13: "Zhejiang",
+      value14: "Zhejiang",
       checked: true,
       disabled: false,
       selectValue: "a",
