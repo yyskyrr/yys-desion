@@ -2,34 +2,35 @@
   <div class="yys-input-affix-wrapper">
     <textarea
         id="textarea"
-        class="yys-textarea"
+        :autofocus="autofocus"
+        :disabled="disabled"
+        :maxlength="maxlength"
+        :placeholder="placeholder"
+        :readonly="readonly"
         :style="{
         height: autoSize && textareaHeight,
+        paddingRight: (allowClear? 20 : 11) + 'px',
         minHeight:autoSize && (minRows*20+10) + 'px',
         maxHeight:autoSize && (maxRows*20+10) + 'px',
     }"
-        @click="handleClick"
+        class="yys-textarea"
         @blur="handleBlur"
-        @focus="handleFocus"
         @change="handleChange"
+        @click="handleClick"
+        @focus="handleFocus"
         @input="handleInput"
-        :disabled="disabled"
-        :maxlength="maxlength"
-        :readonly="readonly"
-        :autofocus="autofocus"
-        :placeholder="placeholder"
     >{{ value }}</textarea>
     <span class="yys-textarea-suffix">
-      <i style="cursor: pointer;color: #bfbfbf" @click="value=''"
-         v-if="allowClear && value" class="fa fa-times-circle" aria-hidden="true">
+      <i v-if="allowClear && value" aria-hidden="true"
+         class="fa fa-times-circle" style="cursor: pointer;color: #bfbfbf" @click="value=''">
         </i>
     </span>
-    <div class="yys-textarea-count" v-if="showCount">{{ value.length }}/{{ maxlength }}</div>
+    <div v-if="showCount" class="yys-textarea-count">{{ value.length }}/{{ maxlength }}</div>
 
-    <div id="getHeight" v-if="autoSize"
-         class="yys-textarea"
+    <div v-if="autoSize" id="getHeight"
          :style="{
         width:textareaWidth+'px' }"
+         class="yys-textarea"
          style="opacity: 0;position: absolute;word-break: break-word;z-index: -1">
       {{ value }}
     </div>

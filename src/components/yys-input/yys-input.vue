@@ -4,7 +4,7 @@
         <div>{{ addonBefore }}</div>
         <slot name="addonBefore"></slot>
     </span>
-    <div class="yys-input-tooltip" v-if="tooltip&&showTooltip&&formatValue">
+    <div v-if="tooltip&&showTooltip&&formatValue" class="yys-input-tooltip">
       {{ formatValue }}
     </div>
     <span v-if="$slots.prefix" class="yys-input-prefix" style="left: 12px">
@@ -12,50 +12,52 @@
     </span>
 
     <input
-        :style="{
-        paddingLeft: ($slots.prefix ? 30 : 11) + 'px',
-        marginLeft: marginLeft +'px',
-        marginRight: marginRight +'px',
-        width,
-        borderRadius: $slots.addonAfter || addonAfter?0:'4px'
-      }"
         ref="inputRef"
-        :disabled="disabled"
-        :value="value"
-        :type="showPassword? 'password': null"
-        @click="handleClick"
-        @blur="handleBlur"
-        @focus="handleFocus"
-        @change="handleChange"
-        @input="handleInput"
-        :placeholder="placeholder"
         :class="{
         'yys-prefix-input': prefix,
         [`yys-input-${size}`]: size,
         'yys-input-disabled': disabled,
       }"
+        :disabled="disabled"
+        :placeholder="placeholder"
+        :style="{
+        paddingLeft: ($slots.prefix ? 30 : 11) + 'px',
+        paddingRight: (enterButton  ?50:(allowClear || loading ||password || search ||$slots.suffix) ?30:11) + 'px',
+        marginLeft: marginLeft +'px',
+        marginRight: marginRight +'px',
+        width,
+        borderRadius: $slots.addonAfter || addonAfter?0:'4px'
+      }"
+        :type="showPassword? 'password': null"
+        :value="value"
         class="yys-input"
+        @blur="handleBlur"
+        @change="handleChange"
+        @click="handleClick"
+        @focus="handleFocus"
+        @input="handleInput"
+        @select="handleSelect"
     />
     <span class="yys-input-suffix" style="right: 12px">
       <slot name="suffix"></slot>
-      <i style="cursor: pointer;color: #bfbfbf" @click="value = ''"
-         v-if="allowClear && value" class="fa fa-times-circle" aria-hidden="true">
+      <i v-if="allowClear && value" aria-hidden="true"
+         class="fa fa-times-circle" style="cursor: pointer;color: #bfbfbf" @click="value = ''">
         </i>
-        <i v-if="loading&&!enterButton" class="fa fa-circle-o-notch fa-spin " aria-hidden="true"></i>
-        <i v-if="search&&!enterButton" class="fa fa-search" style="cursor:pointer;" aria-hidden="true"></i>
+        <i v-if="loading&&!enterButton" aria-hidden="true" class="fa fa-spinner fa-pulse "></i>
+        <i v-if="search&&!enterButton" aria-hidden="true" class="fa fa-search" style="cursor:pointer;"></i>
 
-        <i @click="showPassword=true" style="cursor: pointer;color: #bfbfbf" v-if="password && !showPassword"
-           class="fa fa-eye"
-           aria-hidden="true"></i>
+        <i v-if="password && !showPassword" aria-hidden="true" class="fa fa-eye"
+           style="cursor: pointer;color: #bfbfbf"
+           @click="showPassword=true"></i>
 
-         <i @click="showPassword=false" style="cursor: pointer;color: #bfbfbf" v-if="password && showPassword"
-            class="fa fa-eye-slash"
-            aria-hidden="true"></i>
+         <i v-if="password && showPassword" aria-hidden="true" class="fa fa-eye-slash"
+            style="cursor: pointer;color: #bfbfbf"
+            @click="showPassword=false"></i>
 
       <slot name="enterButton">
-        <YButton type="primary" v-if="enterButton">
-                <i v-if="loading" class="fa fa-circle-o-notch fa-spin " aria-hidden="true"></i>
-                <i v-if="search" class="fa fa-search" aria-hidden="true"></i>
+        <YButton v-if="enterButton" type="primary">
+                <i v-if="loading" aria-hidden="true" class="fa fa-spinner fa-pulse"></i>
+                <i v-if="search" aria-hidden="true" class="fa fa-search"></i>
                 <div v-if="enterButtonText">{{ enterButtonText }}</div>
         </YButton>
       </slot>
@@ -128,6 +130,9 @@ export default {
     },
     handleInput(e) {
       this.$emit("input", e.target.value);
+    },
+    handleSelect(e) {
+      this.$emit("select", e.target.value);
     },
   },
 

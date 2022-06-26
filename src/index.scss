@@ -442,6 +442,10 @@ y-input-group {
   position: relative;
   cursor: pointer;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   //&:after {
   //  position: absolute;
   //  top: 0;
@@ -524,7 +528,11 @@ y-input-group {
   display: inline-block;
   position: relative;
 
-  .select-box {
+  &.yys-select-disabled {
+    cursor: not-allowed;
+  }
+
+  .yys-select-box {
     .yys-input {
       cursor: pointer;
       caret-color: transparent;
@@ -533,9 +541,120 @@ y-input-group {
       &.yys-input-disabled {
         cursor: not-allowed;
       }
+
+      &::selection {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .yys-tags-list {
+    position: relative;
+
+    #textarea {
+      color: transparent;
+
+      &::selection {
+        background-color: transparent;
+      }
     }
 
+    .yys-tags-box {
+      position: absolute;
+      left: 3px;
+      top: 0;
+      z-index: 0;
+      cursor: text;
 
+
+    }
+
+    .yys-tags-item {
+      user-select: none;
+      border: 1px solid #e8e8e8;
+      border-radius: 2px;
+      cursor: default;
+      transition: padding .3s cubic-bezier(.645, .045, .355, 1);
+      padding: 0 20px 0 10px;
+      background-color: #fafafa;
+      height: 24px;
+      margin-top: 3px;
+      margin-right: 3px;
+      line-height: 24px;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      position: relative;
+
+      .yys-close-icon {
+        color: #898989;
+        position: absolute;
+        right: 5px;
+        top: -2px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .yys-tags-options-box {
+    z-index: 10;
+    position: absolute;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    padding: 4px 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px 2px #ebebeb;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .yys-option-item {
+      height: 32px;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      line-height: 32px;
+      padding-left: 11px;
+      position: relative;
+
+      &::selection {
+        background-color: transparent;
+      }
+
+      &:after {
+        content: '√';
+        position: absolute;
+        right: 20px;
+        color: transparent;
+      }
+
+      &.yys-tags-selected {
+        background-color: #f5f5f5;
+
+        &:after {
+          color: #339dff !important;
+        }
+      }
+
+      &:hover {
+        background-color: #e6f7ff;
+
+        &:after {
+          color: #252729;
+        }
+      }
+    }
   }
 
   .yys-option-box {
@@ -555,19 +674,23 @@ y-input-group {
     border-radius: 4px;
     transition: all 0.3s;
     box-shadow: 0 2px 5px 2px #ebebeb;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     .yys-option-item {
       height: 32px;
       width: 100%;
-      text-align: center;
+      text-align: left;
       cursor: pointer;
       line-height: 32px;
+      padding-left: 11px;
 
-      &:hover {
+      &.yys-option-selected {
         background-color: #f5f5f5;
       }
 
-      &.yys-option-selected {
+      &:hover {
         background-color: #e6f7ff;
       }
     }

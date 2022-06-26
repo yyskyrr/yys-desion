@@ -18,6 +18,13 @@
       <YOption value="Lucy2">Lucy2</YOption>
       <YOption value="Lucy3">Lucy3</YOption>
     </YSelect>
+    
+    <p>标签</p>
+    <YSelect mode="tags" placeholder="Tags Mode" style="width: 100%" @change="handleChange">
+      <YOption v-for="i in 25" :key="(i + 9).toString(36) + i">
+        {{ (i + 9).toString(36) + i }}
+      </YOption>
+    </YSelect>
   </div>
 </template>
 
