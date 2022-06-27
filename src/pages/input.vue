@@ -5,33 +5,33 @@
 
     <p>前缀和后缀</p>
     <YInput
-        @focus="onFocus"
-        @blur="onBlur"
-        @input="onInput"
-        @click="onClick"
-        @change="onChange"
         placeholder="icons"
+        @blur="onBlur"
+        @change="onChange"
+        @click="onClick"
+        @focus="onFocus"
+        @input="onInput"
     >
       <template #prefix>
-        <i class="fa fa-user-o" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-user-o"></i>
       </template>
       <template #suffix>
-        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-envelope-o"></i>
       </template>
     </YInput>
     <br/>
     <br/>
-    <YInput disabled @change="onChange" placeholder="disabled">
+    <YInput disabled placeholder="disabled" @change="onChange">
       <template #prefix>
-        <i class="fa fa-user-o" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-user-o"></i>
       </template>
       <template #suffix>
-        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-envelope-o"></i>
       </template>
     </YInput>
     <br/>
     <br/>
-    <YInput @change="onChange" placeholder="input search text">
+    <YInput placeholder="input search text" @change="onChange">
       <template #prefix>
         ￥
       </template>
@@ -41,30 +41,30 @@
     </YInput>
 
     <p>搜索框 loading</p>
-    <YInput placeholder="loading" loading/>
+    <YInput loading placeholder="loading"/>
     <br><br>
-    <YInput placeholder="loading" loading :enter-button="true"/>
+    <YInput :enter-button="true" loading placeholder="loading"/>
 
     <p>输入框组合</p>
     <y-input-group>
-      <YInput style="width: 20%" v-model:value="value1"/>
-      <YInput style="width: 30%" v-model:value="value2"/>
+      <YInput v-model:value="value1" style="width: 20%"/>
+      <YInput v-model:value="value2" style="width: 30%"/>
     </y-input-group>
     <br><br>
     <y-input-group>
-      <YSelect style="width: 50%" v-model:value="value11">
+      <YSelect v-model:value="value11" style="width: 50%">
         <YOption value="Zhejiang">Zhejiang</YOption>
         <YOption value="Jiangsu">Jiangsu</YOption>
       </YSelect>
-      <YInput style="width: 50%" v-model:value="value12"/>
+      <YInput v-model:value="value12" style="width: 50%"/>
     </y-input-group>
     <br><br>
     <y-input-group>
-      <YSelect style="width: 50%" v-model:value="value13">
+      <YSelect v-model:value="value13" style="width: 50%">
         <YOption value="Zhejiang">Zhejiang</YOption>
         <YOption value="Jiangsu">Jiangsu</YOption>
       </YSelect>
-      <YSelect style="width: 50%" v-model:value="value14">
+      <YSelect v-model:value="value14" style="width: 50%">
         <YOption value="Zhejiang">Zhejiang</YOption>
         <YOption value="Jiangsu">Jiangsu</YOption>
       </YSelect>
@@ -72,26 +72,26 @@
 
 
     <p>输入时格式化展示</p>
-    <YInput placeholder="Input a number" :formatValue="formatValue" v-model:value="value3" tooltip/>
+    <YInput v-model:value="value3" :formatValue="formatValue" placeholder="Input a number" tooltip/>
 
     <p>密码框</p>
-    <YInput password v-model:value="value4" placeholder="input password"/>
+    <YInput v-model:value="value4" password placeholder="input password"/>
 
     <p>文本域</p>
     <YTextarea placeholder="Basic usage"/>
 
     <p>适应文本高度的文本域</p>
-    <YTextarea v-model="value5" placeholder="Autosize height based on content lines" auto-size/>
+    <YTextarea v-model="value5" auto-size placeholder="Autosize height based on content lines"/>
     <br><br>
-    <YTextarea v-model="value6" placeholder="Autosize height with minimum and maximum number of lines"
-               :auto-size="{ minRows: 2, maxRows: 5 }"/>
+    <YTextarea v-model="value6" :auto-size="{ minRows: 2, maxRows: 5 }"
+               placeholder="Autosize height with minimum and maximum number of lines"/>
 
     <p>搜索框</p>
-    <YInput search v-model:value="value7" placeholder="input search text"/>
+    <YInput v-model:value="value7" placeholder="input search text" search/>
     <br><br>
-    <YInput :enter-button="true" search v-model:value="value7" placeholder="input search text"/>
+    <YInput v-model:value="value7" :enter-button="true" placeholder="input search text" search/>
     <br><br>
-    <YInput enter-button="Search" v-model:value="value7" placeholder="input search text"/>
+    <YInput v-model:value="value7" enter-button="Search" placeholder="input search text"/>
     <br><br>
     <YInput v-model:value="value7" placeholder="input search text">
       <template #enterButton>
@@ -101,19 +101,19 @@
 
 
     <p>三种大小</p>
-    <YInput @change="onChange" size="large size" placeholder="large"/>
+    <YInput placeholder="large" size="large size" @change="onChange"/>
     <br><br>
-    <YInput @change="onChange" placeholder="default size"/>
+    <YInput placeholder="default size" @change="onChange"/>
     <br><br>
-    <YInput @change="onChange" size="small size" placeholder="small"/>
+    <YInput placeholder="small" size="small size" @change="onChange"/>
 
     <p>前置/后置标签</p>
 
-    <YInput addon-before="Http://" addon-after=".com" v-model:value="value8"/>
+    <YInput v-model:value="value8" addon-after=".com" addon-before="Http://"/>
     <br><br>
     <YInput v-model:value="value8">
       <template #addonAfter>
-        <i class="fa fa-cog" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-cog"></i>
       </template>
     </YInput>
 
@@ -123,8 +123,89 @@
     <YTextarea v-model="value9" allowClear placeholder="textarea with clear icon"></YTextarea>
 
     <p>带字数提示的文本域</p>
-    <YTextarea v-model="value10" showCount :maxlength="100"></YTextarea>
+    <YTextarea v-model="value10" :maxlength="100" showCount></YTextarea>
 
+    <table>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>默认值</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>addonAfter</td>
+        <td>带标签的 input，设置后置标签</td>
+        <td>string|slot</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>addonBefore</td>
+        <td>带标签的 input，设置前置标签</td>
+        <td>string|slot</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>defaultValue</td>
+        <td>输入框默认内容</td>
+        <td>string</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td>是否禁用状态，默认为 false</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>maxLength</td>
+        <td>最大长度</td>
+        <td>number</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>prefix</td>
+        <td>带有前缀图标的 input</td>
+        <td>string|slot</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>size</td>
+        <td>控件大小。注：标准表单内的输入框大小限制为 <code>large</code>。可选 <code>large</code> <code>default</code> <code>small</code></td>
+        <td>string</td>
+        <td><code>default</code></td>
+      </tr>
+      <tr>
+        <td>suffix</td>
+        <td>带有后缀图标的 input</td>
+        <td>string|slot</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>声明 input 类型，同原生 input 标签的 type 属性，见：<a
+            href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#%E5%B1%9E%E6%80%A7">MDN</a>(请直接使用
+          <code>Input.TextArea</code> 代替 <code>type="textarea"</code>)。
+        </td>
+        <td>string</td>
+        <td><code>text</code></td>
+      </tr>
+      <tr>
+        <td>value(v-model)</td>
+        <td>输入框内容</td>
+        <td>string</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>allowClear</td>
+        <td>可以点击清除图标删除内容</td>
+        <td>boolean</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

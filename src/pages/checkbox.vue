@@ -11,23 +11,23 @@
     <p>Checkbox 组</p>
     <YCheckboxGroup
         v-model="value"
-        name="checkboxgroup"
         :options="plainOptions"
+        name="checkboxgroup"
         @change="onChange"
     />
-    <YCheckboxGroup :options="plainOptions" :default-value="['Apple']" @change="onChange"/>
+    <YCheckboxGroup :default-value="['Apple']" :options="plainOptions" @change="onChange"/>
     <YCheckboxGroup :options="options" :value="['Pear']" @change="onChange"/>
     <YCheckboxGroup
+        :default-value="['Apple']"
         :options="optionsWithDisabled"
         disabled
-        :default-value="['Apple']"
         @change="onChange"
     >
       <span slot="label" slot-scope="{ value }" style="color: red">{{ value }}</span>
     </YCheckboxGroup>
 
     <p>全选</p>
-    <YCheckbox :indeterminate="indeterminate" :checked="checkAll" @change="onCheckAllChange"></YCheckbox>
+    <YCheckbox :checked="checkAll" :indeterminate="indeterminate" @change="onCheckAllChange"></YCheckbox>
     <br><br>
     <YCheckboxGroup v-model="checkedList" :options="plainOptions" @change="onChange1"/>
 
@@ -35,6 +35,43 @@
     <YCheckbox :checked="checked2" disabled></YCheckbox>
     <br>
     <YCheckbox :checked="checked2" disabled></YCheckbox>
+
+    <table>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>默认值</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>checked</td>
+        <td>指定当前是否选中</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>defaultChecked</td>
+        <td>初始是否选中</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td>失效状态</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>indeterminate</td>
+        <td>设置 indeterminate 状态，只负责样式控制</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      </tbody>
+    </table>
 
   </div>
 </template>

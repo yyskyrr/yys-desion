@@ -6,7 +6,7 @@
         ></YTextarea>
         <div class="yys-tags-box">
           <div v-for="item in tagsList" class="yys-tags-item">{{ item }}
-            <span class="yys-close-icon" @click="onDeleteItem(item)">x</span>
+            <span class="yys-close-icon" @click.stop="onDeleteItem(item)">x</span>
           </div>
         </div>
       </div>
@@ -28,9 +28,9 @@
     </div>
 
     <div v-else>
-      <div class="yys-select-box">
+      <div class="yys-select-box" @click="onClick">
         <YInput v-if="loading" v-model="label" :disabled="disabled"
-                loading @blur="onblur" @click="onClick">
+                loading @blur="onblur">
         </YInput>
 
         <YInput v-else v-model="label" :disabled="disabled" @blur="onblur">
@@ -63,6 +63,10 @@ import YTextarea from "../yys-input/yys-textarea";
 
 export default {
   name: "yys-select",
+  components: {
+    YInput,
+    YTextarea,
+  },
   data() {
     return {
       isFocus: false,
@@ -72,18 +76,29 @@ export default {
       tagsList: [],
       label: "",
       currentValue: this.value,
+      default: this.$slots.default,
     };
+  },
+  watch: {
+    value(n, o) {
+      if (n !== o) {
+        this.currentValue = n
+        this.optionsList = []
+        this.getOptions()
+      }
+    }
   },
   computed: {
     isTags() {
       return this.mode === 'tags'
-    }
+    },
   },
   props: {
     value: {type: String || Number, default: ""},
     mode: String,
     placeholder: String,
     disabled: Boolean,
+    labelInValue: Boolean,
     loading: Boolean
   },
   model: {
@@ -106,8 +121,23 @@ export default {
     onSelect(item) {
       this.currentValue = item.value;
       this.label = item.label;
-
+      if (this.labelInValue) {
+        this.$emit("change", {key: item.value, label: item.label});
+        return
+      }
       this.$emit("change", item.value);
+    },
+    getOptions() {
+      console.log('this.value', this.value)
+      this.$slots.default.forEach((item) => {
+        if (this.value === item.data.attrs?.value || item.data.key && this.mode !== 'tags') {
+          this.label = this.value;
+        }
+        this.optionsList.push({
+          label: item.children[0].text,
+          value: item.data.attrs?.value || item.data.key,
+        });
+      });
     },
     onTagsSelect(item) {
       if (this.tagsList.indexOf(item.value) > -1) {
@@ -123,19 +153,8 @@ export default {
     },
   },
   mounted() {
-    this.$slots.default.forEach((item) => {
-      if (this.value === item.data.attrs?.value || item.data.key && this.mode !== 'tags') {
-        this.label = item.children[0].text;
-      }
-      this.optionsList.push({
-        label: item.children[0].text,
-        value: item.data.attrs?.value || item.data.key,
-      });
-    });
-  },
-  components: {
-    YInput,
-    YTextarea,
+    this.getOptions()
+
   },
 };
 </script>

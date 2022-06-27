@@ -696,3 +696,37 @@ y-input-group {
     }
   }
 }
+
+table {
+  font-size: 14px;
+  line-height: 1.5;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  width: 100%;
+  margin: 8px 0 16px;
+
+  th {
+    padding: 14px 16px;
+    border-width: 0 0 2px;
+    background-color: #fafafa;
+    line-height: 50px;
+    border-bottom: 1px solid #e8e8e8;
+    text-align: left;
+  }
+
+  td {
+    line-height: 50px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  code {
+    margin: 0 1px;
+    background: #f2f4f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid #eee;
+  }
+}
