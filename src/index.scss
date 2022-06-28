@@ -695,6 +695,17 @@ y-input-group {
       }
     }
   }
+
+  .yys-empty-option {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+  }
 }
 
 table {
