@@ -1,8 +1,8 @@
 <template>
   <div class="yys-checkbox-group">
-    <YCheckbox :disabled="disabled" :checked="isChecked(item)"
-               @change="onChange(item)" class="yys-checkbox"
-               v-for="(item,index) in options">
+    <YCheckbox v-for="(item,index) in options" :checked="isChecked(item)"
+               :disabled="disabled" class="yys-checkbox"
+               @change="onChange(item)">
       {{ item.value || item }}
     </YCheckbox>
   </div>
@@ -12,7 +12,7 @@
 import YCheckbox from './yys-checkbox'
 
 export default {
-  name: "yys-checkbox-group",
+  name: "YCheckboxGroup",
   components: {
     YCheckbox
   },

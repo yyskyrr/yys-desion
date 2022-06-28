@@ -98,7 +98,7 @@ import YInput from "../yys-input/yys-input";
 import YTextarea from "../yys-input/yys-textarea";
 
 export default {
-  name: "yys-select",
+  name: "YSelect",
   components: {
     YInput,
     YTextarea,

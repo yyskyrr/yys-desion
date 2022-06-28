@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: "yys-textarea",
+  name: "YTextarea",
   data() {
     return {
       textareaHeight: undefined,

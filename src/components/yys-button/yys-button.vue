@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: "yys-button",
+  name: "YButton",
   data() {
     return {};
   },

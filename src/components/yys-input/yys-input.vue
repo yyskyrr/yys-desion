@@ -74,7 +74,7 @@
 import YButton from "../yys-button/yys-button";
 
 export default {
-  name: "yys-input",
+  name: "YInput",
   data() {
     return {
       showTooltip: false,

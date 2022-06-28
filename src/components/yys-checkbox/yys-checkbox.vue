@@ -1,13 +1,13 @@
 <template>
-  <label class="yys-checkbox-wrapper" :class="{'yys-disabled-text': disabled}">
+  <label :class="{'yys-disabled-text': disabled}" class="yys-checkbox-wrapper">
     <span class="yys-checkbox yys-checkbox-checked">
       <input
-          @change="onChange"
-          :disabled="disabled"
-          type="checkbox"
-          class="yys-checkbox-input"
-          :class="{'yys-checkbox-indeterminate':indeterminate}"
           :checked="checked || defaultChecked"
+          :class="{'yys-checkbox-indeterminate':indeterminate}"
+          :disabled="disabled"
+          class="yys-checkbox-input"
+          type="checkbox"
+          @change="onChange"
       />
     </span>
     <slot class="yys-checkbox-text"></slot>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "yys-checkbox",
+  name: "YCheckbox",
   data() {
     return {};
   },
