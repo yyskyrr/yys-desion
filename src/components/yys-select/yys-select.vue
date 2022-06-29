@@ -5,7 +5,7 @@
         <YTextarea v-model="tagsList.join('--------------')" :placeholder="newPlaceholder" auto-size @blur="onblur"
         ></YTextarea>
         <div class="yys-tags-box">
-          <div v-for="item in tagsList" class="yys-tags-item">{{ item }}
+          <div v-for="item in tagsList" class="yys-tags-item">{{ item.value }}
             <span class="yys-close-icon" @click.stop="onDeleteItem(item)">x</span>
           </div>
         </div>
@@ -19,7 +19,7 @@
             v-if="optionsList.length > 0"
             :key="index"
             :class="{
-          'yys-tags-selected': tagsList.indexOf(item.value) > -1,
+          'yys-tags-selected': tagsList.indexOf(item) > -1,
         }"
             class="yys-option-item"
             @mousedown="onTagsSelect(item)"
@@ -117,7 +117,7 @@ export default {
   },
   watch: {
     value(n, o) {
-      if (n !== o) {
+      if (n !== o && this.mode !== 'multiple') {
         this.currentValue = n
         this.optionsList = []
         this.getOptions()
@@ -155,6 +155,14 @@ export default {
     },
     onDeleteItem(item) {
       this.tagsList.splice(this.tagsList.indexOf(item), 1)
+      console.log(this.tagsList.length)
+      if (this.tagsList.length === 0) {
+        this.newPlaceholder = this.placeholder
+      }
+      console.log('item', item)
+      if (this.mode === 'multiple') {
+        this.optionsList.push(item)
+      }
     },
     onblur(e) {
       this.isFocus = this.isTagsSelect ? true : false;
@@ -184,14 +192,14 @@ export default {
       this.isTagsSelect = true
       if (this.mode === 'multiple') {
         this.optionsList.splice(this.optionsList.indexOf(item), 1)
-        this.tagsList.push(item.value);
+        this.tagsList.push(item);
         this.$emit("change", this.tagsList);
         return
       }
-      if (this.tagsList.indexOf(item.value) > -1) {
-        this.tagsList.splice(this.tagsList.indexOf(item.value), 1)
+      if (this.tagsList.indexOf(item) > -1) {
+        this.tagsList.splice(this.tagsList.indexOf(item), 1)
       } else {
-        this.tagsList.push(item.value);
+        this.tagsList.push(item);
       }
       if (this.tagsList.length > 0) {
         this.newPlaceholder = ''

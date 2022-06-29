@@ -532,6 +532,10 @@ y-input-group {
     cursor: not-allowed;
   }
 
+  textarea {
+    resize: none;
+  }
+
   .yys-select-box {
     .yys-input {
       cursor: pointer;
