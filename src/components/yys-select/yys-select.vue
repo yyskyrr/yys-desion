@@ -2,7 +2,8 @@
   <div :class="{'yys-select-disabled' : disabled}" class="yys-select">
     <div v-if="isTags">
       <div class="yys-tags-list" @click="onClick">
-        <YTextarea v-model="tagsList.join('--------------')" :placeholder="newPlaceholder" auto-size @blur="onblur"
+        <YTextarea ref="YTextarea" v-model="tagsList.join('--------------')" :placeholder="newPlaceholder" auto-size
+                   @blur="onblur"
         ></YTextarea>
         <div class="yys-tags-box">
           <div v-for="item in tagsList" class="yys-tags-item">{{ item.value }}
@@ -11,8 +12,7 @@
         </div>
       </div>
 
-      <div v-show="isFocus" class="yys-tags-options-box" @mouseleave="isFocus=false"
-      >
+      <div v-show="isFocus" class="yys-tags-options-box">
 
         <div
             v-for="(item, index) in optionsList"
@@ -22,7 +22,7 @@
           'yys-tags-selected': tagsList.indexOf(item) > -1,
         }"
             class="yys-option-item"
-            @mousedown="onTagsSelect(item)"
+            @mousedown.prevent="onTagsSelect(item)"
         >
           {{ item.label }}
         </div>
@@ -53,7 +53,7 @@
         <YInput v-else v-model="label" :disabled="disabled" :size="size" @blur="onblur">
           <template #suffix>
             <slot name="suffixIcon">
-              <i v-if="showArrow" aria-hidden="true" class="fa fa-angle-down"></i>
+              <i v-if="showArrow" aria-hidden="true" class="fa fa-angle-down" style="cursor: pointer"></i>
             </slot>
 
           </template>
@@ -106,7 +106,6 @@ export default {
   data() {
     return {
       isFocus: this.defaultOpen || this.open,
-      isTagsSelect: false,
       isTagsFocus: false,
       optionsList: [],
       tagsList: [],
@@ -165,7 +164,7 @@ export default {
       }
     },
     onblur(e) {
-      this.isFocus = this.isTagsSelect ? true : false;
+      this.isFocus = false;
       this.$emit("blur", e);
     },
     onSelect(item) {
@@ -189,7 +188,6 @@ export default {
       });
     },
     onTagsSelect(item) {
-      this.isTagsSelect = true
       if (this.mode === 'multiple') {
         this.optionsList.splice(this.optionsList.indexOf(item), 1)
         this.tagsList.push(item);
