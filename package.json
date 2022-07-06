@@ -1,18 +1,17 @@
 {
   "name": "yys-design",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name yys-design ./src/index.js"
+    "lib": "vue-cli-service build --target lib --name yys-design  ./src/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
-    "vue": "^2.6.11",
-    "vue-awesome": "^4.5.0"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
@@ -39,7 +38,13 @@
     },
     "rules": {}
   },
-  "main": "dist/yys-design.umd.js",
+  "main": "./src/main.js",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "keyword": "vue ui design",
+  "author": "闫雅帅",
   "browserslist": [
     "> 1%",
     "last 2 versions",

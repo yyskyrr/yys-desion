@@ -243,6 +243,10 @@ y-input-group {
     background: transparent;
     border-color: transparent;
     box-shadow: none;
+
+    &:hover {
+      background-color: #f9f9f9;
+    }
   }
 
   &.yys-btn-primary {
@@ -257,6 +261,10 @@ y-input-group {
       background: transparent !important;
       border-color: #1890ff;
     }
+
+    &:hover {
+      background-color: #169ffb;
+    }
   }
 
   &.yys-btn-dangerous {
@@ -270,6 +278,11 @@ y-input-group {
       border-color: #ff7875;
       text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
       box-shadow: 0 2px #0000000b;
+
+      &:hover {
+        border-color: #ff6d6d;
+        background-color: #ff6d6d;
+      }
     }
 
     &.yys-btn-link {
@@ -277,6 +290,10 @@ y-input-group {
       background: transparent;
       border-color: transparent;
       box-shadow: none;
+
+      &:hover {
+        color: #ff6d6d;
+      }
     }
   }
 
@@ -292,6 +309,12 @@ y-input-group {
       background: transparent !important;
       border-color: #ff4d4f;
     }
+
+    &:hover {
+      background-color: #ff6d6d;
+      color: #ff6d6d;
+      border-color: #ff6d6d;
+    }
   }
 
   &.yys-btn-dashed {
@@ -299,6 +322,12 @@ y-input-group {
     background-color: #fff;
     border-color: #d9d9d9;
     border-style: dashed;
+
+    &:hover {
+      color: #40a9ff;
+      background-color: #fff;
+      border-color: #40a9ff;
+    }
 
     &.yys-btn-dangerous {
       color: #ff4d4f;
@@ -312,6 +341,10 @@ y-input-group {
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
+
+    &:hover {
+      color: #169ffb;
+    }
   }
 
   &.yys-btn-disabled {
@@ -321,6 +354,15 @@ y-input-group {
     text-shadow: none;
     box-shadow: none;
     cursor: not-allowed;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.25);
+      background-color: #f5f5f5;
+      border-color: #d9d9d9;
+      text-shadow: none;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
 
     &.yys-btn-link {
       color: #c9c9c9;
@@ -341,6 +383,12 @@ y-input-group {
     color: #fff;
     background: transparent !important;
     border-color: #fff;
+
+    &:hover {
+      color: #40a9ff;
+      background-color: #fff;
+      border-color: #40a9ff;
+    }
   }
 
   &.yys-btn-small {
@@ -627,7 +675,7 @@ y-input-group {
       }
 
       &:after {
-        content: '√';
+        content: '✓';
         position: absolute;
         right: 20px;
         color: transparent;

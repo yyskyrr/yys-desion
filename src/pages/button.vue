@@ -59,7 +59,7 @@
 
     <p>图标按钮</p>
     <YButton shape="circle" type="primary">A</YButton>
-    <YButton icon="code" shape="circle"></YButton>
+    <YButton icon="download" shape="circle"></YButton>
     <YButton>
       <template #icon>
         <i aria-hidden="true" class="fa fa-search"></i>

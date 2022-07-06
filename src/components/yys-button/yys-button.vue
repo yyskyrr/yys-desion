@@ -16,7 +16,7 @@
       @click="onClick"
   >
     <slot name="icon"></slot>
-    <v-icon v-if="icon" :name="icon" style="vertical-align: middle"/>
+    <i v-if="icon" :class="`fa fa-${icon}`" aria-hidden="true" style="vertical-align: middle"></i>
     <div v-if="loading" class="yys-btn-loadingBox">
       <i :style="{marginRight:$slots.default?'5px':0}" aria-hidden="true" class="fa fa-spinner fa-pulse "></i>
       <slot></slot>
