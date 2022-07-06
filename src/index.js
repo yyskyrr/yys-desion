@@ -4,6 +4,7 @@ import checkboxGroup from "./components/yys-checkbox/yys-checkbox-group";
 import input from "./components/yys-input/yys-input";
 import textarea from "./components/yys-input/yys-textarea";
 import select from "./components/yys-select/yys-select";
+import "./index.scss";
 
 const components = [button, checkbox, input, select, checkboxGroup, textarea];
 

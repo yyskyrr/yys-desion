@@ -1,6 +1,6 @@
 {
   "name": "yys-design",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,9 +9,7 @@
     "lib": "vue-cli-service build --target lib --name yys-design  ./src/index.js"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "font-awesome": "^4.7.0",
-    "vue": "^2.6.11"
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
@@ -38,7 +36,7 @@
     },
     "rules": {}
   },
-  "main": "./src/main.js",
+  "main": "./dist/yys-design.umd.js",
   "files": [
     "dist"
   ],
