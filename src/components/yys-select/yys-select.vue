@@ -2,11 +2,11 @@
   <div :class="{'yys-select-disabled' : disabled}" class="yys-select">
     <div v-if="isTags">
       <div class="yys-tags-list" @click="onClick">
-        <YTextarea ref="YTextarea" v-model="tagsList.join('--------------')" :placeholder="newPlaceholder" auto-size
+        <YTextarea v-model="tagsListValue.join('一一一一一一')" :placeholder="newPlaceholder" auto-size
                    @blur="onblur"
         ></YTextarea>
         <div class="yys-tags-box">
-          <div v-for="item in tagsList" class="yys-tags-item">{{ item.value }}
+          <div v-for="item in tagsList" class="yys-tags-item">{{ item.label }}
             <span class="yys-close-icon" @click.stop="onDeleteItem(item)">x</span>
           </div>
         </div>
@@ -109,6 +109,7 @@ export default {
       isTagsFocus: false,
       optionsList: [],
       tagsList: [],
+      tagsListValue: [],
       label: "",
       currentValue: this.value || this.defaultValue,
       newPlaceholder: this.placeholder,
@@ -154,11 +155,10 @@ export default {
     },
     onDeleteItem(item) {
       this.tagsList.splice(this.tagsList.indexOf(item), 1)
-      console.log(this.tagsList.length)
+      this.tagsListValue.splice(this.tagsListValue.indexOf(item.label), 1)
       if (this.tagsList.length === 0) {
         this.newPlaceholder = this.placeholder
       }
-      console.log('item', item)
       if (this.mode === 'multiple') {
         this.optionsList.push(item)
       }
@@ -199,11 +199,16 @@ export default {
       } else {
         this.tagsList.push(item);
       }
+      const tagsListValue = []
+      this.tagsList.forEach(item=>{
+        tagsListValue.push(item.label.trim())
+      })
+      this.tagsListValue = tagsListValue
       if (this.tagsList.length > 0) {
         this.newPlaceholder = ''
       }
 
-      this.$emit("change", this.tagsList);
+      this.$emit("change", this.tagsListValue);
     },
   },
   mounted() {

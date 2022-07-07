@@ -254,6 +254,7 @@ export default {
     },
     handleChange4(selectedItems) {
       this.selectedItems = selectedItems;
+      console.log(selectedItems)
     },
     handleChange(value) {
       console.log(`selected ${value}`);
