@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import "./index.scss";
+import "font-awesome/css/font-awesome.min.css";
 
 Vue.config.productionTip = false;
 
