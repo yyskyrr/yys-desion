@@ -12,6 +12,7 @@
       <Checkbox v-else-if="currentIndex === 1"/>
       <Input v-else-if="currentIndex  === 2"/>
       <Select v-else-if="currentIndex === 3"/>
+      <Form v-else-if="currentIndex === 4"/>
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ import Button from "./pages/button";
 import Checkbox from "./pages/checkbox";
 import Input from "./pages/input";
 import Select from "./pages/select";
+import Form from "./pages/form";
 
 export default {
   name: "App",
@@ -29,12 +31,13 @@ export default {
     Checkbox,
     Input,
     Select,
+    Form,
   },
   created() {
   },
   data() {
     return {
-      componentList: ['button 按钮', 'checkbox 多选框', 'input 输入框', 'select 选择框',],
+      componentList: ['button 按钮', 'checkbox 多选框', 'input 输入框', 'select 选择框','form 表单'],
       currentIndex: 0
     };
   },
