@@ -1,13 +1,16 @@
 <template>
-  <label :class="{'yys-disabled-text': disabled}" class="yys-checkbox-wrapper">
+  <label
+    :class="{ 'yys-disabled-text': disabled }"
+    class="yys-checkbox-wrapper"
+  >
     <span class="yys-checkbox yys-checkbox-checked">
       <input
-          :checked="checked || defaultChecked"
-          :class="{'yys-checkbox-indeterminate':indeterminate}"
-          :disabled="disabled"
-          class="yys-checkbox-input"
-          type="checkbox"
-          @change="onChange"
+        :checked="checked || defaultChecked"
+        :class="{ 'yys-checkbox-indeterminate': indeterminate }"
+        :disabled="disabled"
+        class="yys-checkbox-input"
+        type="checkbox"
+        @change="onChange"
       />
     </span>
     <slot class="yys-checkbox-text"></slot>
@@ -24,11 +27,10 @@ export default {
     disabled: Boolean,
     checked: Boolean,
     defaultChecked: Boolean,
-    indeterminate: Boolean
+    indeterminate: Boolean,
   },
   computed: {},
-  mounted() {
-  },
+  mounted() {},
   methods: {
     onChange(val) {
       this.$emit("change", val);
@@ -38,6 +40,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

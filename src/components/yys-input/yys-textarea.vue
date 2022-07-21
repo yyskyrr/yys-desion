@@ -1,37 +1,54 @@
 <template>
   <div class="yys-input-affix-wrapper">
     <textarea
-        id="textarea"
-        :autofocus="autofocus"
-        :disabled="disabled"
-        :maxlength="maxlength"
-        :placeholder="placeholder"
-        :readonly="readonly"
-        :style="{
+      id="textarea"
+      :autofocus="autofocus"
+      :disabled="disabled"
+      :maxlength="maxlength"
+      :placeholder="placeholder"
+      :readonly="readonly"
+      :style="{
         height: autoSize && textareaHeight,
-        paddingRight: (allowClear? 20 : 11) + 'px',
-        minHeight:autoSize && (minRows*20+10) + 'px',
-        maxHeight:autoSize && (maxRows*20+10) + 'px',
-    }"
-        class="yys-textarea"
-        @blur="handleBlur"
-        @change="handleChange"
-        @click="handleClick"
-        @focus="handleFocus"
-        @input="handleInput"
-    >{{ value }}</textarea>
+        paddingRight: (allowClear ? 20 : 11) + 'px',
+        minHeight: autoSize && minRows * 20 + 10 + 'px',
+        maxHeight: autoSize && maxRows * 20 + 10 + 'px',
+      }"
+      class="yys-textarea"
+      @blur="handleBlur"
+      @change="handleChange"
+      @click="handleClick"
+      @focus="handleFocus"
+      @input="handleInput"
+      >{{ value }}</textarea
+    >
     <span class="yys-textarea-suffix">
-      <i v-if="allowClear && value" aria-hidden="true"
-         class="fa fa-times-circle" style="cursor: pointer;color: #bfbfbf" @click="value=''">
-        </i>
+      <i
+        v-if="allowClear && value"
+        aria-hidden="true"
+        class="fa fa-times-circle"
+        style="cursor: pointer; color: #bfbfbf"
+        @click="value = ''"
+      >
+      </i>
     </span>
-    <div v-if="showCount" class="yys-textarea-count">{{ value.length }}/{{ maxlength }}</div>
+    <div v-if="showCount" class="yys-textarea-count">
+      {{ value.length }}/{{ maxlength }}
+    </div>
 
-    <div v-if="autoSize" id="getHeight"
-         :style="{
-        width:textareaWidth+'px' }"
-         class="yys-textarea"
-         style="opacity: 0;position: absolute;word-break: break-word;z-index: -1">
+    <div
+      v-if="autoSize"
+      id="getHeight"
+      :style="{
+        width: textareaWidth + 'px',
+      }"
+      class="yys-textarea"
+      style="
+        opacity: 0;
+        position: absolute;
+        word-break: break-word;
+        z-index: -1;
+      "
+    >
       {{ value }}
     </div>
   </div>
@@ -49,11 +66,11 @@ export default {
   },
   computed: {
     maxRows() {
-      return this.autoSize.maxRows
+      return this.autoSize.maxRows;
     },
     minRows() {
-      return this.autoSize.minRows || 2
-    }
+      return this.autoSize.minRows || 2;
+    },
   },
   props: {
     placeholder: String,
@@ -84,22 +101,22 @@ export default {
       this.$emit("input", e.target.value);
     },
     heightRefresh() {
-      this.textareaWidth = this.$el.clientWidth
-      this.textareaHeight = window.getComputedStyle(this.$el.lastChild).getPropertyValue("height")
-    }
+      this.textareaWidth = this.$el.clientWidth;
+      this.textareaHeight = window
+        .getComputedStyle(this.$el.lastChild)
+        .getPropertyValue("height");
+    },
   },
   mounted() {
-    if (!this.autoSize) return
-    this.heightRefresh()
+    if (!this.autoSize) return;
+    this.heightRefresh();
   },
   updated() {
-    if (!this.autoSize) return
-    this.heightRefresh()
+    if (!this.autoSize) return;
+    this.heightRefresh();
   },
   components: {},
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -17,7 +17,7 @@
       </YFormItem>
     </YForm>
 
-    <br><br>
+    <br /><br />
   </div>
 </template>
 
@@ -40,26 +40,24 @@ export default {
   data() {
     return {
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
         delivery: false,
         type: [],
-        resource: '',
-        desc: ''
-      }
+        resource: "",
+        desc: "",
+      },
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     onSubmit() {
-      console.log('submit!');
-    }
+      console.log("submit!");
+    },
   },
-  created() {
-  },
+  created() {},
 };
 </script>
 

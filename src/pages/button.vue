@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <p>按钮类型</p>
-    <YButton type="primary" @click="onClick">
-      Primary Button
-    </YButton>
+    <YButton type="primary" @click="onClick"> Primary Button </YButton>
     <YButton>Default Button</YButton>
     <YButton type="dashed">Dashed Button</YButton>
     <YButton type="text">Text Button</YButton>
@@ -11,9 +9,7 @@
 
     <p>幽灵按钮</p>
     <div style="background: #bec8c8">
-      <YButton ghost type="primary" @click="onClick">
-        Primary Button
-      </YButton>
+      <YButton ghost type="primary" @click="onClick"> Primary Button </YButton>
       <YButton ghost>Default Button</YButton>
       <YButton ghost type="danger">dashed</YButton>
       <YButton ghost type="dashed">Dashed Button</YButton>
@@ -21,20 +17,17 @@
     </div>
 
     <p>加载中状态</p>
-    <YButton loading type="primary" @click="onClick">
-      Loading
-    </YButton>
+    <YButton loading type="primary" @click="onClick"> Loading </YButton>
     <YButton loading>Loading</YButton>
     <YButton loading type="danger">Loading</YButton>
     <YButton loading type="dashed">Loading</YButton>
     <YButton loading shape="circle" type="primary"></YButton>
 
-
     <p>按钮尺寸</p>
     <div>
-      <YButton @click="size='large'">large</YButton>
-      <YButton @click="size='default'">default</YButton>
-      <YButton @click="size='small'">small</YButton>
+      <YButton @click="size = 'large'">large</YButton>
+      <YButton @click="size = 'default'">default</YButton>
+      <YButton @click="size = 'small'">small</YButton>
     </div>
 
     <YButton :size="size" type="primary">Primary</YButton>
@@ -82,62 +75,71 @@
 
     <table>
       <thead>
-      <tr>
-        <th>属性</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>默认值</th>
-      </tr>
+        <tr>
+          <th>属性</th>
+          <th>说明</th>
+          <th>类型</th>
+          <th>默认值</th>
+        </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>disabled</td>
-        <td>按钮失效状态</td>
-        <td>boolean</td>
-        <td><code>false</code></td>
-      </tr>
-      <tr>
-        <td>ghost</td>
-        <td>幽灵属性，使按钮背景透明</td>
-        <td>boolean</td>
-        <td><code>false</code></td>
-      </tr>
-      <tr>
-        <td>icon</td>
-        <td>设置按钮的图标类型</td>
-        <td>string</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>loading</td>
-        <td>设置按钮载入状态</td>
-        <td>boolean</td>
-        <td><code>false</code></td>
-      </tr>
-      <tr>
-        <td>shape</td>
-        <td>设置按钮形状，可选值为 <code>circle</code>、 <code>round</code> 或者不设</td>
-        <td>string</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>size</td>
-        <td>设置按钮大小，可选值为 <code>small</code> <code>large</code> 或者不设</td>
-        <td>string</td>
-        <td><code>default</code></td>
-      </tr>
-      <tr>
-        <td>type</td>
-        <td>设置按钮类型，可选值为 <code>primary</code> <code>dashed</code> <code>danger</code> <code>link</code> 或者不设</td>
-        <td>string</td>
-        <td><code>default</code></td>
-      </tr>
-      <tr>
-        <td>block</td>
-        <td>将按钮宽度调整为其父宽度的选项</td>
-        <td>boolean</td>
-        <td><code>false</code></td>
-      </tr>
+        <tr>
+          <td>disabled</td>
+          <td>按钮失效状态</td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+        </tr>
+        <tr>
+          <td>ghost</td>
+          <td>幽灵属性，使按钮背景透明</td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+        </tr>
+        <tr>
+          <td>icon</td>
+          <td>设置按钮的图标类型</td>
+          <td>string</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>loading</td>
+          <td>设置按钮载入状态</td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+        </tr>
+        <tr>
+          <td>shape</td>
+          <td>
+            设置按钮形状，可选值为 <code>circle</code>、
+            <code>round</code> 或者不设
+          </td>
+          <td>string</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>
+            设置按钮大小，可选值为 <code>small</code>
+            <code>large</code> 或者不设
+          </td>
+          <td>string</td>
+          <td><code>default</code></td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>
+            设置按钮类型，可选值为 <code>primary</code> <code>dashed</code>
+            <code>danger</code> <code>link</code> 或者不设
+          </td>
+          <td>string</td>
+          <td><code>default</code></td>
+        </tr>
+        <tr>
+          <td>block</td>
+          <td>将按钮宽度调整为其父宽度的选项</td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -151,11 +153,10 @@ export default {
   components: {
     YButton,
   },
-  created() {
-  },
+  created() {},
   data() {
     return {
-      size: 'default',
+      size: "default",
       value: "value",
       checked: true,
       disabled: false,

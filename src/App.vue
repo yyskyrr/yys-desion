@@ -1,18 +1,22 @@
 <template>
   <div class="app">
     <div class="side">
-      <div v-for="(item,index) in componentList" :key="index" @click="currentIndex=index"
-           :style="{backgroundColor:currentIndex===index?'#e0f6fe':''}">
+      <div
+        v-for="(item, index) in componentList"
+        :key="index"
+        @click="currentIndex = index"
+        :style="{ backgroundColor: currentIndex === index ? '#e0f6fe' : '' }"
+      >
         {{ item }}
       </div>
     </div>
 
     <div class="content">
-      <Button v-if="currentIndex  === 0"/>
-      <Checkbox v-else-if="currentIndex === 1"/>
-      <Input v-else-if="currentIndex  === 2"/>
-      <Select v-else-if="currentIndex === 3"/>
-      <Form v-else-if="currentIndex === 4"/>
+      <Button v-if="currentIndex === 0" />
+      <Checkbox v-else-if="currentIndex === 1" />
+      <Input v-else-if="currentIndex === 2" />
+      <Select v-else-if="currentIndex === 3" />
+      <Form v-else-if="currentIndex === 4" />
     </div>
   </div>
 </template>
@@ -33,12 +37,17 @@ export default {
     Select,
     Form,
   },
-  created() {
-  },
+  created() {},
   data() {
     return {
-      componentList: ['button 按钮', 'checkbox 多选框', 'input 输入框', 'select 选择框','form 表单'],
-      currentIndex: 0
+      componentList: [
+        "button 按钮",
+        "checkbox 多选框",
+        "input 输入框",
+        "select 选择框",
+        "form 表单",
+      ],
+      currentIndex: 0,
     };
   },
   methods: {},
@@ -74,5 +83,4 @@ export default {
     padding: 20px;
   }
 }
-
 </style>

@@ -9,13 +9,23 @@
     "lib": "vue-cli-service build --target lib --name yys-design  ./src/index.js"
   },
   "dependencies": {
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
     "font-awesome": "^4.7.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.15",
+    "@babel/eslint-parser": "^7.18.9",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
     "@vue/cli-service": "~4.5.15",
+    "@vue/eslint-config-prettier": "^7.0.0",
     "babel-eslint": "^10.1.0",
+    "eslint": "^7.15.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-vue": "^7.2.0",
     "less-loader": "^7.3.0",
+    "prettier": "^2.5.1",
     "sass": "^1.52.2",
     "sass-loader": "^10.1.1",
     "vue": "^2.6.11",

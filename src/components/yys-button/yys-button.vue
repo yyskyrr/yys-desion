@@ -1,6 +1,6 @@
 <template>
   <button
-      :class="{
+    :class="{
       'yys-btn-disabled': disabled,
       'yys-btn-ghost': ghost,
       'yys-btn-text': text,
@@ -10,22 +10,31 @@
       [`yys-btn-${shape}`]: shape,
       [`yys-btn-${size}`]: size,
     }"
-      :disabled="disabled"
-      class="yys-btn"
-      type="button"
-      @click="onClick"
+    :disabled="disabled"
+    class="yys-btn"
+    type="button"
+    @click="onClick"
   >
     <slot name="icon"></slot>
-    <i v-if="icon" :class="`fa fa-${icon}`" aria-hidden="true" style="vertical-align: middle"></i>
+    <i
+      v-if="icon"
+      :class="`fa fa-${icon}`"
+      aria-hidden="true"
+      style="vertical-align: middle"
+    ></i>
     <div v-if="loading" class="yys-btn-loadingBox">
-      <i :style="{marginRight:$slots.default?'5px':0}" aria-hidden="true" class="fa fa-spinner fa-pulse "></i>
+      <i
+        :style="{ marginRight: $slots.default ? '5px' : 0 }"
+        aria-hidden="true"
+        class="fa fa-spinner fa-pulse"
+      ></i>
       <slot></slot>
     </div>
 
     <div
-        v-if="!loading"
-        :style="{ marginLeft: left }"
-        style="display: inline-block; vertical-align: middle"
+      v-if="!loading"
+      :style="{ marginLeft: left }"
+      style="display: inline-block; vertical-align: middle"
     >
       <slot></slot>
     </div>
@@ -55,8 +64,7 @@ export default {
       return this.$slots.default && this.icon ? "5px" : 0;
     },
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     onClick() {
       this.$emit("click");
@@ -65,6 +73,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
