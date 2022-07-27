@@ -4,7 +4,7 @@
       <div
         v-for="(item, index) in componentList"
         :key="index"
-        @click="currentIndex = index"
+        @click="handleClick(index)"
         :style="{ backgroundColor: currentIndex === index ? '#e0f6fe' : '' }"
       >
         {{ item }}
@@ -27,6 +27,7 @@ import Checkbox from "./pages/checkbox";
 import Input from "./pages/input";
 import Select from "./pages/select";
 import Form from "./pages/form";
+import store from "@/store";
 
 export default {
   name: "App",
@@ -47,10 +48,18 @@ export default {
         "select 选择框",
         "form 表单",
       ],
-      currentIndex: 0,
     };
   },
-  methods: {},
+  computed: {
+    currentIndex() {
+      return this.$state.app.selectIndex;
+    },
+  },
+  methods: {
+    handleClick(index) {
+      this.$store.commit("UPDATE_SELECT_INDEX", index);
+    },
+  },
 };
 </script>
 

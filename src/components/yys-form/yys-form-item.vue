@@ -1,6 +1,8 @@
 <template>
   <div class="yys-form-item">
-    <span class="yys-form-label">{{ this.label }}</span>
+    <span :style="{ width: labelWidth }" class="yys-form-label">
+      {{ this.label }}
+    </span>
     <slot></slot>
   </div>
 </template>
@@ -10,7 +12,6 @@ export default {
   name: "YForm",
   props: {
     model: Object,
-    labelWidth: String,
     label: String,
   },
   data() {
@@ -25,10 +26,13 @@ export default {
       currentIndex: 0,
     };
   },
-  created() {},
-  mounted() {
-    console.log(this.$slots);
+  computed: {
+    labelWidth() {
+      return this.$parent.labelWidth;
+    },
   },
+  created() {},
+  mounted() {},
 };
 </script>
 
