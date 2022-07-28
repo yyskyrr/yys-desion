@@ -9,7 +9,7 @@
           @blur="onblur"
         ></YTextarea>
         <div class="yys-tags-box">
-          <div v-for="item in tagsList" class="yys-tags-item">
+          <div v-for="(item, key) in tagsList" :key="key" class="yys-tags-item">
             {{ item.label }}
             <span class="yys-close-icon" @click.stop="onDeleteItem(item)"
               >x</span
@@ -70,6 +70,7 @@
 
         <YInput
           v-else
+          :placeholder="newPlaceholder"
           v-model="label"
           :disabled="disabled"
           :size="size"
@@ -214,11 +215,11 @@ export default {
     getOptions() {
       this.$slots.default.forEach((item) => {
         if (
-          this.value ||
+          this.value === item.data.attrs?.value ||
           this.defaultValue === item.data.attrs?.value ||
           (item.data.key && this.mode !== "tags")
         ) {
-          this.label = this.value || this.defaultValue;
+          this.label = item.children[0].text;
         }
         this.optionsList.push({
           label: item.children[0].text,

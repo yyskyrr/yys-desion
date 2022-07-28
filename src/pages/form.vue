@@ -11,13 +11,55 @@
           <YOption value="beijing">区域二</YOption>
         </YSelect>
       </YFormItem>
+      <YFormItem label="活动性质">
+        <YCheckboxGroup v-model="form.type" :options="checkBoxOptions">
+        </YCheckboxGroup>
+      </YFormItem>
+      <YFormItem label="活动形式">
+        <YTextarea v-model="form.desc"></YTextarea>
+      </YFormItem>
       <YFormItem>
         <YButton type="primary" @click="onSubmit">立即创建</YButton>
         <YButton>取消</YButton>
       </YFormItem>
     </YForm>
-
-    <br /><br />
+    <p>行内表单</p>
+    <YForm :inline="true" :model="formInline" class="demo-form-inline">
+      <YFormItem label="审批人">
+        <YInput v-model="formInline.user" placeholder="审批人"></YInput>
+      </YFormItem>
+      <YFormItem label="活动区域">
+        <YSelect v-model="formInline.region" placeholder="活动区域">
+          <YOption value="shanghai">区域一</YOption>
+          <YOption value="beijing">区域二</YOption>
+        </YSelect>
+      </YFormItem>
+      <YFormItem>
+        <YButton type="primary" @click="onSubmit">查询</YButton>
+      </YFormItem>
+    </YForm>
+    <p>对齐方式</p>
+    <div>
+      <YButton @click="labelPosition = 'left'">left</YButton>
+      <YButton @click="labelPosition = 'right'">right</YButton>
+      <YButton @click="labelPosition = 'top'">top</YButton>
+    </div>
+    <div style="margin: 20px"></div>
+    <YForm
+      :label-position="labelPosition"
+      label-width="80px"
+      :model="formLabelAlign"
+    >
+      <YFormItem label="名称">
+        <YInput v-model="formLabelAlign.name"></YInput>
+      </YFormItem>
+      <YFormItem label="活动区域">
+        <YInput v-model="formLabelAlign.region"></YInput>
+      </YFormItem>
+      <YFormItem label="活动形式">
+        <YInput v-model="formLabelAlign.type"></YInput>
+      </YFormItem>
+    </YForm>
   </div>
 </template>
 
@@ -25,8 +67,11 @@
 import YForm from "../components/yys-form/yys-form";
 import YFormItem from "../components/yys-form/yys-form-item";
 import YInput from "../components/yys-input/yys-input";
+import YTextarea from "../components/yys-input/yys-textarea";
 import YButton from "../components/yys-button/yys-button";
 import YSelect from "../components/yys-select/yys-select";
+import YCheckbox from "../components/yys-checkbox/yys-checkbox";
+import YCheckboxGroup from "../components/yys-checkbox/yys-checkbox-group";
 
 export default {
   name: "App",
@@ -36,9 +81,18 @@ export default {
     YFormItem,
     YButton,
     YSelect,
+    YCheckboxGroup,
+    YCheckbox,
+    YTextarea,
   },
   data() {
     return {
+      checkBoxOptions: [
+        "美食/餐厅线上活动",
+        "地推活动",
+        "线下主题活动",
+        "单纯品牌曝光",
+      ],
       form: {
         name: "",
         region: "",
@@ -48,6 +102,16 @@ export default {
         type: [],
         resource: "",
         desc: "",
+      },
+      formInline: {
+        user: "",
+        region: "",
+      },
+      labelPosition: "right",
+      formLabelAlign: {
+        name: "",
+        region: "",
+        type: "",
       },
     };
   },
