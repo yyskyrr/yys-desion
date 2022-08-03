@@ -507,9 +507,6 @@ y-input-group {
   }
   &.yys-form-flex{
     display: flex;
-    &.yys-btn + .yys-form-label{
-      width: 0;
-    }
   }
   .yys-btn{
     margin: 0;
