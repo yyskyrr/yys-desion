@@ -1,6 +1,6 @@
 {
   "name": "yys-design",
-  "version": "0.1.10",
+  "version": "0.1.15",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -53,7 +53,17 @@
     "dist"
   ],
   "license": "MIT",
-  "keyword": "vue ui design",
+  "keywords": [
+    "vue",
+    "yys",
+    "design",
+    "vueComponent",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
   "author": "闫雅帅",
   "browserslist": [
     "> 1%",

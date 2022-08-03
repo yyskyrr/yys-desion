@@ -1,7 +1,6 @@
 ## Project setup
 
-npm install yys-design
-to install
+### 现支持：
 
 YButton
 
@@ -15,4 +14,12 @@ YTextArea
 
 YSelect
 
+YForm
+
+YFormItem
+
+开发ing
+
 demo: http://120.27.249.69/
+
+v18839779806
