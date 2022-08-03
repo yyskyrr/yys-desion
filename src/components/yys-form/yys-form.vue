@@ -1,5 +1,5 @@
 <template>
-  <div class="yys-form" :style="{ display: inline ? 'flex' : '' }">
+  <div class="yys-form" :class="{ 'yys-form-flex': inline }">
     <slot></slot>
   </div>
 </template>
@@ -9,6 +9,7 @@ export default {
   name: "YForm",
   props: {
     model: Object,
+    rules: Object,
     inline: Boolean,
     labelWidth: { type: String, default: "80px" },
     labelPosition: String,
