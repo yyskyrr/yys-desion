@@ -1,15 +1,15 @@
 <template>
   <div
-    class="yys-form-item"
     :style="{ display: labelPosition === 'top' ? 'block' : '' }"
+    class="yys-form-item"
   >
     <span
+      :class="{ 'yys-form-label-required': rule1.required }"
       :style="{
-        width: labelWidth,
+        width: inline && !this.label ? 0 : labelWidth,
         textAlign: labelPosition === 'top' ? 'left' : labelPosition,
       }"
       class="yys-form-label"
-      :class="{ 'yys-form-label-required': rule1.required }"
     >
       {{ this.label }}
     </span>

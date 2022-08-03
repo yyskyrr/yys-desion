@@ -19,5 +19,8 @@ module.exports = {
     "vue/no-use-v-if-with-v-for": 0,
     "vue/valid-v-model": 0,
     "vue/no-unused-components": 0,
+    "vue/no-unused-vars": 0,
+    "vue/no-textarea-mustache": 0,
+    "vue/no-mutating-props": 0,
   },
 };
