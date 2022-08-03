@@ -22,5 +22,6 @@ module.exports = {
     "vue/no-unused-vars": 0,
     "vue/no-textarea-mustache": 0,
     "vue/no-mutating-props": 0,
+    "vue/valid-v-for": 0,
   },
 };
