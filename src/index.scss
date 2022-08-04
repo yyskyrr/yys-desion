@@ -579,6 +579,7 @@ y-input-group {
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   font-family: "Microsoft YaHei UI";
+  transition: all 0.3s;
 
   &::-webkit-input-placeholder {
     color: #bfbfc5;
@@ -587,11 +588,13 @@ y-input-group {
 
   &:hover {
     border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
   &:focus {
     outline: 0;
     border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
 

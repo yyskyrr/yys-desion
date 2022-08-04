@@ -126,6 +126,9 @@ export default {
         return this.enterButton;
       }
     },
+    rule1() {
+      return this.$parent.rule1;
+    },
   },
   props: {
     placeholder: String,
@@ -150,6 +153,9 @@ export default {
       this.$emit("click", event);
     },
     handleBlur(event) {
+      if (this.rule1 && this.rule1.trigger === "blur") {
+        this.$parent.handleBlur(this.value);
+      }
       this.showTooltip = false;
       this.$emit("blur", event);
     },
@@ -182,6 +188,7 @@ export default {
         this.$el.clientWidth - (this.marginLeft || 0) - (this.marginRight || 0)
       }px`;
     }
+    console.log(this.rule1);
   },
 };
 </script>

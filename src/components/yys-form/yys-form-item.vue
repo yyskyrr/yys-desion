@@ -15,12 +15,13 @@
     </span>
     <slot></slot>
     <span
+      v-if="messageVisible"
+      class="yys-form-message"
       :style="{
         left: this.label ? labelWidth : '12px',
       }"
-      class="yys-form-message"
-      >{{ rule1.message }}</span
-    >
+      >{{ rule1.message }}
+    </span>
   </div>
 </template>
 
@@ -32,7 +33,9 @@ export default {
     prop: String,
   },
   data() {
-    return {};
+    return {
+      messageVisible: false,
+    };
   },
   computed: {
     labelWidth() {
@@ -48,11 +51,12 @@ export default {
       return this.$parent.rules;
     },
     rule1() {
-      if (this.rules && this.prop) {
-        return this.rules[this.prop][0];
-      } else {
-        return {};
-      }
+      return this.rules && this.prop ? this.rules[this.prop][0] : {};
+    },
+  },
+  methods: {
+    handleBlur(value) {
+      this.messageVisible = !!(!value && this.rule1.required);
     },
   },
   created() {},
