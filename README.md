@@ -22,4 +22,14 @@ YFormItem
 
 demo: http://120.27.249.69/
 
-v18839779806
+### 如何使用？
+
+```bash
+$ import yysDesign from 'yys-design'
+$ import 'yys-design/dist/yys-design.css'
+
+$ Vue.use(yysDesign)
+```
+
+vx 18839779806
+欢迎提建议
