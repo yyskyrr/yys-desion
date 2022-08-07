@@ -32,4 +32,3 @@ $ Vue.use(yysDesign)
 ```
 
 vx 18839779806
-欢迎提建议
