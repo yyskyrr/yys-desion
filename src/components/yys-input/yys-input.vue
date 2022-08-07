@@ -124,6 +124,8 @@ export default {
     enterButtonText() {
       if (typeof this.enterButton === "string") {
         return this.enterButton;
+      } else {
+        return "";
       }
     },
     rule1() {
