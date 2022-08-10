@@ -235,19 +235,9 @@
 </template>
 
 <script>
-import YInput from "../components/yys-input/yys-input";
-import YTextarea from "../components/yys-input/yys-textarea";
-import YButton from "../components/yys-button/yys-button";
-import YSelect from "../components/yys-select/yys-select";
-
 export default {
   name: "App",
-  components: {
-    YInput,
-    YSelect,
-    YTextarea,
-    YButton,
-  },
+  components: {},
   created() {},
   computed: {
     formatValue() {

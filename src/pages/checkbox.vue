@@ -96,17 +96,9 @@
 </template>
 
 <script>
-import YCheckbox from "../components/yys-checkbox/yys-checkbox";
-import YCheckboxGroup from "../components/yys-checkbox/yys-checkbox-group";
-import YButton from "../components/yys-button/yys-button";
-
 export default {
   name: "App",
-  components: {
-    YCheckbox,
-    YCheckboxGroup,
-    YButton,
-  },
+  components: {},
   created() {},
   data() {
     return {

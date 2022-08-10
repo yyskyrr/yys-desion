@@ -14,9 +14,10 @@
     <div class="content">
       <Button v-if="currentIndex === 0" />
       <Checkbox v-else-if="currentIndex === 1" />
-      <Input v-else-if="currentIndex === 2" />
-      <Select v-else-if="currentIndex === 3" />
-      <Form v-else-if="currentIndex === 4" />
+      <Radio v-else-if="currentIndex === 2" />
+      <Input v-else-if="currentIndex === 3" />
+      <Select v-else-if="currentIndex === 4" />
+      <Form v-else-if="currentIndex === 5" />
     </div>
   </div>
 </template>
@@ -27,6 +28,7 @@ import Checkbox from "./pages/checkbox";
 import Input from "./pages/input";
 import Select from "./pages/select";
 import Form from "./pages/form";
+import Radio from "./pages/radio";
 import store from "@/store";
 
 export default {
@@ -37,6 +39,7 @@ export default {
     Input,
     Select,
     Form,
+    Radio,
   },
   created() {},
   data() {
@@ -44,6 +47,7 @@ export default {
       componentList: [
         "button 按钮",
         "checkbox 多选框",
+        "radio 单选框",
         "input 输入框",
         "select 选择框",
         "form 表单",
@@ -90,6 +94,7 @@ export default {
 
   .content {
     padding: 20px;
+    width: 100%;
   }
 }
 </style>

@@ -87,27 +87,9 @@
 </template>
 
 <script>
-import YForm from "../components/yys-form/yys-form";
-import YFormItem from "../components/yys-form/yys-form-item";
-import YInput from "../components/yys-input/yys-input";
-import YTextarea from "../components/yys-input/yys-textarea";
-import YButton from "../components/yys-button/yys-button";
-import YSelect from "../components/yys-select/yys-select";
-import YCheckbox from "../components/yys-checkbox/yys-checkbox";
-import YCheckboxGroup from "../components/yys-checkbox/yys-checkbox-group";
-
 export default {
   name: "App",
-  components: {
-    YInput,
-    YForm,
-    YFormItem,
-    YButton,
-    YSelect,
-    YCheckboxGroup,
-    YCheckbox,
-    YTextarea,
-  },
+  components: {},
   data() {
     return {
       ruleForm: {

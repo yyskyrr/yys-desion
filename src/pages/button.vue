@@ -146,13 +146,9 @@
 </template>
 
 <script>
-import YButton from "../components/yys-button/yys-button";
-
 export default {
   name: "App",
-  components: {
-    YButton,
-  },
+  components: {},
   created() {},
   data() {
     return {

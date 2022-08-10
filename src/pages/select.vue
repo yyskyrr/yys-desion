@@ -228,8 +228,6 @@
 </template>
 
 <script>
-import YSelect from "../components/yys-select/yys-select";
-
 const provinceData = ["Zhejiang", "Jiangsu"];
 const cityData = {
   Zhejiang: ["Hangzhou", "Ningbo", "Wenzhou"],
@@ -238,9 +236,7 @@ const cityData = {
 const OPTIONS = ["Apples", "Nails", "Bananas", "Helicopters"];
 export default {
   name: "App",
-  components: {
-    YSelect,
-  },
+  components: {},
   created() {},
   computed: {
     filteredOptions() {

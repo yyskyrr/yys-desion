@@ -190,7 +190,7 @@ export default {
         this.$el.clientWidth - (this.marginLeft || 0) - (this.marginRight || 0)
       }px`;
     }
-    console.log(this.rule1);
+    // console.log(this.rule1);
   },
 };
 </script>

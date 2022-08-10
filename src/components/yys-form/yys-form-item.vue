@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "YForm",
+  name: "YFormItem",
   props: {
     label: String,
     prop: String,
