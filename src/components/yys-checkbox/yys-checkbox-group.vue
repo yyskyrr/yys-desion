@@ -13,13 +13,9 @@
 </template>
 
 <script>
-import YCheckbox from "./yys-checkbox";
-
 export default {
   name: "YCheckboxGroup",
-  components: {
-    YCheckbox,
-  },
+  components: {},
   data() {
     return {};
   },

@@ -1,31 +1,28 @@
 <template>
-  <label
+  <div
+    class="yys-radio-button"
     :class="{
-      'yys-disabled-text': disabled || parenDisabled,
-      'yys-radio-active': checked,
-      'yys-radio-border': border,
+      'yys-radio-button-active': checked,
+      'yys-radio-button-disabled': disabled || parenDisabled,
       [`yys-radio-${size}`]: size,
     }"
-    class="yys-radio-wrapper"
+    @click="handleClick"
   >
-    <span class="yys-radio">
-      <input
-        :checked="checked"
-        :disabled="disabled || parenDisabled"
-        class="yys-radio-input"
-        type="radio"
-        @change="onChange"
-      />
-    </span>
-    <span class="yys-radio-text">
-      <slot></slot>
-    </span>
-  </label>
+    <span
+      class="yys-radio-button-text"
+      :class="{
+        'yys-radio-button-text-active': checked,
+        'yys-radio-button-text-disabled': disabled || parenDisabled,
+        [`yys-radio-text-${size}`]: size,
+      }"
+      >{{ label }}</span
+    >
+  </div>
 </template>
 
 <script>
 export default {
-  name: "YRadio",
+  name: "YRadioButton",
   data() {
     return {};
   },
@@ -33,7 +30,6 @@ export default {
     value: [String, Number, Boolean],
     label: [String, Number, Boolean],
     disabled: Boolean,
-    border: Boolean,
   },
   components: {},
   model: {
@@ -44,18 +40,18 @@ export default {
     checked() {
       return this.value === this.label || this.parentValue === this.label;
     },
-    size() {
-      return this.$parent.size;
-    },
     parentValue() {
       return this.$parent.value;
+    },
+    size() {
+      return this.$parent.size;
     },
     parenDisabled() {
       return this.$parent.disabled;
     },
   },
   methods: {
-    onChange(e) {
+    handleClick(e) {
       if (this.disabled || this.parenDisabled) return;
       this.$emit("change", this.label);
       if (this.$parent.onChange) {
