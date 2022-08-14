@@ -972,7 +972,6 @@ y-input-group {
   line-height: 20px;
   height: 20px;
   vertical-align: middle;
-  cursor: pointer;
 
   &.is-checked {
     .yys-switch_core:after {
@@ -994,7 +993,7 @@ y-input-group {
     background: #dcdfe6;
     transition: border-color .3s, background-color .3s;
     vertical-align: middle;
-    cursor: inherit;
+    cursor: pointer;
 
     &:after {
       content: "";
@@ -1017,7 +1016,7 @@ y-input-group {
     font-weight: 500;
     vertical-align: middle;
     color: #303133;
-    cursor: inherit;
+    cursor: pointer;
 
     &.is-checked {
       color: #409eff
@@ -1034,7 +1033,10 @@ y-input-group {
 
   &.is-disabled {
     opacity: .6;
-    cursor: not-allowed;
+
+    .yys-switch_core, yys-switch__label {
+      cursor: not-allowed;
+    }
   }
 }
 

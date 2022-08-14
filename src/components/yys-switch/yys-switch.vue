@@ -1,32 +1,30 @@
 <template>
-  <div>
-    <div
-      :class="{ 'is-checked': value, 'is-disabled': disabled }"
-      class="yys-switch"
-      @click="handleClick"
+  <div
+    :class="{ 'is-checked': value, 'is-disabled': disabled }"
+    class="yys-switch"
+    @click="handleClick"
+  >
+    <span
+      v-if="inactiveText"
+      :class="{ 'is-checked': !value }"
+      class="yys-switch__label yys-switch__label--left"
+      >{{ inactiveText }}</span
     >
-      <span
-        v-if="inactiveText"
-        :class="{ 'is-checked': !value }"
-        class="yys-switch__label yys-switch__label--left"
-        >{{ inactiveText }}</span
-      >
-      <span
-        :style="{
-          backgroundColor: value ? activeColor : inactiveColor,
-          borderColor: value ? activeColor : inactiveColor,
-          width: width,
-        }"
-        class="yys-switch_core"
-      >
-      </span>
-      <span
-        v-if="activeText"
-        :class="{ 'is-checked': value }"
-        class="yys-switch__label yys-switch__label--right"
-        >{{ activeText }}</span
-      >
-    </div>
+    <span
+      :style="{
+        backgroundColor: value ? activeColor : inactiveColor,
+        borderColor: value ? activeColor : inactiveColor,
+        width: width,
+      }"
+      class="yys-switch_core"
+    >
+    </span>
+    <span
+      v-if="activeText"
+      :class="{ 'is-checked': value }"
+      class="yys-switch__label yys-switch__label--right"
+      >{{ activeText }}</span
+    >
   </div>
 </template>
 
