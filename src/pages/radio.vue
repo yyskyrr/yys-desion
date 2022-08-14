@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <p>基本用法</p>
+    <h3>基本用法</h3>
     <YRadio v-model="radio" label="1">Radio</YRadio>
     <YRadio v-model="radio" label="2">Radio</YRadio>
 
-    <p>禁用状态</p>
-    <YRadio disabled v-model="radio1" label="1">Radio</YRadio>
-    <YRadio disabled v-model="radio1" label="2">Radio</YRadio>
+    <h3>禁用状态</h3>
+    <YRadio v-model="radio1" disabled label="1">Radio</YRadio>
+    <YRadio v-model="radio1" disabled label="2">Radio</YRadio>
 
-    <p>单选框组</p>
+    <h3>单选框组</h3>
     <YRadioGroup v-model="radio2" @change="handleChange">
       <YRadio :label="3">备选项</YRadio>
       <YRadio :label="6">备选项</YRadio>
       <YRadio :label="9">备选项</YRadio>
     </YRadioGroup>
 
-    <p>按钮样式</p>
+    <h3>按钮样式</h3>
     <div>
       <YRadioGroup v-model="radio3">
         <YRadioButton label="上海"></YRadioButton>
@@ -35,7 +35,7 @@
     <div style="margin-top: 20px">
       <YRadioGroup v-model="radio5" size="small">
         <YRadioButton label="上海"></YRadioButton>
-        <YRadioButton label="北京" disabled></YRadioButton>
+        <YRadioButton disabled label="北京"></YRadioButton>
         <YRadioButton label="广州"></YRadioButton>
         <YRadioButton label="深圳"></YRadioButton>
       </YRadioGroup>
@@ -49,63 +49,87 @@
       </YRadioGroup>
     </div>
 
-    <p>带有边框</p>
+    <h3>带有边框</h3>
     <div>
-      <YRadio v-model="radio7" label="1" border>备选项1</YRadio>
-      <YRadio v-model="radio7" label="2" border>备选项2</YRadio>
+      <YRadio v-model="radio7" border label="1">备选项1</YRadio>
+      <YRadio v-model="radio7" border label="2">备选项2</YRadio>
     </div>
     <div style="margin-top: 20px">
-      <YRadio v-model="radio8" label="1" border size="medium">备选项1</YRadio>
-      <YRadio v-model="radio8" label="2" border size="medium">备选项2</YRadio>
+      <YRadio v-model="radio8" border label="1" size="medium">备选项1</YRadio>
+      <YRadio v-model="radio8" border label="2" size="medium">备选项2</YRadio>
     </div>
     <div style="margin-top: 20px">
       <YRadioGroup v-model="radio9" size="small">
-        <YRadio label="1" border>备选项1</YRadio>
-        <YRadio label="2" border disabled>备选项2</YRadio>
+        <YRadio border label="1">备选项1</YRadio>
+        <YRadio border disabled label="2">备选项2</YRadio>
       </YRadioGroup>
     </div>
     <div style="margin-top: 20px">
-      <YRadioGroup v-model="radio10" size="mini" disabled>
-        <YRadio label="1" border>备选项1</YRadio>
-        <YRadio label="2" border>备选项2</YRadio>
+      <YRadioGroup v-model="radio10" disabled size="mini">
+        <YRadio border label="1">备选项1</YRadio>
+        <YRadio border label="2">备选项2</YRadio>
       </YRadioGroup>
     </div>
-    <!--    <table>-->
-    <!--      <thead>-->
-    <!--        <tr>-->
-    <!--          <th>参数</th>-->
-    <!--          <th>说明</th>-->
-    <!--          <th>类型</th>-->
-    <!--          <th>默认值</th>-->
-    <!--        </tr>-->
-    <!--      </thead>-->
-    <!--      <tbody>-->
-    <!--        <tr>-->
-    <!--          <td>checked</td>-->
-    <!--          <td>指定当前是否选中</td>-->
-    <!--          <td>boolean</td>-->
-    <!--          <td>false</td>-->
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <td>defaultChecked</td>-->
-    <!--          <td>初始是否选中</td>-->
-    <!--          <td>boolean</td>-->
-    <!--          <td>false</td>-->
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <td>disabled</td>-->
-    <!--          <td>失效状态</td>-->
-    <!--          <td>boolean</td>-->
-    <!--          <td>false</td>-->
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <td>indeterminate</td>-->
-    <!--          <td>设置 indeterminate 状态，只负责样式控制</td>-->
-    <!--          <td>boolean</td>-->
-    <!--          <td>false</td>-->
-    <!--        </tr>-->
-    <!--      </tbody>-->
-    <!--    </table>-->
+    <h3>Radio Attributes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th>说明</th>
+          <th>类型</th>
+          <th>默认值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>value / v-model</td>
+          <td>绑定值</td>
+          <td>string / number / boolean</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>Radio 的 value</td>
+          <td>string / number / boolean</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>是否禁用</td>
+          <td>boolean</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>border</td>
+          <td>是否显示边框</td>
+          <td>boolean</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>Radio 的尺寸，仅在 border 为真时有效</td>
+          <td>string</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Radio Events</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>事件名称</th>
+          <th>说明</th>
+          <th>回调参数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>change</td>
+          <td>绑定值变化时触发的事件</td>
+          <td>选中的 Radio label 值</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

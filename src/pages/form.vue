@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <p>典型表单</p>
+    <h3>典型表单</h3>
     <YForm ref="form" :model="form" label-width="80px">
       <YFormItem label="活动名称">
         <YInput v-model="form.name"></YInput>
@@ -23,7 +23,7 @@
         <YButton>取消</YButton>
       </YFormItem>
     </YForm>
-    <p>行内表单</p>
+    <h3>行内表单</h3>
     <YForm :inline="true" :model="formInline">
       <YFormItem label="审批人">
         <YInput v-model="formInline.user" placeholder="审批人"></YInput>
@@ -38,7 +38,7 @@
         <YButton type="primary" @click="onSubmit">查询</YButton>
       </YFormItem>
     </YForm>
-    <p>对齐方式</p>
+    <h3>对齐方式</h3>
     <div>
       <YButton @click="labelPosition = 'left'">left</YButton>
       <YButton @click="labelPosition = 'right'">right</YButton>
@@ -47,8 +47,8 @@
     <div style="margin: 20px"></div>
     <YForm
       :label-position="labelPosition"
-      label-width="80px"
       :model="formLabelAlign"
+      label-width="80px"
     >
       <YFormItem label="名称">
         <YInput v-model="formLabelAlign.name"></YInput>
@@ -60,8 +60,8 @@
         <YInput v-model="formLabelAlign.type"></YInput>
       </YFormItem>
     </YForm>
-    <p>表单验证</p>
-    <YForm :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
+    <h3>表单验证</h3>
+    <YForm ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
       <YFormItem label="活动名称" prop="name">
         <YInput v-model="ruleForm.name"></YInput>
       </YFormItem>

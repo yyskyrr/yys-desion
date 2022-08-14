@@ -473,14 +473,15 @@ y-input-group {
   }
 }
 
-.yys-form{
-  .yys-form-item{
+.yys-form {
+  .yys-form-item {
     display: flex;
     flex-direction: row;
     align-items: center;
     position: relative;
     margin-bottom: 22px;
-    .yys-form-label{
+
+    .yys-form-label {
       flex-shrink: 0;
       text-align: right;
       vertical-align: middle;
@@ -490,13 +491,15 @@ y-input-group {
       line-height: 40px;
       padding: 0 12px 0 0;
       box-sizing: border-box;
-      &.yys-form-label-required:before{
+
+      &.yys-form-label-required:before {
         content: "*";
         color: #f56c6c;
         margin-right: 4px;
       }
     }
-    .yys-form-message{
+
+    .yys-form-message {
       color: #f56c6c;
       font-size: 12px;
       line-height: 1;
@@ -505,10 +508,12 @@ y-input-group {
       top: 100%;
     }
   }
-  &.yys-form-flex{
+
+  &.yys-form-flex {
     display: flex;
   }
-  .yys-btn{
+
+  .yys-btn {
     margin: 0;
     margin-right: 10px;
   }
@@ -793,45 +798,55 @@ y-input-group {
     color: #666;
   }
 }
-.yys-radio-border+.yys-radio-border{
+
+.yys-radio-border + .yys-radio-border {
   margin-left: 10px;
 }
 
 .yys-radio-wrapper {
+  line-height: 1;
   margin-right: 30px;
   user-select: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   box-sizing: border-box;
   padding: 0;
-  color: rgba(0,0,0,.65);
+  color: rgba(0, 0, 0, .65);
   font-size: 14px;
   list-style: none;
   position: relative;
   white-space: nowrap;
   vertical-align: sub;
-  &.yys-radio-border{
-    padding: 12px 20px 0 10px;
+
+  &.yys-radio-border {
+    padding: 12px 20px 12px 10px;
     border-radius: 4px;
     border: 1px solid #dcdfe6;
     box-sizing: border-box;
     height: 40px;
-    &.yys-radio-active{
+
+    &.yys-radio-active {
       border: 1px solid #1c94fa;
       color: #1c94fa;
     }
-    &.yys-radio-medium{
-      padding: 10px 20px 0 10px;
+
+    &.yys-radio-medium {
+      padding: 10px 20px 10px 10px;
     }
-    &.yys-radio-small{
-      padding: 6px 15px 0 10px;
+
+    &.yys-radio-small {
+      padding: 6px 15px 6px 10px;
       font-size: 12px;
     }
-    &.yys-radio-mini{
-      padding: 6px 15px 0 10px;
+
+    &.yys-radio-mini {
+      padding: 6px 15px 6px 10px;
       font-size: 12px;
     }
-    &.yys-disabled-text{
+
+    &.yys-disabled-text {
       color: #c0c4cc;
       cursor: not-allowed;
       border-color: #ebeef5;
@@ -839,25 +854,30 @@ y-input-group {
   }
 
 
-  .yys-radio-text{
+  .yys-radio-text {
     padding-right: 8px;
     padding-left: 8px;
   }
-  &.yys-disabled-text{
+
+  &.yys-disabled-text {
     color: #c0c4cc;
     cursor: not-allowed;
   }
+
   .yys-radio {
     margin: 0;
     outline: none;
     cursor: inherit;
   }
-  .yys-radio-input{
+
+  .yys-radio-input {
     cursor: inherit;
+    margin: 0;
+    padding: 0;
   }
 }
 
-.yys-radio-button{
+.yys-radio-button {
   user-select: none;
   display: inline-block;
   padding: 12px 20px;
@@ -867,36 +887,43 @@ y-input-group {
   box-sizing: border-box;
   margin: 0;
   cursor: pointer;
-  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  transition: all .3s cubic-bezier(.645, .045, .355, 1);
   border-radius: 0;
   white-space: nowrap;
   vertical-align: middle;
   background: #fff;
   border: 1px solid #dcdfe6;
   border-left: 0;
-  &.yys-radio-medium{
+
+  &.yys-radio-medium {
     padding: 10px 20px;
   }
-  &.yys-radio-small{
+
+  &.yys-radio-small {
     padding: 9px 15px;
     font-size: 12px;
   }
-  &.yys-radio-mini{
+
+  &.yys-radio-mini {
     padding: 7px 15px;
     font-size: 12px;
   }
-  &:first-child{
+
+  &:first-child {
     border-left: 1px solid #dcdfe6;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
-  &:last-child{
+
+  &:last-child {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
-  &.yys-radio-button-active{
+
+  &.yys-radio-button-active {
     background-color: #1c94fa;
-    &.yys-radio-button-disabled{
+
+    &.yys-radio-button-disabled {
       cursor: not-allowed;
       background-image: none;
       background-color: #eff5fb;
@@ -904,33 +931,111 @@ y-input-group {
       box-shadow: none;
     }
   }
-  &.yys-radio-button-disabled{
+
+  &.yys-radio-button-disabled {
     cursor: not-allowed;
     background-image: none;
     background-color: #fff;
     border-color: #ebeef5;
     box-shadow: none;
   }
-  &:hover{
+
+  &:hover {
     color: #1c94fa;
   }
-  .yys-radio-button-text{
-    &.yys-radio-button-text-active{
+
+  .yys-radio-button-text {
+    &.yys-radio-button-text-active {
       color: white;
     }
-    &.yys-radio-button-text-disabled{
+
+    &.yys-radio-button-text-disabled {
       color: #c0c4cc;
       cursor: not-allowed;
       background-image: none;
       border-color: #ebeef5;
       box-shadow: none;
-      }
+    }
   }
 }
 
-.yys-radio-group{
+.yys-radio-group {
   line-height: 1;
   font-size: 0;
+}
+
+.yys-switch {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  line-height: 20px;
+  height: 20px;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &.is-checked {
+    .yys-switch_core:after {
+      left: 100%;
+      margin-left: -17px;
+    }
+  }
+
+  .yys-switch_core {
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 20px;
+    border: 1px solid #dcdfe6;
+    outline: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: #dcdfe6;
+    transition: border-color .3s, background-color .3s;
+    vertical-align: middle;
+    cursor: inherit;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      border-radius: 100%;
+      transition: all .3s;
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+    }
+  }
+
+  .yys-switch__label {
+    transition: .2s;
+    height: 20px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    vertical-align: middle;
+    color: #303133;
+    cursor: inherit;
+
+    &.is-checked {
+      color: #409eff
+    }
+  }
+
+  .yys-switch__label--left {
+    margin-right: 10px;
+  }
+
+  .yys-switch__label--right {
+    margin-left: 10px;
+  }
+
+  &.is-disabled {
+    opacity: .6;
+    cursor: not-allowed;
+  }
 }
 
 table {

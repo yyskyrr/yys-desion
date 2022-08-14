@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <p>简单用法</p>
+    <h3>简单用法</h3>
     <YCheckbox :checked="checked" @change="onChange">Check</YCheckbox>
 
-    <p>受控的 checkbox</p>
+    <h3>受控的 checkbox</h3>
     <YCheckbox :checked="checked1" :disabled="disabled" @change="onChange"
-      >Check</YCheckbox
-    >
-    <YButton @click="checked1 = !checked1">{{
-      !checked1 ? "Check" : "Uncheck"
-    }}</YButton>
-    <YButton @click="disabled = !disabled">{{
-      !disabled ? "disabled" : "Undisabled"
-    }}</YButton>
+      >Check
+    </YCheckbox>
+    <YButton @click="checked1 = !checked1"
+      >{{ !checked1 ? "Check" : "Uncheck" }}
+    </YButton>
+    <YButton @click="disabled = !disabled"
+      >{{ !disabled ? "disabled" : "Undisabled" }}
+    </YButton>
 
-    <p>Checkbox 组</p>
+    <h3>Checkbox 组</h3>
     <YCheckboxGroup
       v-model="value"
       :options="plainOptions"
@@ -38,7 +38,7 @@
       }}</span>
     </YCheckboxGroup>
 
-    <p>全选</p>
+    <h3>全选</h3>
     <YCheckbox
       :checked="checkAll"
       :indeterminate="indeterminate"
@@ -51,7 +51,7 @@
       @change="onChange1"
     />
 
-    <p>不可用</p>
+    <h3>不可用</h3>
     <YCheckbox :checked="checked2" disabled></YCheckbox>
     <br />
     <YCheckbox :checked="checked2" disabled></YCheckbox>

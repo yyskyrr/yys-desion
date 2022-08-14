@@ -4,8 +4,8 @@
       <div
         v-for="(item, index) in componentList"
         :key="index"
-        @click="handleClick(index)"
         :style="{ backgroundColor: currentIndex === index ? '#e0f6fe' : '' }"
+        @click="handleClick(index)"
       >
         {{ item }}
       </div>
@@ -15,9 +15,10 @@
       <Button v-if="currentIndex === 0" />
       <Checkbox v-else-if="currentIndex === 1" />
       <Radio v-else-if="currentIndex === 2" />
-      <Input v-else-if="currentIndex === 3" />
-      <Select v-else-if="currentIndex === 4" />
-      <Form v-else-if="currentIndex === 5" />
+      <Switch_ v-else-if="currentIndex === 3" />
+      <Input v-else-if="currentIndex === 4" />
+      <Select v-else-if="currentIndex === 5" />
+      <Form v-else-if="currentIndex === 6" />
     </div>
   </div>
 </template>
@@ -29,6 +30,7 @@ import Input from "./pages/input";
 import Select from "./pages/select";
 import Form from "./pages/form";
 import Radio from "./pages/radio";
+import Switch_ from "./pages/switch";
 import store from "@/store";
 
 export default {
@@ -40,6 +42,7 @@ export default {
     Select,
     Form,
     Radio,
+    Switch_,
   },
   created() {},
   data() {
@@ -48,6 +51,7 @@ export default {
         "button 按钮",
         "checkbox 多选框",
         "radio 单选框",
+        "switch 开关",
         "input 输入框",
         "select 选择框",
         "form 表单",

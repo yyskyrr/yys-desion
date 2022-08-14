@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <p>基本用法</p>
+    <h3>基本用法</h3>
     <YInput v-model="value" placeholder="Basic usage" />
 
-    <p>前缀和后缀</p>
+    <h3>前缀和后缀</h3>
     <YInput
       placeholder="icons"
       @blur="onBlur"
@@ -32,16 +32,16 @@
     <br />
     <br />
     <YInput placeholder="input search text" @change="onChange">
-      <template #prefix> ￥ </template>
-      <template #suffix> RMB </template>
+      <template #prefix> ￥</template>
+      <template #suffix> RMB</template>
     </YInput>
 
-    <p>搜索框 loading</p>
+    <h3>搜索框 loading</h3>
     <YInput loading placeholder="loading" />
     <br /><br />
     <YInput :enter-button="true" loading placeholder="loading" />
 
-    <p>输入框组合</p>
+    <h3>输入框组合</h3>
     <y-input-group>
       <YInput v-model:value="value1" style="width: 20%" />
       <YInput v-model:value="value2" style="width: 30%" />
@@ -66,7 +66,7 @@
       </YSelect>
     </y-input-group>
 
-    <p>输入时格式化展示</p>
+    <h3>输入时格式化展示</h3>
     <YInput
       v-model:value="value3"
       :formatValue="formatValue"
@@ -74,13 +74,13 @@
       tooltip
     />
 
-    <p>密码框</p>
+    <h3>密码框</h3>
     <YInput v-model:value="value4" password placeholder="input password" />
 
-    <p>文本域</p>
+    <h3>文本域</h3>
     <YTextarea placeholder="Basic usage" />
 
-    <p>适应文本高度的文本域</p>
+    <h3>适应文本高度的文本域</h3>
     <YTextarea
       v-model="value5"
       auto-size
@@ -93,7 +93,7 @@
       placeholder="Autosize height with minimum and maximum number of lines"
     />
 
-    <p>搜索框</p>
+    <h3>搜索框</h3>
     <YInput v-model:value="value7" placeholder="input search text" search />
     <br /><br />
     <YInput
@@ -115,14 +115,14 @@
       </template>
     </YInput>
 
-    <p>三种大小</p>
+    <h3>三种大小</h3>
     <YInput placeholder="large" size="large size" @change="onChange" />
     <br /><br />
     <YInput placeholder="default size" @change="onChange" />
     <br /><br />
     <YInput placeholder="small" size="small size" @change="onChange" />
 
-    <p>前置/后置标签</p>
+    <h3>前置/后置标签</h3>
 
     <YInput v-model:value="value8" addon-after=".com" addon-before="Http://" />
     <br /><br />
@@ -132,7 +132,7 @@
       </template>
     </YInput>
 
-    <p>带移除图标</p>
+    <h3>带移除图标</h3>
     <YInput v-model="value9" allowClear placeholder="input with clear icon" />
     <br /><br />
     <YTextarea
@@ -141,7 +141,7 @@
       placeholder="textarea with clear icon"
     ></YTextarea>
 
-    <p>带字数提示的文本域</p>
+    <h3>带字数提示的文本域</h3>
     <YTextarea v-model="value10" :maxlength="100" showCount></YTextarea>
 
     <table>

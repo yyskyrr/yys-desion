@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <p>按钮类型</p>
+    <h3>按钮类型</h3>
     <YButton type="primary" @click="onClick"> Primary Button </YButton>
     <YButton>Default Button</YButton>
     <YButton type="dashed">Dashed Button</YButton>
     <YButton type="text">Text Button</YButton>
     <YButton type="link">Link Button</YButton>
 
-    <p>幽灵按钮</p>
+    <h3>幽灵按钮</h3>
     <div style="background: #bec8c8">
       <YButton ghost type="primary" @click="onClick"> Primary Button </YButton>
       <YButton ghost>Default Button</YButton>
@@ -16,14 +16,14 @@
       <YButton type="link">Link Button</YButton>
     </div>
 
-    <p>加载中状态</p>
+    <h3>加载中状态</h3>
     <YButton loading type="primary" @click="onClick"> Loading </YButton>
     <YButton loading>Loading</YButton>
     <YButton loading type="danger">Loading</YButton>
     <YButton loading type="dashed">Loading</YButton>
     <YButton loading shape="circle" type="primary"></YButton>
 
-    <p>按钮尺寸</p>
+    <h3>按钮尺寸</h3>
     <div>
       <YButton @click="size = 'large'">large</YButton>
       <YButton @click="size = 'default'">default</YButton>
@@ -38,19 +38,19 @@
     <YButton :size="size" shape="circle" type="primary">A</YButton>
     <YButton :size="size" shape="round" type="primary">A</YButton>
 
-    <p>危险按钮</p>
+    <h3>危险按钮</h3>
     <YButton danger type="primary">primary</YButton>
     <YButton danger>danger</YButton>
     <YButton danger type="dashed">dashed</YButton>
     <YButton danger type="link">link</YButton>
 
-    <p>不可用状态</p>
+    <h3>不可用状态</h3>
     <YButton disabled type="dashed">dashed</YButton>
     <YButton disabled type="link">link</YButton>
     <YButton disabled type="text">text</YButton>
     <YButton disabled>default</YButton>
 
-    <p>图标按钮</p>
+    <h3>图标按钮</h3>
     <YButton shape="circle" type="primary">A</YButton>
     <YButton icon="download" shape="circle"></YButton>
     <YButton>
@@ -66,7 +66,7 @@
       </template>
     </YButton>
 
-    <p>Block 按钮</p>
+    <h3>Block 按钮</h3>
     <YButton block type="primary">primary</YButton>
     <YButton block>default</YButton>
     <YButton block type="dashed">dashed</YButton>

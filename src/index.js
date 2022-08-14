@@ -9,6 +9,7 @@ import radioGroup from "./components/yys-radio/yys-radio-group";
 import radioButton from "./components/yys-radio/yys-radio-button";
 import form from "./components/yys-form/yys-form";
 import formItem from "./components/yys-form/yys-form-item";
+import Switch from "./components/yys-switch/yys-switch";
 import "./index.scss";
 
 const components = [
@@ -18,6 +19,7 @@ const components = [
   form,
   formItem,
   input,
+  Switch,
   textarea,
   radio,
   select,

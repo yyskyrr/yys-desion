@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <p>基本使用</p>
+    <h3>基本使用</h3>
     <YSelect :value="selectValue" @change="handleChange">
       <YOption value="Lucy1">Lucy1</YOption>
       <YOption value="Lucy2">Lucy2</YOption>
@@ -19,7 +19,7 @@
       <YOption value="Lucy3">Lucy3</YOption>
     </YSelect>
 
-    <p>标签</p>
+    <h3>标签</h3>
     <YSelect
       mode="tags"
       placeholder="Tags Mode"
@@ -31,18 +31,18 @@
       </YOption>
     </YSelect>
 
-    <p>获得选项的文本</p>
+    <h3>获得选项的文本</h3>
     <YSelect
       :value="selectValue3"
       label-in-value
       style="width: 120px"
       @change="handleChange3"
     >
-      <YOption value="jack"> Jack (100) </YOption>
-      <YOption value="lucy"> Lucy (101) </YOption>
+      <YOption value="jack"> Jack (100)</YOption>
+      <YOption value="lucy"> Lucy (101)</YOption>
     </YSelect>
 
-    <p>联动</p>
+    <h3>联动</h3>
     <YSelect
       :value="provinceData[0]"
       style="width: 120px"
@@ -58,7 +58,7 @@
       </YOption>
     </YSelect>
 
-    <p>隐藏已选择选项</p>
+    <h3>隐藏已选择选项</h3>
     <YSelect
       :value="selectedItems"
       mode="multiple"
@@ -71,7 +71,7 @@
       </YOption>
     </YSelect>
 
-    <p>三种大小</p>
+    <h3>三种大小</h3>
     <YSelect
       size="large"
       style="width: 200px"
@@ -105,7 +105,7 @@
       </YOption>
     </YSelect>
 
-    <p>多选</p>
+    <h3>多选</h3>
     <YSelect
       mode="tags"
       placeholder="Please select"
@@ -117,17 +117,17 @@
       </YOption>
     </YSelect>
 
-    <p>后缀图标</p>
+    <h3>后缀图标</h3>
     <YSelect default-value="lucy" style="width: 120px" @change="handleChange">
       <i slot="suffixIcon" aria-hidden="true" class="fa fa-envelope-o"></i>
-      <YOption value="jack"> Jack </YOption>
-      <YOption value="lucy"> Lucy </YOption>
-      <YOption disabled value="disabled"> Disabled </YOption>
-      <YOption value="Yiminghe"> yiminghe </YOption>
+      <YOption value="jack"> Jack</YOption>
+      <YOption value="lucy"> Lucy</YOption>
+      <YOption disabled value="disabled"> Disabled</YOption>
+      <YOption value="Yiminghe"> yiminghe</YOption>
     </YSelect>
     <YSelect default-value="lucy" disabled style="width: 120px">
       <i slot="suffixIcon" aria-hidden="true" class="fa fa-envelope-o"></i>
-      <YOption value="lucy"> Lucy </YOption>
+      <YOption value="lucy"> Lucy</YOption>
     </YSelect>
     <br /><br />
     <table>
