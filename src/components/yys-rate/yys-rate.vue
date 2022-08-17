@@ -1,23 +1,32 @@
 <template>
   <div>
     <span
-      @mouseenter="onMouseenter(index)"
-      @mouseleave="onMouseleave"
-      @click="onClick(index)"
-      class="yys-rate"
-      :style="{ cursor: disabled ? 'default' : 'pointer' }"
       v-for="(item, index) in starList"
       :key="index"
+      :style="{ cursor: disabled ? 'default' : 'pointer' }"
+      class="yys-rate"
+      @click="onClick(index)"
+      @mouseenter="onMouseenter(index)"
+      @mouseleave="onMouseleave"
     >
       <i
-        :style="{ color: color }"
         v-if="item.active"
-        class="fa fa-star yys-star-active"
+        :class="[iconClass]"
+        :style="{ color: color }"
         aria-hidden="true"
+        class="fa fa-star yys-star-active"
       ></i>
-      <i v-else class="fa fa-star-o yys-star" aria-hidden="true"></i>
+      <i
+        v-else
+        :class="[iconClass]"
+        :style="{ color: voidColor }"
+        aria-hidden="true"
+        class="fa fa-star-o yys-star"
+      ></i>
     </span>
-    <span v-if="showText" class="yys-rate-text">{{ rateText }}</span>
+    <span v-if="showText" :style="{ color: textColor }" class="yys-rate-text">{{
+      rateText
+    }}</span>
     <span v-if="showScore" class="yys-rate-score">{{ value }}</span>
   </div>
 </template>
@@ -37,31 +46,27 @@ export default {
       isHover: false,
       color: "#fdb138",
       rateText: "",
-      textList: ["极差", "失望", "一般", "满意", "惊喜"],
+      iconClass: "",
     };
   },
   props: {
     value: Number,
+    max: { type: Number, default: 5 },
+    lowThreshold: { type: Number, default: 2 },
+    highThreshold: { type: Number, default: 4 },
+    voidColor: { type: String, default: "#beccd8" },
+    textColor: { type: String, default: "#1F2D3D" },
     colors: Array,
+    texts: {
+      type: Array,
+      default: () => ["极差", "失望", "一般", "满意", "惊喜"],
+    },
     iconClasses: Array,
     showText: Boolean,
     disabled: Boolean,
     showScore: Boolean,
   },
   components: {},
-  watch: {
-    value: {
-      handler(newVal, oldVal) {
-        console.log("newVal", newVal);
-        this.starList.map((item, key) => {
-          item.active = key + 1 <= newVal;
-          this.rateText = this.textList[newVal - 1];
-        });
-      },
-      immediate: true,
-      deep: true,
-    },
-  },
   model: {
     prop: "value",
     event: "change",
@@ -73,39 +78,42 @@ export default {
       this.$emit("change", index + 1);
     },
     onMouseleave() {
-      console.log("this.value", this.value);
-      this.$emit("change", this.value);
-      if (!this.value && this.isHover) {
-        this.starList.map((item, key) => {
-          item.active = false;
-        });
-        this.rateText = "";
-      }
+      if (this.disabled) return;
+      this.active(this.value - 1);
     },
+
     onMouseenter(index) {
       if (this.disabled) return;
-      if (this.colors && this.colors.length === 3) {
-        if (index < 2) {
-          this.color = this.colors[0];
-        }
-        if (index === 2) {
-          this.color = this.colors[1];
-        }
-        if (index > 2) {
-          this.color = this.colors[2];
-        }
+      this.active(index);
+    },
+    active(value) {
+      if (value === -1) {
+        this.color = this.colors && this.colors.length === 3 && this.colors[0];
+        this.iconClass = this.iconClasses && this.iconClasses[1];
       }
-
+      if (value > -1 && value <= this.lowThreshold - 1) {
+        this.color = this.colors && this.colors.length === 3 && this.colors[0];
+        this.iconClass = this.iconClasses && this.iconClasses[0];
+      }
+      if (value > this.lowThreshold - 1 && value < this.highThreshold - 1) {
+        this.color = this.colors && this.colors.length === 3 && this.colors[1];
+        this.iconClass = this.iconClasses && this.iconClasses[1];
+      }
+      if (value >= this.highThreshold - 1) {
+        this.color = this.colors && this.colors.length === 3 && this.colors[2];
+        this.iconClass = this.iconClasses && this.iconClasses[2];
+      }
       if (this.showText) {
-        this.rateText = this.textList[index];
+        this.rateText = this.texts[value];
       }
-      this.isHover = true;
       this.starList.map((item, key) => {
-        item.active = key <= index;
+        item.active = key <= value;
       });
     },
   },
-  mounted() {},
+  mounted() {
+    this.active(this.value - 1);
+  },
 };
 </script>
 
