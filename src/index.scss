@@ -964,6 +964,26 @@ y-input-group {
   font-size: 0;
 }
 
+.yys-rate{
+  line-height: 1;
+  .yys-star{
+    color: #beccd8;
+    font-size: 18px;
+    margin-right: 6px;
+  }
+  .yys-star-active{
+    color: #fdb138;
+    font-size: 18px;
+    margin-right: 6px;
+  }
+}
+.yys-rate-text{
+  font-size: 14px;
+}
+.yys-rate-score{
+  font-size: 14px;
+  color: #fdb138;
+}
 .yys-switch {
   display: inline-flex;
   align-items: center;

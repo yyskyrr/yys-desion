@@ -15,10 +15,11 @@
       <Button v-if="currentIndex === 0" />
       <Checkbox v-else-if="currentIndex === 1" />
       <Radio v-else-if="currentIndex === 2" />
-      <Switch_ v-else-if="currentIndex === 3" />
-      <Input v-else-if="currentIndex === 4" />
-      <Select v-else-if="currentIndex === 5" />
-      <Form v-else-if="currentIndex === 6" />
+      <Rate v-else-if="currentIndex === 3" />
+      <Switch_ v-else-if="currentIndex === 4" />
+      <Input v-else-if="currentIndex === 5" />
+      <Select v-else-if="currentIndex === 6" />
+      <Form v-else-if="currentIndex === 7" />
     </div>
   </div>
 </template>
@@ -30,8 +31,8 @@ import Input from "./pages/input";
 import Select from "./pages/select";
 import Form from "./pages/form";
 import Radio from "./pages/radio";
+import Rate from "./pages/rate";
 import Switch_ from "./pages/switch";
-import store from "@/store";
 
 export default {
   name: "App",
@@ -42,19 +43,21 @@ export default {
     Select,
     Form,
     Radio,
+    Rate,
     Switch_,
   },
   created() {},
   data() {
     return {
       componentList: [
-        "button 按钮",
-        "checkbox 多选框",
-        "radio 单选框",
-        "switch 开关",
-        "input 输入框",
-        "select 选择框",
-        "form 表单",
+        "Button 按钮",
+        "Checkbox 多选框",
+        "Radio 单选框",
+        "Rate 评分",
+        "Switch 开关",
+        "Input 输入框",
+        "Select 选择框",
+        "Form 表单",
       ],
     };
   },
