@@ -17,9 +17,10 @@
       <Radio v-else-if="currentIndex === 2" />
       <Rate v-else-if="currentIndex === 3" />
       <Switch_ v-else-if="currentIndex === 4" />
-      <Input v-else-if="currentIndex === 5" />
-      <Select v-else-if="currentIndex === 6" />
-      <Form v-else-if="currentIndex === 7" />
+      <Slider v-else-if="currentIndex === 5" />
+      <Input v-else-if="currentIndex === 6" />
+      <Select v-else-if="currentIndex === 7" />
+      <Form v-else-if="currentIndex === 8" />
     </div>
   </div>
 </template>
@@ -32,6 +33,7 @@ import Select from "./pages/select";
 import Form from "./pages/form";
 import Radio from "./pages/radio";
 import Rate from "./pages/rate";
+import Slider from "./pages/slider";
 import Switch_ from "./pages/switch";
 
 export default {
@@ -44,6 +46,7 @@ export default {
     Form,
     Radio,
     Rate,
+    Slider,
     Switch_,
   },
   created() {},
@@ -55,6 +58,7 @@ export default {
         "Radio 单选框",
         "Rate 评分",
         "Switch 开关",
+        "Slider 滑块",
         "Input 输入框",
         "Select 选择框",
         "Form 表单",

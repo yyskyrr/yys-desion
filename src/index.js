@@ -11,6 +11,7 @@ import form from "./components/yys-form/yys-form";
 import formItem from "./components/yys-form/yys-form-item";
 import Switch from "./components/yys-switch/yys-switch";
 import rate from "./components/yys-rate/yys-rate";
+import slider from "./components/yys-slider/yys-slider";
 import "./index.scss";
 
 const components = [
@@ -27,6 +28,7 @@ const components = [
   radioGroup,
   radioButton,
   rate,
+  slider,
 ];
 
 const install = function (Vue) {
