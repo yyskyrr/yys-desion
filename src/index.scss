@@ -964,7 +964,7 @@ y-input-group {
   font-size: 0;
 }
 
-.yys-slider-box{
+.yys-slider-box {
   .yys-slider {
     width: 100%;
     height: 6px;
@@ -975,13 +975,18 @@ y-input-group {
     cursor: pointer;
     vertical-align: middle;
 
-
-    .yys-slider-bar{
+    .yys-slider-bar {
       background-color: #409eff;
       height: 6px;
       border-radius: 3px;
-      transition: .2s;
+      //transition: .2s;
+
+      &.disabled {
+        background-color: #c0c4cc;
+        cursor: default;
+      }
     }
+
     .yys-slider-tooltip {
       background: #404040;
       font-size: 12px;
@@ -1012,7 +1017,8 @@ y-input-group {
         transform: rotate(45deg)
       }
     }
-    .yys-slider-button{
+
+    .yys-slider-button {
       width: 16px;
       height: 16px;
       border-radius: 50%;
@@ -1020,40 +1026,55 @@ y-input-group {
       border: 2px solid #409eff;
       position: absolute;
       left: 0;
-      transition: .2s;
+      transition: scale .2s;
       user-select: none;
       top: 50%;
-      transform: translateY(-50%) translateX(-50%);
+      transform: translate(-50%, -50%);
       z-index: 100;
-      &:hover{
+
+      &:hover {
         cursor: grab;
-        transform: translateY(-50%) translateX(-50%) scale(1.2);
+        transform: translate(-50%, -50%) scale(1.2);
       }
 
+      &.active {
+        cursor: grabbing;
+      }
+
+      &.disabled {
+        border-color: #c0c4cc;
+        cursor: not-allowed;
+        transform: translate(-50%, -50%) scale(1);
+      }
     }
   }
 }
 
-.yys-rate{
+.yys-rate {
   line-height: 1;
-  .yys-star{
+
+  .yys-star {
     color: #beccd8;
     font-size: 18px;
     margin-right: 6px;
   }
-  .yys-star-active{
+
+  .yys-star-active {
     color: #fdb138;
     font-size: 18px;
     margin-right: 6px;
   }
 }
-.yys-rate-text{
+
+.yys-rate-text {
   font-size: 14px;
 }
-.yys-rate-score{
+
+.yys-rate-score {
   font-size: 14px;
   color: #fdb138;
 }
+
 .yys-switch {
   display: inline-flex;
   align-items: center;

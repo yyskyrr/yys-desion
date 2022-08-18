@@ -22,6 +22,15 @@
       <YSlider v-model="value5" disabled></YSlider>
     </div>
 
+    <h3>离散值</h3>
+    <div class="block">
+      <span class="demonstration">不显示间断点</span>
+      <YSlider v-model="value6" :step="10"></YSlider>
+    </div>
+    <div class="block">
+      <span class="demonstration">显示间断点</span>
+      <YSlider v-model="value7" :step="10" show-stops></YSlider>
+    </div>
     <!--    <h3 id="attributes">Attributes</h3>-->
     <!--    <h3 id="events">Events</h3>-->
   </div>
@@ -38,6 +47,8 @@ export default {
       value3: 36,
       value4: 48,
       value5: 42,
+      value6: 0,
+      value7: 0,
     };
   },
   methods: {
