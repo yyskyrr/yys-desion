@@ -1,0 +1,129 @@
+$primary: #E73A32 !default;
+$primary-info: #FF4A4A !default;
+$primary-producer: #0065F6 !default;
+$primaryChat: #FF7E80 !default;
+$starPrimary: #FF4A4A !default;
+$success: #67C23A !default;
+$warning: #e6b322 !default;
+$danger: #F56C6C !default;
+$info: #909399 !default;
+$bac-primary: #fa632c !default;
+$priceColor: #222222 !default;
+$browse-primary: #90A96E !default; // 逛逛主色
+
+$gold: #e3b97b!default;
+$orange: #FF6B1C!default;
+
+
+$background: #f7f7f7 !default;
+$background-primary: lighten($primary, 35) !default;
+$background-success: lighten($success, 45) !default;
+$background-warning: lighten($warning, 40) !default;
+$background-danger: lighten($danger, 27) !default;
+$background-info: lighten($info, 37) !default;
+$main: #D0F300 !default;
+
+// 文字颜色
+$text-dark: #303133 !default;
+$text: #3A3A3A !default;
+$text-light: #9E9E9E !default
+$text-lighter: #ababab !default;
+$gold-text: #D0C19A !default;
+$text-primary: #222222 !default;
+$color-primary: #FA632C !default;
+$background-strong: #D0F300 !default;
+$text-title: #898989 !default;
+
+// 边框颜色
+$border-dark: #DCDFE6 !default;
+$border: #eee !default;
+$border-light: #EBEEF5 !default;
+$border-lighter: #F2F6FC !default;
+
+// 字体
+$font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif !default;
+
+// 字体大小
+$huge: 22px !default;
+$big: 20px !default;
+$large: 18px !default;
+$normal: 16px !default;
+$small: 14px !default;
+$tiny: 12px !default;
+
+// space表示空间距离，padding和margin通用变量
+$space-big: 32px !default;
+$space-large: 22px !default;
+$space: 16px !default;
+$space-small: 10px !default;
+$space-tiny: 4px !default;
+
+// 元素高度， ant-design 主要有 large 32 normal 28 small 22
+$height-large: 32px !default;
+$height: 28px !default;
+$height-small: 22px !default;
+
+$gradient-browse-start: #B3CE8E!default;
+$gradient-browse-end: #8EB671!default;
+
+$types: primary, success, warning, info, danger !default;
+$colors: (
+        primary: $primary,
+        success: $success,
+        warning: $warning,
+        danger: $danger,
+        info: $info
+) !default;
+$background-colors: (
+        primary: $background-primary,
+        success: $background-success,
+        warning: $background-warning,
+        danger: $background-danger,
+        info: $background-info
+) !default;
+
+$tr-background: #fafafa !default;
+
+$box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1) !default;
+
+// 默认border-radius圆角大小
+$radius: 8px !default;
+
+$transition-time: .4s !default;
+
+// 长宽一样，为length, 只分宽或高，用width和height
+$input-length: 175px !default;
+
+$counter-input-width: 80px !default;
+
+// 等级星星颜色
+$rate-star: #f8c422 !default;
+
+$dialog-background: rgba(0, 0, 0, 0.6) !default;
+$live-background: rgba(0, 0, 0, 0.3) !default;
+
+$gradient-start: #f82b22!default;
+$gradient-start2: #f82b22!default;
+$gradient-start3: #f82b22!default;
+$gradient-start4: #f82b22!default;
+
+$gradient-end: #f85824!default;
+$gradient-end2: #f85824!default;
+$gradient-end3: #f85824!default;
+$gradient-end4: #f85824!default;
+$primary-color: #f55622!default;
+$sub-primary-color: #F66734!default;
+$wallet-primary: #FF2050!default;
+
+$jd-gradient-start: #ea3e42!default;
+$jd-gradient-end: #fd9273!default;
+$jd-border: #eee!default;
+
+
+$background-content: #F2F2F2 !default;
+
+// 按钮颜色
+$btnColor: #fff;
+
+$primary-text: #FF2A41;
+
