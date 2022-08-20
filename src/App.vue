@@ -19,8 +19,9 @@
       <Switch_ v-else-if="currentIndex === 4" />
       <Slider v-else-if="currentIndex === 5" />
       <Input v-else-if="currentIndex === 6" />
-      <Select v-else-if="currentIndex === 7" />
-      <Form v-else-if="currentIndex === 8" />
+      <InputNumber v-else-if="currentIndex === 7" />
+      <Select v-else-if="currentIndex === 8" />
+      <Form v-else-if="currentIndex === 9" />
     </div>
   </div>
 </template>
@@ -29,6 +30,7 @@
 import Button from "./pages/button";
 import Checkbox from "./pages/checkbox";
 import Input from "./pages/input";
+import InputNumber from "./pages/inputNumber";
 import Select from "./pages/select";
 import Form from "./pages/form";
 import Radio from "./pages/radio";
@@ -42,6 +44,7 @@ export default {
     Button,
     Checkbox,
     Input,
+    InputNumber,
     Select,
     Form,
     Radio,
@@ -60,6 +63,7 @@ export default {
         "Switch 开关",
         "Slider 滑块",
         "Input 输入框",
+        "InputNumber 计数器",
         "Select 选择框",
         "Form 表单",
       ],

@@ -1,4 +1,4 @@
-$primary: #E73A32 !default;
+$primary: #1890ff !default;
 $primary-info: #FF4A4A !default;
 $primary-producer: #0065F6 !default;
 $primaryChat: #FF7E80 !default;
@@ -9,13 +9,13 @@ $danger: #F56C6C !default;
 $info: #909399 !default;
 $bac-primary: #fa632c !default;
 $priceColor: #222222 !default;
-$browse-primary: #90A96E !default; // 逛逛主色
+$browse-primary: #90A96E !default;
 
-$gold: #e3b97b!default;
-$orange: #FF6B1C!default;
+$gold: #e3b97b !default;
+$orange: #FF6B1C !default;
 
 
-$background: #f7f7f7 !default;
+$background: #dcdfe6 !default;
 $background-primary: lighten($primary, 35) !default;
 $background-success: lighten($success, 45) !default;
 $background-warning: lighten($warning, 40) !default;
@@ -26,7 +26,7 @@ $main: #D0F300 !default;
 // 文字颜色
 $text-dark: #303133 !default;
 $text: #3A3A3A !default;
-$text-light: #9E9E9E !default
+$text-light: #9E9E9E !default;
 $text-lighter: #ababab !default;
 $gold-text: #D0C19A !default;
 $text-primary: #222222 !default;
@@ -36,7 +36,7 @@ $text-title: #898989 !default;
 
 // 边框颜色
 $border-dark: #DCDFE6 !default;
-$border: #eee !default;
+$border: #d9d9d9 !default;
 $border-light: #EBEEF5 !default;
 $border-lighter: #F2F6FC !default;
 
@@ -63,8 +63,8 @@ $height-large: 32px !default;
 $height: 28px !default;
 $height-small: 22px !default;
 
-$gradient-browse-start: #B3CE8E!default;
-$gradient-browse-end: #8EB671!default;
+$gradient-browse-start: #B3CE8E !default;
+$gradient-browse-end: #8EB671 !default;
 
 $types: primary, success, warning, info, danger !default;
 $colors: (
@@ -102,22 +102,22 @@ $rate-star: #f8c422 !default;
 $dialog-background: rgba(0, 0, 0, 0.6) !default;
 $live-background: rgba(0, 0, 0, 0.3) !default;
 
-$gradient-start: #f82b22!default;
-$gradient-start2: #f82b22!default;
-$gradient-start3: #f82b22!default;
-$gradient-start4: #f82b22!default;
+$gradient-start: #f82b22 !default;
+$gradient-start2: #f82b22 !default;
+$gradient-start3: #f82b22 !default;
+$gradient-start4: #f82b22 !default;
 
-$gradient-end: #f85824!default;
-$gradient-end2: #f85824!default;
-$gradient-end3: #f85824!default;
-$gradient-end4: #f85824!default;
-$primary-color: #f55622!default;
-$sub-primary-color: #F66734!default;
-$wallet-primary: #FF2050!default;
+$gradient-end: #f85824 !default;
+$gradient-end2: #f85824 !default;
+$gradient-end3: #f85824 !default;
+$gradient-end4: #f85824 !default;
+$primary-color: #f55622 !default;
+$sub-primary-color: #F66734 !default;
+$wallet-primary: #FF2050 !default;
 
-$jd-gradient-start: #ea3e42!default;
-$jd-gradient-end: #fd9273!default;
-$jd-border: #eee!default;
+$jd-gradient-start: #ea3e42 !default;
+$jd-gradient-end: #fd9273 !default;
+$jd-border: #eee !default;
 
 
 $background-content: #F2F2F2 !default;

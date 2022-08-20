@@ -1,5 +1,5 @@
 <template>
-  <div class="yys-slider-box">
+  <div :class="{ 'show-input': showInput }" class="yys-slider-box">
     <div class="yys-slider" @click="handleClick">
       <div
         :class="{ disabled }"
@@ -15,6 +15,14 @@
         @mouseleave="handleMouseLeave"
         @click.stop
       ></div>
+
+      <div
+        v-for="(item, index) in stepList"
+        v-if="showStops && biggerThanSteps(item)"
+        :key="index"
+        :style="{ left: item }"
+        class="yys-slider-stop"
+      ></div>
       <div
         v-if="tooltipVisible"
         :style="{ left: left }"
@@ -23,10 +31,21 @@
         {{ formatTooltipValue || value }}
       </div>
     </div>
+    <YInputNumber
+      v-if="showInput"
+      :controls="showInputControls"
+      :max="max"
+      :min="min"
+      :value="value"
+      size="mini"
+      @change="onchange"
+    ></YInputNumber>
   </div>
 </template>
 
 <script>
+import YInputNumber from "@/components/yys-input/yys-inputNumber";
+
 export default {
   name: "YSlider",
   data() {
@@ -34,6 +53,7 @@ export default {
       tooltipVisible: false,
       active: false,
       pageX: 0,
+      stepList: [],
     };
   },
   props: {
@@ -43,9 +63,12 @@ export default {
     disabled: { type: Boolean, default: false },
     step: { type: Number, default: 1 },
     showTooltip: { type: Boolean, default: true },
+    showInput: { type: Boolean, default: false },
+    showInputControls: { type: Boolean, default: true },
+    showStops: { type: Boolean, default: false },
     formatTooltip: { type: Function },
   },
-  components: {},
+  components: { YInputNumber },
   model: {
     prop: "value",
     event: "change",
@@ -61,11 +84,24 @@ export default {
         return undefined;
       }
     },
+    clientWidth() {
+      if (this.showInput) {
+        return this.$el.clientWidth - 160;
+      } else {
+        return this.$el.clientWidth;
+      }
+    },
   },
   methods: {
+    onchange(e) {
+      this.$emit("change", e);
+    },
+    biggerThanSteps(item) {
+      return Number(item.split("%")[0]) > Number(this.left.split("%")[0]);
+    },
     handleClick(e) {
       if (this.disabled) return;
-      const value = Math.round((e.offsetX / this.$el.clientWidth) * this.max);
+      const value = Math.round((e.offsetX / this.clientWidth) * this.max);
       if (!((value - this.min) % this.step)) {
         this.$emit("change", value);
       }
@@ -95,8 +131,7 @@ export default {
         }
         this.active = true;
         const offsetX = e.pageX - this.pageX;
-        let value =
-          temp + Math.round((offsetX / this.$el.clientWidth) * this.max);
+        let value = temp + Math.round((offsetX / this.clientWidth) * this.max);
         if (value < 0) {
           value = 0;
         }
@@ -117,7 +152,15 @@ export default {
       });
     },
   },
-  mounted() {},
+  mounted() {
+    if (this.showStops) {
+      let List = new Array(
+        Math.round((this.max - this.min) / this.step - 1)
+      ).fill(this.step);
+      List = List.map((item, index) => item * (index + 1) + "%");
+      this.stepList = List;
+    }
+  },
 };
 </script>
 

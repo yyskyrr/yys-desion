@@ -104,8 +104,6 @@
 </template>
 
 <script>
-import YButton from "../yys-button/yys-button";
-
 export default {
   name: "YInput",
   data() {
@@ -116,9 +114,6 @@ export default {
       marginRight: 0,
       width: "100%",
     };
-  },
-  components: {
-    YButton,
   },
   computed: {
     enterButtonText() {

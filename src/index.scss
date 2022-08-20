@@ -1,3 +1,5 @@
+@import 'variable';
+
 .yys-input-clear-icon {
   color: rgba(0, 0, 0, 0.25);
   font-size: 12px;
@@ -19,7 +21,7 @@
   font-size: 14px;
   line-height: 1.5;
   background-color: #fff;
-  border: 1px solid #d9d9d9;
+  border: 1px solid $border;
   border-radius: 4px;
   transition: all 0.3s;
 
@@ -28,13 +30,13 @@
   }
 
   &:hover {
-    border-color: #1890ff;
+    border-color: $primary;
     box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
   &:focus {
     outline: 0;
-    border-color: #1890ff;
+    border-color: $primary;
     box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
@@ -52,7 +54,7 @@
   &.yys-input-disabled {
     color: rgba(0, 0, 0, 0.25);
     background-color: #f5f5f5;
-    border-color: #d9d9d9;
+    border-color: $border;
     box-shadow: none;
     cursor: not-allowed;
     user-select: none
@@ -93,7 +95,7 @@
     transform: translateY(-50%);
     background-color: #fafafa;
     padding: 0 11px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid $border;
     border-right: 0;
   }
 
@@ -109,7 +111,7 @@
     transform: translateY(-50%);
     background-color: #fafafa;
     padding: 0 11px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid $border;
     border-left: 0;
   }
 
@@ -126,7 +128,7 @@
   }
 
   .yys-input-enterButton {
-    background-color: #1890ff;
+    background-color: $primary;
   }
 
   .yys-input-tooltip {
@@ -225,7 +227,7 @@ y-input-group {
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.65);
   background-color: #fff;
-  border: 1px solid #d9d9d9;
+  border: 1px solid $border;
 
   &:active {
     box-shadow: none;
@@ -251,15 +253,15 @@ y-input-group {
 
   &.yys-btn-primary {
     color: #fff;
-    background-color: #1890ff;
-    border-color: #1890ff;
+    background-color: $primary;
+    border-color: $primary;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 
     &.yys-btn-ghost {
-      color: #1890ff;
+      color: $primary;
       background: transparent !important;
-      border-color: #1890ff;
+      border-color: $primary;
     }
 
     &:hover {
@@ -320,7 +322,7 @@ y-input-group {
   &.yys-btn-dashed {
     color: rgba(0, 0, 0, 0.65);
     background-color: #fff;
-    border-color: #d9d9d9;
+    border-color: $border;
     border-style: dashed;
 
     &:hover {
@@ -337,7 +339,7 @@ y-input-group {
   }
 
   &.yys-btn-link {
-    color: #1890ff;
+    color: $primary;
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
@@ -350,7 +352,7 @@ y-input-group {
   &.yys-btn-disabled {
     color: rgba(0, 0, 0, 0.25);
     background-color: #f5f5f5;
-    border-color: #d9d9d9;
+    border-color: $border;
     text-shadow: none;
     box-shadow: none;
     cursor: not-allowed;
@@ -358,7 +360,7 @@ y-input-group {
     &:hover {
       color: rgba(0, 0, 0, 0.25);
       background-color: #f5f5f5;
-      border-color: #d9d9d9;
+      border-color: $border;
       text-shadow: none;
       box-shadow: none;
       cursor: not-allowed;
@@ -544,11 +546,11 @@ y-input-group {
   //  text-align: center;
   //  content: ' ';
   //  box-sizing: border-box;
-  //  border: 1px solid #d9d9d9;
+  //  border: 1px solid $border;
   //}
   //
   //&:checked::after {
-  //  background-color: #1890ff;
+  //  background-color: $primary;
   //  content: '✓';
   //  font-size: 12px;
   //  font-weight: bold;
@@ -561,7 +563,7 @@ y-input-group {
   position: absolute;
   width: 8px;
   height: 8px;
-  background-color: #1890ff;
+  background-color: $primary;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -582,7 +584,7 @@ y-input-group {
   width: 100%;
   line-height: 20px;
   border-radius: 4px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid $border;
   font-family: "Microsoft YaHei UI";
   transition: all 0.3s;
 
@@ -592,13 +594,13 @@ y-input-group {
   }
 
   &:hover {
-    border-color: #1890ff;
+    border-color: $primary;
     box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
   &:focus {
     outline: 0;
-    border-color: #1890ff;
+    border-color: $primary;
     box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
   }
 
@@ -702,7 +704,7 @@ y-input-group {
     color: rgba(0, 0, 0, 0.65);
     font-size: 14px;
     line-height: 1.5;
-    border: 1px solid #d9d9d9;
+    border: 1px solid $border;
     border-radius: 4px;
     transition: all 0.3s;
     box-shadow: 0 2px 5px 2px #ebebeb;
@@ -761,7 +763,7 @@ y-input-group {
     color: rgba(0, 0, 0, 0.65);
     font-size: 14px;
     line-height: 1.5;
-    border: 1px solid #d9d9d9;
+    border: 1px solid $border;
     border-radius: 4px;
     transition: all 0.3s;
     box-shadow: 0 2px 5px 2px #ebebeb;
@@ -823,7 +825,7 @@ y-input-group {
   &.yys-radio-border {
     padding: 12px 20px 12px 10px;
     border-radius: 4px;
-    border: 1px solid #dcdfe6;
+    border: 1px solid $background;
     box-sizing: border-box;
     height: 40px;
 
@@ -892,7 +894,7 @@ y-input-group {
   white-space: nowrap;
   vertical-align: middle;
   background: #fff;
-  border: 1px solid #dcdfe6;
+  border: 1px solid $background;
   border-left: 0;
 
   &.yys-radio-medium {
@@ -910,7 +912,7 @@ y-input-group {
   }
 
   &:first-child {
-    border-left: 1px solid #dcdfe6;
+    border-left: 1px solid $background;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
@@ -965,6 +967,19 @@ y-input-group {
 }
 
 .yys-slider-box {
+  &.show-input {
+    display: flex;
+    align-items: center;
+
+    .yys-slider {
+      margin-right: 30px;
+    }
+
+    .yys-input-number-wrap {
+      flex-shrink: 0;
+    }
+  }
+
   .yys-slider {
     width: 100%;
     height: 6px;
@@ -974,6 +989,17 @@ y-input-group {
     position: relative;
     cursor: pointer;
     vertical-align: middle;
+
+    .yys-slider-stop {
+      position: absolute;
+      height: 6px;
+      width: 6px;
+      top: 0;
+      border-radius: 100%;
+      background-color: #fff;
+      transform: translateX(-50%);
+      z-index: 9;
+    }
 
     .yys-slider-bar {
       background-color: #409eff;
@@ -1050,6 +1076,138 @@ y-input-group {
   }
 }
 
+.yys-input-number-wrap + .yys-input-number-wrap {
+  margin-left: 14px;
+}
+
+.yys-input-number-wrap {
+  height: 40px;
+  box-sizing: border-box;
+  width: 180px;
+  padding: 0 50px;
+  border: 1px solid $border;
+  transition: all 0.3s;
+  border-radius: 4px;
+  position: relative;
+  line-height: 38px;
+  display: inline-block;
+
+  &.disabled {
+    background-color: #f5f7fa;
+    border-color: #e4e7ed;
+    color: #c0c4cc;
+    cursor: not-allowed;
+    user-select: none;
+
+    &:hover {
+      border: 1px solid $border;
+      box-shadow: none;
+    }
+  }
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+  }
+
+  .yys-input-number__increase {
+    right: 0px;
+    border-radius: 0 4px 4px 0;
+    border-left: 1px solid #dcdfe6;
+  }
+
+  .yys-input-number__decrease {
+    left: 0px;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid #dcdfe6;
+  }
+
+  .yys-input-number__decrease, .yys-input-number__increase {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    width: 40px;
+    height: auto;
+    text-align: center;
+    background: #f5f7fa;
+    color: #606266;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+
+    &:hover {
+      cursor: $primary;
+    }
+
+    &.disabled {
+      color: #c0c4cc;
+      cursor: not-allowed;
+    }
+  }
+
+  .yys-input-number {
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    background-color: #fff;
+    border-width: 0;
+    outline: none;
+    height: auto;
+
+    &.disabled {
+      background-color: #f5f7fa;
+      border-color: #e4e7ed;
+      color: #c0c4cc;
+      cursor: not-allowed;
+      user-select: none;
+    }
+  }
+
+  &::-webkit-input-placeholder {
+    color: #bfbfc5;
+  }
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+  }
+
+  &.yys-input-number-medium {
+    height: 36px;
+    line-height: 34px;
+    padding: 0 43px;
+    width: 200px;
+  }
+
+  &.yys-input-number-small {
+    height: 32px;
+    line-height: 30px;
+    padding: 0 39px;
+    width: 130px;
+  }
+
+  &.yys-input-number-mini {
+    height: 28px;
+    line-height: 26px;
+    padding: 0 35px;
+    width: 130px;
+  }
+
+  &.yys-input-number-disabled {
+    color: rgba(0, 0, 0, 0.25);
+    background-color: #f5f5f5;
+    border-color: $border;
+    box-shadow: none;
+    cursor: not-allowed;
+    user-select: none
+  }
+}
+
 .yys-rate {
   line-height: 1;
 
@@ -1097,11 +1255,11 @@ y-input-group {
     position: relative;
     width: 40px;
     height: 20px;
-    border: 1px solid #dcdfe6;
+    border: 1px solid $background;
     outline: none;
     border-radius: 10px;
     box-sizing: border-box;
-    background: #dcdfe6;
+    background: $background;
     transition: border-color .3s, background-color .3s;
     vertical-align: middle;
     cursor: pointer;

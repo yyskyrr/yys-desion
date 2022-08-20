@@ -70,9 +70,9 @@
 
         <YInput
           v-else
-          :placeholder="newPlaceholder"
           v-model="label"
           :disabled="disabled"
+          :placeholder="newPlaceholder"
           :size="size"
           @blur="onblur"
         >
@@ -130,15 +130,8 @@
 </template>
 
 <script>
-import YInput from "../yys-input/yys-input";
-import YTextarea from "../yys-input/yys-textarea";
-
 export default {
   name: "YSelect",
-  components: {
-    YInput,
-    YTextarea,
-  },
   data() {
     return {
       isFocus: this.defaultOpen || this.open,

@@ -2,6 +2,7 @@ import button from "./components/yys-button/yys-button";
 import checkbox from "./components/yys-checkbox/yys-checkbox";
 import checkboxGroup from "./components/yys-checkbox/yys-checkbox-group";
 import input from "./components/yys-input/yys-input";
+import inputNumber from "./components/yys-input/yys-inputNumber";
 import textarea from "./components/yys-input/yys-textarea";
 import select from "./components/yys-select/yys-select";
 import radio from "./components/yys-radio/yys-radio";
@@ -21,6 +22,7 @@ const components = [
   form,
   formItem,
   input,
+  inputNumber,
   Switch,
   textarea,
   radio,
