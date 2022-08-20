@@ -1,26 +1,8 @@
 ## Project setup
 
-### 现支持：
+### Demo：
 
-YButton
-
-YInput
-
-YCheckbox
-
-YCheckboxGroup
-
-YTextArea
-
-YSelect
-
-YForm
-
-YFormItem
-
-开发ing
-
-demo: http://120.27.249.69/
+http://120.27.249.69/
 
 ### 如何使用？
 
@@ -30,5 +12,3 @@ $ import 'yys-design/dist/yys-design.css'
 
 $ Vue.use(yysDesign)
 ```
-
-vx 18839779806
