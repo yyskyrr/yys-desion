@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import YInputNumber from "@/components/yys-input/yys-inputNumber";
+import YInputNumber from "@/components/yys-input/yys-input-number";
 
 export default {
   name: "YSlider",

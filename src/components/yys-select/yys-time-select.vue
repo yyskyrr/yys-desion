@@ -1,80 +1,15 @@
 <template>
   <div :class="{ 'yys-select-disabled': disabled }" class="yys-select">
-    <div v-if="isTags">
-      <div class="yys-tags-list" @click="onClick">
-        <YTextarea
-          v-model="tagsListValue.join('一一一一一一')"
-          :placeholder="newPlaceholder"
-          auto-size
-          @blur="onblur"
-        ></YTextarea>
-        <div class="yys-tags-box">
-          <div v-for="(item, key) in tagsList" :key="key" class="yys-tags-item">
-            {{ item.label }}
-            <span class="yys-close-icon" @click.stop="onDeleteItem(item)"
-              >x
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div v-show="isFocus" class="yys-tags-options-box">
-        <div
-          v-for="(item, index) in optionsList"
-          v-if="optionsList.length > 0"
-          :key="index"
-          :class="{
-            'yys-tags-selected': tagsList.indexOf(item) > -1,
-          }"
-          class="yys-option-item"
-          @mousedown.prevent="onTagsSelect(item)"
-        >
-          {{ item.label }}
-        </div>
-        <div v-if="optionsList.length === 0" class="yys-empty-option">
-          <svg
-            height="41"
-            viewBox="0 0 64 41"
-            width="64"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g fill="none" fillRule="evenodd" transform="translate(0 1)">
-              <ellipse cx="32" cy="33" fill="#F5F5F5" rx="32" ry="7"></ellipse>
-              <g fillRule="nonzero" stroke="#D9D9D9">
-                <path
-                  d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"
-                ></path>
-                <path
-                  d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
-                  fill="#FAFAFA"
-                ></path>
-              </g>
-            </g>
-          </svg>
-          {{ emptyText || "暂无数据" }}
-        </div>
-      </div>
-    </div>
+    <div v-if="isTags"></div>
 
     <div v-else>
       <div
         class="yys-select-box"
         @mouseenter="mouseenter"
-        @mouseleave="showClear = false"
+        @mouseleave="showClose = false"
         @click="onClick"
       >
         <YInput
-          v-if="loading"
-          v-model="label"
-          :disabled="disabled"
-          :size="size"
-          loading
-          @blur="onblur"
-        >
-        </YInput>
-
-        <YInput
-          v-else
           v-model="label"
           :disabled="disabled"
           :placeholder="newPlaceholder"
@@ -87,13 +22,7 @@
           <template #suffix>
             <slot name="suffixIcon">
               <i
-                v-if="showArrow"
-                aria-hidden="true"
-                class="fa fa-angle-down"
-                style="cursor: pointer"
-              ></i>
-              <i
-                v-show="allowClear && showClear"
+                v-show="showClose"
                 aria-hidden="true"
                 class="fa fa-times-circle"
                 style="cursor: pointer; color: #d9d9d9"
@@ -146,13 +75,15 @@
 </template>
 
 <script>
+const moment = require("moment");
+
 export default {
-  name: "YSelect",
+  name: "YTimeSelect",
   data() {
     return {
       isFocus: this.defaultOpen || this.open,
       isTagsFocus: false,
-      showClear: false,
+      showClose: false,
       optionsList: [],
       tagsList: [],
       tagsListValue: [],
@@ -160,20 +91,56 @@ export default {
       label: "",
       currentValue: this.value || this.defaultValue,
       newPlaceholder: this.placeholder,
+      start: "",
+      step: "",
+      end: "",
+      selectableRange: "",
+      minTime: "",
     };
   },
   watch: {
     value(n, o) {
-      if (n !== o && this.mode !== "multiple") {
-        this.currentValue = n;
-        this.optionsList = [];
+      this.currentValue = n;
+      this.optionsList = [];
+      this.getOptions();
+    },
+    timeSelectList: {
+      handler(newVal, oldVal) {
+        this.newTimeSelectList = newVal;
         this.getOptions();
-      }
+      },
+      immediate: false,
+      deep: true,
+    },
+    pickerOptions: {
+      handler(newVal, oldVal) {
+        this.start = newVal.start;
+        this.step = newVal.step;
+        this.end = newVal.end;
+        this.selectableRange = newVal.selectableRange;
+        this.minTime = newVal.minTime;
+      },
+      immediate: true,
+      deep: true,
     },
   },
   computed: {
     isTags() {
       return this.mode === "tags" || this.mode === "multiple";
+    },
+    timeSelectList() {
+      const list = [];
+      let time = this.start;
+      do {
+        list.push({ time });
+        time = moment(time, "HH:mm").add(this.step, "HH:mm").format("HH:mm");
+      } while (+moment(time, "HH:mm") <= +moment(this.end, "HH:mm"));
+      list.map((item) => {
+        if (+moment(item.time, "HH:mm") <= +moment(this.minTime, "HH:mm")) {
+          item.disabled = true;
+        }
+      });
+      return list;
     },
   },
   props: {
@@ -186,10 +153,10 @@ export default {
     disabled: Boolean,
     open: Boolean,
     defaultOpen: Boolean,
-    showArrow: { type: Boolean, default: true },
     allowClear: { type: Boolean, default: false },
     labelInValue: Boolean,
     loading: Boolean,
+    pickerOptions: Object,
   },
   model: {
     prop: "value",
@@ -198,28 +165,18 @@ export default {
   methods: {
     mouseenter() {
       if (this.label) {
-        this.showClear = true;
+        this.showClose = true;
       }
     },
     handleClear() {
       this.$emit("change", "");
       this.label = "";
-      this.showClear = false;
+      this.showClose = false;
     },
     onClick(e) {
       if (this.disabled) return;
       this.isFocus = !this.isFocus;
       this.$emit("click", e);
-    },
-    onDeleteItem(item) {
-      this.tagsList.splice(this.tagsList.indexOf(item), 1);
-      this.tagsListValue.splice(this.tagsListValue.indexOf(item.label), 1);
-      if (this.tagsList.length === 0) {
-        this.newPlaceholder = this.placeholder;
-      }
-      if (this.mode === "multiple") {
-        this.optionsList.push(item);
-      }
     },
     onblur(e) {
       this.isFocus = false;
@@ -240,6 +197,18 @@ export default {
     },
     getOptions() {
       const optionsList = [];
+      if (this.newTimeSelectList.length) {
+        const optionsList = [];
+        this.newTimeSelectList.forEach((item) => {
+          optionsList.push({
+            label: item.time,
+            value: item.time,
+            disabled: item.disabled || false,
+          });
+        });
+        this.optionsList = optionsList;
+        return;
+      }
       this.$slots.default &&
         this.$slots.default.forEach((item) => {
           if (
@@ -256,29 +225,6 @@ export default {
           });
         });
       this.optionsList = optionsList;
-    },
-    onTagsSelect(item) {
-      if (this.mode === "multiple") {
-        this.optionsList.splice(this.optionsList.indexOf(item), 1);
-        this.tagsList.push(item);
-        this.$emit("change", this.tagsList);
-        return;
-      }
-      if (this.tagsList.indexOf(item) > -1) {
-        this.tagsList.splice(this.tagsList.indexOf(item), 1);
-      } else {
-        this.tagsList.push(item);
-      }
-      const tagsListValue = [];
-      this.tagsList.forEach((item) => {
-        tagsListValue.push(item.label.trim());
-      });
-      this.tagsListValue = tagsListValue;
-      if (this.tagsList.length > 0) {
-        this.newPlaceholder = "";
-      }
-
-      this.$emit("change", this.tagsListValue);
     },
   },
   mounted() {

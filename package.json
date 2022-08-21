@@ -9,7 +9,8 @@
     "lib": "vue-cli-service build --target lib --name yys-design  ./src/index.js"
   },
   "dependencies": {
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "vuex-persistedstate": "^4.1.0",

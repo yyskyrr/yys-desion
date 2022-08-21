@@ -22,6 +22,7 @@
       <InputNumber v-else-if="currentIndex === 7" />
       <Select v-else-if="currentIndex === 8" />
       <Form v-else-if="currentIndex === 9" />
+      <TimePicker v-else-if="currentIndex === 10" />
     </div>
   </div>
 </template>
@@ -32,6 +33,7 @@ import Checkbox from "./pages/checkbox";
 import Input from "./pages/input";
 import InputNumber from "./pages/inputNumber";
 import Select from "./pages/select";
+import TimePicker from "./pages/timePicker";
 import Form from "./pages/form";
 import Radio from "./pages/radio";
 import Rate from "./pages/rate";
@@ -51,6 +53,7 @@ export default {
     Rate,
     Slider,
     Switch_,
+    TimePicker,
   },
   created() {},
   data() {
@@ -66,6 +69,7 @@ export default {
         "InputNumber 计数器",
         "Select 选择框",
         "Form 表单",
+        "TimePicker 时间选择器",
       ],
     };
   },

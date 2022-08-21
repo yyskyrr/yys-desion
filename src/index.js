@@ -2,9 +2,10 @@ import button from "./components/yys-button/yys-button";
 import checkbox from "./components/yys-checkbox/yys-checkbox";
 import checkboxGroup from "./components/yys-checkbox/yys-checkbox-group";
 import input from "./components/yys-input/yys-input";
-import inputNumber from "./components/yys-input/yys-inputNumber";
+import inputNumber from "./components/yys-input/yys-input-number";
 import textarea from "./components/yys-input/yys-textarea";
 import select from "./components/yys-select/yys-select";
+import timeSelect from "./components/yys-select/yys-time-select";
 import radio from "./components/yys-radio/yys-radio";
 import radioGroup from "./components/yys-radio/yys-radio-group";
 import radioButton from "./components/yys-radio/yys-radio-button";
@@ -19,6 +20,7 @@ const components = [
   button,
   checkbox,
   checkboxGroup,
+  timeSelect,
   form,
   formItem,
   input,
