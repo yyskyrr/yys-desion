@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h3>固定时间点</h3>
-    <YTimeSelect
+    <YTimePicker
       v-model="value"
       :picker-options="{
         start: '08:30',
@@ -10,18 +10,18 @@
       }"
       placeholder="选择时间"
     >
-    </YTimeSelect>
+    </YTimePicker>
     <h3>任意时间点</h3>
-    <YTimeSelect
+    <YTimePicker
       v-model="value1"
       :picker-options="{
         selectableRange: '18:30:00 - 20:30:00',
       }"
       placeholder="任意时间点"
     >
-    </YTimeSelect>
+    </YTimePicker>
     <h3>固定时间范围</h3>
-    <YTimeSelect
+    <YTimePicker
       placeholder="起始时间"
       v-model="startTime"
       :picker-options="{
@@ -30,8 +30,8 @@
         end: '18:30',
       }"
     >
-    </YTimeSelect>
-    <YTimeSelect
+    </YTimePicker>
+    <YTimePicker
       placeholder="结束时间"
       v-model="endTime"
       :picker-options="{
@@ -41,7 +41,7 @@
         minTime: startTime,
       }"
     >
-    </YTimeSelect>
+    </YTimePicker>
     <h3 id="attributes">Attributes</h3>
     <table>
       <thead>

@@ -23,6 +23,7 @@
       <Select v-else-if="currentIndex === 8" />
       <Form v-else-if="currentIndex === 9" />
       <TimePicker v-else-if="currentIndex === 10" />
+      <DatePicker v-else-if="currentIndex === 11" />
     </div>
   </div>
 </template>
@@ -34,6 +35,7 @@ import Input from "./pages/input";
 import InputNumber from "./pages/inputNumber";
 import Select from "./pages/select";
 import TimePicker from "./pages/timePicker";
+import DatePicker from "./pages/datePicker";
 import Form from "./pages/form";
 import Radio from "./pages/radio";
 import Rate from "./pages/rate";
@@ -54,6 +56,7 @@ export default {
     Slider,
     Switch_,
     TimePicker,
+    DatePicker,
   },
   created() {},
   data() {
@@ -70,6 +73,7 @@ export default {
         "Select 选择框",
         "Form 表单",
         "TimePicker 时间选择器",
+        "DatePicker 日期选择器",
       ],
     };
   },

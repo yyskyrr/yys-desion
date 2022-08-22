@@ -5,7 +5,8 @@ import input from "./components/yys-input/yys-input";
 import inputNumber from "./components/yys-input/yys-input-number";
 import textarea from "./components/yys-input/yys-textarea";
 import select from "./components/yys-select/yys-select";
-import timeSelect from "./components/yys-select/yys-time-select";
+import timePicker from "./components/yys-select/yys-time-picker";
+import datePicker from "./components/yys-select/yys-date-picker";
 import radio from "./components/yys-radio/yys-radio";
 import radioGroup from "./components/yys-radio/yys-radio-group";
 import radioButton from "./components/yys-radio/yys-radio-button";
@@ -20,7 +21,8 @@ const components = [
   button,
   checkbox,
   checkboxGroup,
-  timeSelect,
+  timePicker,
+  datePicker,
   form,
   formItem,
   input,

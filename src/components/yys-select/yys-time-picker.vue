@@ -137,7 +137,7 @@
 const moment = require("moment");
 
 export default {
-  name: "YTimeSelect",
+  name: "YTimePicker",
   data() {
     return {
       isFocus: this.defaultOpen || this.open,
@@ -210,7 +210,7 @@ export default {
     },
     value: {
       handler(newVal, oldVal) {
-        if (this.isSelectableRange) {
+        if (this.isSelectableRange && newVal) {
           this.HH = newVal.split(":")[0];
           this.mm = newVal.split(":")[1];
           this.ss = newVal.split(":")[2] || "00";
@@ -233,7 +233,7 @@ export default {
     disabled: Boolean,
     open: Boolean,
     defaultOpen: Boolean,
-    clearable: { type: Boolean, default: false },
+    clearable: { type: Boolean, default: true },
     rangeSeparator: { type: String, default: "-" },
     prefixIcon: { type: String, default: "fa-clock-o" },
     labelInValue: Boolean,
@@ -268,6 +268,9 @@ export default {
     handleClear() {
       this.$emit("change", "");
       this.label = "";
+      this.HH = "";
+      this.mm = "";
+      this.ss = "";
       this.showClose = false;
     },
     onClick() {
