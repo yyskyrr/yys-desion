@@ -210,7 +210,7 @@ export default {
     },
     value: {
       handler(newVal, oldVal) {
-        if (this.isSelectableRange) {
+        if (this.isSelectableRange && newVal) {
           this.HH = newVal.split(":")[0];
           this.mm = newVal.split(":")[1];
           this.ss = newVal.split(":")[2] || "00";
@@ -235,7 +235,7 @@ export default {
     defaultOpen: Boolean,
     clearable: { type: Boolean, default: true },
     rangeSeparator: { type: String, default: "-" },
-    prefixIcon: { type: String, default: "fa-clock-o" },
+    prefixIcon: { type: String, default: "fa-calendar" },
     labelInValue: Boolean,
     loading: Boolean,
     pickerOptions: Object,
@@ -268,6 +268,9 @@ export default {
     handleClear() {
       this.$emit("change", "");
       this.label = "";
+      this.HH = "";
+      this.mm = "";
+      this.ss = "";
       this.showClose = false;
     },
     onClick() {

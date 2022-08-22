@@ -1,16 +1,8 @@
 <template>
   <div id="app">
     <h3>选择日</h3>
-    <YTimePicker
-      v-model="value"
-      :picker-options="{
-        start: '08:30',
-        step: '00:15',
-        end: '18:30',
-      }"
-      placeholder="选择时间"
-    >
-    </YTimePicker>
+    <YDatePicker v-model="value" type="date" placeholder="选择日期">
+    </YDatePicker>
   </div>
 </template>
 
