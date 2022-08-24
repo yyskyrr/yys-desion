@@ -40,12 +40,12 @@
       <div class="yys-date-header">
         <div>
           <i
-            @click="subtractYear"
+            @mousedown.prevent="subtractYear"
             class="fa fa-angle-double-left"
             aria-hidden="true"
           ></i>
           <i
-            @click="subtractMonth"
+            @mousedown.prevent="subtractMonth"
             class="fa fa-angle-left"
             aria-hidden="true"
           ></i>
@@ -55,9 +55,13 @@
           <span class="month">{{ month }} 月</span>
         </div>
         <div>
-          <i @click="addMonth" class="fa fa-angle-right" aria-hidden="true"></i>
           <i
-            @click="addYear"
+            @mousedown.prevent="addMonth"
+            class="fa fa-angle-right"
+            aria-hidden="true"
+          ></i>
+          <i
+            @mousedown.prevent="addYear"
             class="fa fa-angle-double-right"
             aria-hidden="true"
           ></i>
@@ -77,7 +81,19 @@
           <div v-for="(item, index) in dayList" :key="index">
             <span
               @mousedown.prevent="(e) => onSelect(item, e)"
-              :style="{ color: item.notCur ? '#c0c4cc' : '#000000a6' }"
+              :style="{
+                color: item.notCur
+                  ? '#c0c4cc'
+                  : item.value === day
+                  ? '#fff'
+                  : item.value === moment.date()
+                  ? '#1890ff'
+                  : '#000000a6',
+                background:
+                  item.value === day && !item.notCur
+                    ? '#1890ff'
+                    : 'transparent',
+              }"
               >{{ item.value }}
             </span>
           </div>
@@ -106,30 +122,19 @@ export default {
       startTime: "",
       moment: moment(),
       endTime: "",
-      year: "",
-      month: "",
+      year: moment().year(),
+      month: moment().month() + 1,
+      day: "",
     };
   },
   watch: {
     value: {
       handler(newVal, oldVal) {
-        if (this.isSelectableRange && newVal) {
-          this.HH = newVal.split(":")[0];
-          this.mm = newVal.split(":")[1];
-          this.ss = newVal.split(":")[2] || "00";
-          this.label = `${this.HH}:${this.mm}:${this.ss}`;
-          return;
-        }
+        this.year = newVal.split("-")[0];
+        this.month = newVal.split("-")[1];
+        this.day = Number(newVal.split("-")[2]);
       },
-      immediate: true,
-      deep: true,
-    },
-    moment: {
-      handler(newVal, oldVal) {
-        this.year = newVal.year();
-        this.month = newVal.month() + 1;
-      },
-      immediate: true,
+      immediate: false,
       deep: true,
     },
   },
@@ -164,9 +169,6 @@ export default {
           return item;
         }
       });
-
-      console.log(list);
-
       return list;
     },
   },

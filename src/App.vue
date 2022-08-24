@@ -13,17 +13,17 @@
 
     <div class="content">
       <Button v-if="currentIndex === 0" />
-      <Checkbox v-else-if="currentIndex === 1" />
-      <Radio v-else-if="currentIndex === 2" />
-      <Rate v-else-if="currentIndex === 3" />
-      <Switch_ v-else-if="currentIndex === 4" />
-      <Slider v-else-if="currentIndex === 5" />
-      <Input v-else-if="currentIndex === 6" />
-      <InputNumber v-else-if="currentIndex === 7" />
-      <Select v-else-if="currentIndex === 8" />
-      <Form v-else-if="currentIndex === 9" />
-      <TimePicker v-else-if="currentIndex === 10" />
-      <DatePicker v-else-if="currentIndex === 11" />
+      <Radio v-else-if="currentIndex === 1" />
+      <Checkbox v-else-if="currentIndex === 2" />
+      <Input v-else-if="currentIndex === 3" />
+      <InputNumber v-else-if="currentIndex === 4" />
+      <Select v-else-if="currentIndex === 5" />
+      <Switch_ v-else-if="currentIndex === 6" />
+      <Slider v-else-if="currentIndex === 7" />
+      <TimePicker v-else-if="currentIndex === 8" />
+      <DatePicker v-else-if="currentIndex === 9" />
+      <Rate v-else-if="currentIndex === 10" />
+      <Form v-else-if="currentIndex === 11" />
     </div>
   </div>
 </template>
@@ -63,17 +63,17 @@ export default {
     return {
       componentList: [
         "Button 按钮",
-        "Checkbox 多选框",
         "Radio 单选框",
-        "Rate 评分",
-        "Switch 开关",
-        "Slider 滑块",
+        "Checkbox 多选框",
         "Input 输入框",
         "InputNumber 计数器",
         "Select 选择框",
-        "Form 表单",
+        "Switch 开关",
+        "Slider 滑块",
         "TimePicker 时间选择器",
         "DatePicker 日期选择器",
+        "Rate 评分",
+        "Form 表单",
       ],
     };
   },

@@ -214,6 +214,9 @@ export default {
           this.HH = newVal.split(":")[0];
           this.mm = newVal.split(":")[1];
           this.ss = newVal.split(":")[2] || "00";
+          if (this.ss.length === 1) {
+            this.ss = "0" + this.ss;
+          }
           this.label = `${this.HH}:${this.mm}:${this.ss}`;
           return;
         }
@@ -238,7 +241,14 @@ export default {
     prefixIcon: { type: String, default: "fa-clock-o" },
     labelInValue: Boolean,
     loading: Boolean,
-    pickerOptions: Object,
+    pickerOptions: {
+      type: Object,
+      default: () => {
+        return {
+          selectableRange: "00:00:00 - 23:59:59",
+        };
+      },
+    },
   },
   model: {
     prop: "value",
@@ -276,6 +286,10 @@ export default {
     onClick() {
       if (this.disabled) return;
       this.isFocus = !this.isFocus;
+      this.HH = moment().hour();
+      this.mm = moment().minute();
+      this.ss = moment().second();
+      this.$emit("change", `${this.HH}:${this.mm}:${this.ss}`);
       this.$nextTick(() => {
         if (this.isSelectableRange) {
           this.$el.querySelector(`#HH`).scrollTop = Number(this.HH) * 32;

@@ -175,6 +175,9 @@ export default {
     isTags() {
       return this.mode === "tags" || this.mode === "multiple";
     },
+    rule1() {
+      return this.$parent.rule1;
+    },
   },
   props: {
     value: { default: "" },
@@ -235,6 +238,9 @@ export default {
       if (this.labelInValue) {
         this.$emit("change", { key: item.value, label: item.label });
         return;
+      }
+      if (this.rule1 && this.rule1.trigger === "change") {
+        this.$parent.handleChange(item.value);
       }
       this.$emit("change", item.value);
     },

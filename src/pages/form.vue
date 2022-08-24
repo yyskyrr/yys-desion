@@ -11,9 +11,32 @@
           <YOption value="beijing">区域二</YOption>
         </YSelect>
       </YFormItem>
+      <YFormItem label="活动时间">
+        <YDatePicker
+          type="date"
+          placeholder="选择日期"
+          v-model="form.date1"
+          style="width: 100%"
+        ></YDatePicker>
+        <div class="line">-</div>
+        <YTimePicker
+          placeholder="选择时间"
+          v-model="form.date2"
+          style="width: 100%"
+        ></YTimePicker>
+      </YFormItem>
+      <YFormItem label="即时配送">
+        <YSwitch v-model="form.delivery"></YSwitch>
+      </YFormItem>
       <YFormItem label="活动性质">
         <YCheckboxGroup v-model="form.type" :options="checkBoxOptions">
         </YCheckboxGroup>
+      </YFormItem>
+      <YFormItem label="特殊资源">
+        <YRadioGroup v-model="form.resource">
+          <YRadio label="线上品牌商赞助">线上品牌商赞助</YRadio>
+          <YRadio label="线下场地免费">线下场地免费</YRadio>
+        </YRadioGroup>
       </YFormItem>
       <YFormItem label="活动形式">
         <YTextarea v-model="form.desc"></YTextarea>
@@ -71,9 +94,36 @@
           <YOption value="beijing">区域二</YOption>
         </YSelect>
       </YFormItem>
+      <YFormItem label="活动时间" required>
+        <YFormItem prop="date1" style="margin-bottom: 0">
+          <YDatePicker
+            type="date"
+            placeholder="选择日期"
+            v-model="ruleForm.date1"
+            style="width: 100%"
+          ></YDatePicker>
+        </YFormItem>
+        <div class="line">-</div>
+        <YFormItem prop="date2" style="margin-bottom: 0">
+          <YTimePicker
+            placeholder="选择时间"
+            v-model="ruleForm.date2"
+            style="width: 100%"
+          ></YTimePicker>
+        </YFormItem>
+      </YFormItem>
+      <YFormItem label="即时配送" prop="delivery">
+        <YSwitch v-model="ruleForm.delivery"></YSwitch>
+      </YFormItem>
       <YFormItem label="活动性质" prop="type">
         <YCheckboxGroup v-model="ruleForm.type" :options="checkBoxOptions">
         </YCheckboxGroup>
+      </YFormItem>
+      <YFormItem label="特殊资源" prop="resource">
+        <YRadioGroup v-model="ruleForm.resource">
+          <YRadio label="线上品牌商赞助">线上品牌商赞助</YRadio>
+          <YRadio label="线下场地免费">线下场地免费</YRadio>
+        </YRadioGroup>
       </YFormItem>
       <YFormItem label="活动形式" prop="desc">
         <YTextarea v-model="ruleForm.desc"></YTextarea>
@@ -190,4 +240,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.yys-form {
+  width: 500px;
+}
+.yys-form-item {
+  margin-bottom: 22px;
+}
+.line {
+  margin: 0 10px;
+}
+</style>

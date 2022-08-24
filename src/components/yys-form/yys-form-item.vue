@@ -4,21 +4,26 @@
     class="yys-form-item"
   >
     <span
-      :class="{ 'yys-form-label-required': rule1.required }"
+      v-if="label"
+      :class="{ 'yys-form-label-required': rule1.required || required }"
       :style="{
-        width: inline && !this.label ? 0 : labelWidth,
+        width: inline && !label ? 0 : labelWidth,
         textAlign: labelPosition === 'top' ? 'left' : labelPosition,
       }"
       class="yys-form-label"
     >
-      {{ this.label }}
+      {{ label }}
     </span>
+    <span
+      v-if="!label && !prop"
+      :style="{ width: inline ? '20px' : labelWidth }"
+    ></span>
     <slot></slot>
     <span
       v-if="messageVisible"
       class="yys-form-message"
       :style="{
-        left: this.label ? labelWidth : '12px',
+        left: label ? labelWidth : '12px',
       }"
       >{{ rule1.message }}
     </span>
@@ -31,6 +36,7 @@ export default {
   props: {
     label: String,
     prop: String,
+    required: Boolean,
   },
   data() {
     return {
@@ -51,11 +57,16 @@ export default {
       return this.$parent.rules;
     },
     rule1() {
-      return this.rules && this.prop ? this.rules[this.prop][0] : {};
+      return this.rules && this.prop && this.rules[this.prop]
+        ? this.rules[this.prop][0]
+        : {};
     },
   },
   methods: {
     handleBlur(value) {
+      this.messageVisible = !!(!value && this.rule1.required);
+    },
+    handleChange(value) {
       this.messageVisible = !!(!value && this.rule1.required);
     },
   },
