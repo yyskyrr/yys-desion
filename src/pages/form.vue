@@ -129,10 +129,254 @@
         <YTextarea v-model="ruleForm.desc"></YTextarea>
       </YFormItem>
       <YFormItem>
-        <YButton type="primary" @click="onSubmit">立即创建</YButton>
-        <YButton>取消</YButton>
+        <YButton type="primary" @click="submitForm('ruleForm')"
+          >立即创建</YButton
+        >
+        <YButton @click="resetForm('ruleForm')">重置</YButton>
       </YFormItem>
     </YForm>
+    <!--    <h3>表单内组件尺寸控制</h3>-->
+    <!--    <YForm ref="form" :model="sizeForm" label-width="80px" size="mini">-->
+    <!--      <YFormItem label="活动名称">-->
+    <!--        <YInput v-model="sizeForm.name"></YInput>-->
+    <!--      </YFormItem>-->
+    <!--      <YFormItem label="活动区域">-->
+    <!--        <YSelect v-model="sizeForm.region" placeholder="请选择活动区域">-->
+    <!--          <YOption value="shanghai">区域一</YOption>-->
+    <!--          <YOption value="beijing">区域二</YOption>-->
+    <!--        </YSelect>-->
+    <!--      </YFormItem>-->
+    <!--      <YFormItem label="活动时间">-->
+    <!--        <YDatePicker-->
+    <!--          type="date"-->
+    <!--          placeholder="选择日期"-->
+    <!--          v-model="sizeForm.date1"-->
+    <!--          style="width: 100%"-->
+    <!--        ></YDatePicker>-->
+    <!--        <div class="line" :span="2">-</div>-->
+    <!--        <YTimePicker-->
+    <!--          placeholder="选择时间"-->
+    <!--          v-model="sizeForm.date2"-->
+    <!--          style="width: 100%"-->
+    <!--        ></YTimePicker>-->
+    <!--      </YFormItem>-->
+    <!--      <YFormItem label="地址">-->
+    <!--        <YRadioGroup v-model="sizeForm.type">-->
+    <!--          <YRadioButton label="上海"></YRadioButton>-->
+    <!--          <YRadioButton label="北京"></YRadioButton>-->
+    <!--          <YRadioButton label="广州"></YRadioButton>-->
+    <!--          <YRadioButton label="深圳"></YRadioButton>-->
+    <!--        </YRadioGroup>-->
+    <!--      </YFormItem>-->
+    <!--      <YFormItem label="特殊资源">-->
+    <!--        <YRadioGroup v-model="sizeForm.resource" size="medium">-->
+    <!--          <YRadio border label="线上品牌商赞助">线上品牌商赞助</YRadio>-->
+    <!--          <YRadio border label="线下场地免费">线下场地免费</YRadio>-->
+    <!--        </YRadioGroup>-->
+    <!--      </YFormItem>-->
+    <!--      <YFormItem size="large">-->
+    <!--        <YButton type="primary" @click="onSubmit">立即创建</YButton>-->
+    <!--        <YButton>取消</YButton>-->
+    <!--      </YFormItem>-->
+    <!--    </YForm>-->
+    <h3 id="form-attributes">Form Attributes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th>说明</th>
+          <th>类型</th>
+          <th>可选值</th>
+          <th>默认值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>model</td>
+          <td>表单数据对象</td>
+          <td>object</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>rules</td>
+          <td>表单验证规则</td>
+          <td>object</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>inline</td>
+          <td>行内表单模式</td>
+          <td>boolean</td>
+          <td>—</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>label-position</td>
+          <td>
+            表单域标签的位置，如果值为 left 或者 right 时，则需要设置
+            <code>label-width</code>
+          </td>
+          <td>string</td>
+          <td>right/left/top</td>
+          <td>right</td>
+        </tr>
+        <tr>
+          <td>label-width</td>
+          <td>
+            表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item
+            会继承该值。支持 <code>auto</code>。
+          </td>
+          <td>string</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>hide-required-asterisk</td>
+          <td>是否隐藏必填字段的标签旁边的红色星号</td>
+          <td>boolean</td>
+          <td>—</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>show-message</td>
+          <td>是否显示校验错误信息</td>
+          <td>boolean</td>
+          <td>—</td>
+          <td>true</td>
+        </tr>
+        <!--        <tr>-->
+        <!--          <td>size</td>-->
+        <!--          <td>用于控制该表单内组件的尺寸</td>-->
+        <!--          <td>string</td>-->
+        <!--          <td>medium / small / mini</td>-->
+        <!--          <td>—</td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--          <td>disabled</td>-->
+        <!--          <td>-->
+        <!--            是否禁用该表单内的所有组件。若设置为 true，则表单内组件上的 disabled-->
+        <!--            属性不再生效-->
+        <!--          </td>-->
+        <!--          <td>boolean</td>-->
+        <!--          <td>—</td>-->
+        <!--          <td>false</td>-->
+        <!--        </tr>-->
+      </tbody>
+    </table>
+    <h3 id="form-events">Form Events</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>事件名称</th>
+          <th>说明</th>
+          <th>回调参数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>validate</td>
+          <td>任一表单项被校验后触发</td>
+          <td>被校验的表单项 prop 值，校验是否通过，错误消息（如果存在）</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="form-item-attributes">Form-Item Attributes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th>说明</th>
+          <th>类型</th>
+          <th>可选值</th>
+          <th>默认值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>prop</td>
+          <td>
+            表单域 model 字段，在使用 validate、resetFields
+            方法的情况下，该属性是必填的
+          </td>
+          <td>string</td>
+          <td>传入 Form 组件的 <code>model</code> 中的字段</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>标签文本</td>
+          <td>string</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>label-width</td>
+          <td>表单域标签的的宽度，例如 '50px'。支持 <code>auto</code>。</td>
+          <td>string</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>required</td>
+          <td>是否必填，如不设置，则会根据校验规则自动生成</td>
+          <td>boolean</td>
+          <td>—</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>rules</td>
+          <td>表单验证规则</td>
+          <td>object</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td>
+            表单域验证错误信息,
+            设置该值会使表单验证状态变为<code>error</code>，并显示该错误信息
+          </td>
+          <td>string</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>show-message</td>
+          <td>是否显示校验错误信息</td>
+          <td>boolean</td>
+          <td>—</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>用于控制该表单域下组件的尺寸</td>
+          <td>string</td>
+          <td>medium / small / mini</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="form-item-slot">Form-Item Slot</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>—</td>
+          <td>Form Item 的内容</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>标签文本的内容</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -142,6 +386,16 @@ export default {
   components: {},
   data() {
     return {
+      sizeForm: {
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
+        delivery: false,
+        type: 0,
+        resource: 0,
+        desc: "",
+      },
       ruleForm: {
         name: "",
         region: "",

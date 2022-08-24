@@ -243,6 +243,9 @@ export default {
       this.isFocus = false;
       this.$emit("change", `${this.year}-${this.month}-${item.value}`);
     },
+    submit() {
+      this.$emit("change", this.value);
+    },
   },
   mounted() {},
 };

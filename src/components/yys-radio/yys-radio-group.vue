@@ -1,6 +1,7 @@
 <template>
   <div class="yys-radio-group">
     <slot></slot>
+    12312{{ size }}
   </div>
 </template>
 
@@ -25,6 +26,9 @@ export default {
   methods: {
     onChange(val) {
       this.$emit("change", val);
+    },
+    submit() {
+      this.$emit("change", this.value);
     },
   },
 };

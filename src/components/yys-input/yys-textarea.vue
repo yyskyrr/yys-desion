@@ -71,6 +71,9 @@ export default {
     minRows() {
       return this.autoSize.minRows || 2;
     },
+    // rule1() {
+    //   return this.$parent.rule1;
+    // },
   },
   props: {
     placeholder: String,
@@ -89,7 +92,13 @@ export default {
       this.$emit("click", event);
     },
     handleBlur(event) {
-      this.$emit("blur", event);
+      // if (this.rule1 && this.rule1.trigger === "blur") {
+      //   this.$parent.handleBlur(this.value);
+      // }
+      this.$emit("blur", this.value, event);
+    },
+    submit() {
+      this.$emit("blur", this.value);
     },
     handleFocus(event) {
       this.$emit("focus", event);

@@ -327,6 +327,9 @@ export default {
       }
       this.$emit("change", item.value);
     },
+    submit() {
+      this.$emit("change", this.value);
+    },
     getTimeSelectList() {
       const list = [];
       let time = this.start;

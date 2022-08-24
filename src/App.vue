@@ -18,12 +18,13 @@
       <Input v-else-if="currentIndex === 3" />
       <InputNumber v-else-if="currentIndex === 4" />
       <Select v-else-if="currentIndex === 5" />
-      <Switch_ v-else-if="currentIndex === 6" />
-      <Slider v-else-if="currentIndex === 7" />
-      <TimePicker v-else-if="currentIndex === 8" />
-      <DatePicker v-else-if="currentIndex === 9" />
-      <Rate v-else-if="currentIndex === 10" />
-      <Form v-else-if="currentIndex === 11" />
+      <Cascader v-else-if="currentIndex === 6" />
+      <Switch_ v-else-if="currentIndex === 7" />
+      <Slider v-else-if="currentIndex === 8" />
+      <TimePicker v-else-if="currentIndex === 9" />
+      <DatePicker v-else-if="currentIndex === 10" />
+      <Rate v-else-if="currentIndex === 11" />
+      <Form v-else-if="currentIndex === 12" />
     </div>
   </div>
 </template>
@@ -34,6 +35,7 @@ import Checkbox from "./pages/checkbox";
 import Input from "./pages/input";
 import InputNumber from "./pages/inputNumber";
 import Select from "./pages/select";
+import Cascader from "./pages/cascader";
 import TimePicker from "./pages/timePicker";
 import DatePicker from "./pages/datePicker";
 import Form from "./pages/form";
@@ -50,6 +52,7 @@ export default {
     Input,
     InputNumber,
     Select,
+    Cascader,
     Form,
     Radio,
     Rate,
@@ -68,6 +71,7 @@ export default {
         "Input 输入框",
         "InputNumber 计数器",
         "Select 选择框",
+        "Cascader 级联选择器",
         "Switch 开关",
         "Slider 滑块",
         "TimePicker 时间选择器",

@@ -33,6 +33,9 @@ export default {
     newValue() {
       return [...this.value, ...this.defaultValue];
     },
+    // rule1() {
+    //   return this.$parent.rule1;
+    // },
   },
   mounted() {},
   methods: {
@@ -53,6 +56,12 @@ export default {
       } else {
         this.newValue.push(item);
       }
+      // if (this.rule1 && this.rule1.trigger === "change") {
+      //   this.$parent.handleChange(this.newValue);
+      // }
+      this.$emit("change", this.newValue);
+    },
+    submit() {
       this.$emit("change", this.newValue);
     },
   },

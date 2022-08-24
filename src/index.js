@@ -5,6 +5,7 @@ import input from "./components/yys-input/yys-input";
 import inputNumber from "./components/yys-input/yys-input-number";
 import textarea from "./components/yys-input/yys-textarea";
 import select from "./components/yys-select/yys-select";
+import cascader from "./components/yys-select/yys-cascader";
 import timePicker from "./components/yys-select/yys-time-picker";
 import datePicker from "./components/yys-select/yys-date-picker";
 import radio from "./components/yys-radio/yys-radio";
@@ -23,6 +24,7 @@ const components = [
   checkboxGroup,
   timePicker,
   datePicker,
+  cascader,
   form,
   formItem,
   input,

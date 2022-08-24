@@ -175,9 +175,9 @@ export default {
     isTags() {
       return this.mode === "tags" || this.mode === "multiple";
     },
-    rule1() {
-      return this.$parent.rule1;
-    },
+    // rule1() {
+    //   return this.$parent.rule1;
+    // },
   },
   props: {
     value: { default: "" },
@@ -239,10 +239,13 @@ export default {
         this.$emit("change", { key: item.value, label: item.label });
         return;
       }
-      if (this.rule1 && this.rule1.trigger === "change") {
-        this.$parent.handleChange(item.value);
-      }
+      // if (this.rule1 && this.rule1.trigger === "change") {
+      //   this.$parent.handleChange(item.value);
+      // }
       this.$emit("change", item.value);
+    },
+    submit() {
+      this.$emit("change", this.value);
     },
     getOptions() {
       const optionsList = [];

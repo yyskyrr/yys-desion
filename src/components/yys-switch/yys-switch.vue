@@ -58,6 +58,9 @@ export default {
       console.log(!this.value);
       this.$emit("change", !this.value);
     },
+    submit() {
+      this.$emit("change", this.value);
+    },
   },
   mounted() {},
 };

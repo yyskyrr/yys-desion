@@ -5,7 +5,10 @@
   >
     <span
       v-if="label"
-      :class="{ 'yys-form-label-required': rule1.required || required }"
+      :class="{
+        'yys-form-label-required':
+          (!hideRequiredAsterisk && rule1.required) || required,
+      }"
       :style="{
         width: inline && !label ? 0 : labelWidth,
         textAlign: labelPosition === 'top' ? 'left' : labelPosition,
@@ -20,7 +23,7 @@
     ></span>
     <slot></slot>
     <span
-      v-if="messageVisible"
+      v-if="showMessage_ && messageVisible"
       class="yys-form-message"
       :style="{
         left: label ? labelWidth : '12px',
@@ -37,6 +40,7 @@ export default {
     label: String,
     prop: String,
     required: Boolean,
+    showMessage: Boolean,
   },
   data() {
     return {
@@ -53,6 +57,12 @@ export default {
     inline() {
       return this.$parent.inline;
     },
+    hideRequiredAsterisk() {
+      return this.$parent.hideRequiredAsterisk;
+    },
+    showMessage_() {
+      return this.showMessage || this.$parent.showMessage;
+    },
     rules() {
       return this.$parent.rules;
     },
@@ -64,14 +74,42 @@ export default {
   },
   methods: {
     handleBlur(value) {
+      console.log(value);
       this.messageVisible = !!(!value && this.rule1.required);
     },
-    handleChange(value) {
-      this.messageVisible = !!(!value && this.rule1.required);
-    },
+    // change(value) {
+    //   if (this.rule1.type === "array") {
+    //     this.messageVisible = !!(!value.length && this.rule1.required);
+    //     return;
+    //   }
+    //   this.messageVisible = !!(!value && this.rule1.required);
+    // },
+    // handleChange(value) {
+    //   if (this.rule1.type === "array") {
+    //     this.messageVisible = !!(!value.length && this.rule1.required);
+    //     return;
+    //   }
+    //   console.log(this.rule1);
+    //   console.log(value);
+    //   this.messageVisible = !!(!value && this.rule1.required);
+    // },
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.$children.forEach((item) => {
+      item.$on("change", (value) => {
+        if (this.rule1.type === "array") {
+          this.messageVisible = !!(!value.length && this.rule1.required);
+          return;
+        }
+        this.messageVisible = !!(!value && this.rule1.required);
+      });
+
+      item.$on("blur", (value) => {
+        this.messageVisible = !!(!value && this.rule1.required);
+      });
+    });
+  },
 };
 </script>
 

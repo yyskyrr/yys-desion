@@ -947,6 +947,51 @@ y-input-group {
     }
   }
 
+  .yys-cascader-box {
+    z-index: 10;
+    position: absolute;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    width: 180px;
+    padding: 4px 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid $border;
+    border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px 2px #ebebeb;
+    height: 190px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .yys-cascader-item {
+      height: 32px;
+      padding: 0 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      line-height: 32px;
+
+      &.yys-option-selected {
+        background-color: #f5f5f5;
+      }
+
+      &.yys-option-disabled {
+        color: #e4e7ed;
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        background-color: #e6f7ff;
+      }
+    }
+  }
+
   .yys-option-box {
     z-index: 10;
     position: absolute;

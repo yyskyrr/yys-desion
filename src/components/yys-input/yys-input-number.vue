@@ -94,7 +94,10 @@ export default {
       this.value_ = Number(this.value) - this.step;
     },
     handleBlur(event) {
-      this.$emit("blur", event);
+      this.$emit("blur", this.value_, event);
+    },
+    submit() {
+      this.$emit("blur", this.value_);
     },
     handleFocus(event) {
       this.$emit("focus", event);

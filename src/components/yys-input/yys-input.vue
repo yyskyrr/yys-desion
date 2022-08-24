@@ -149,17 +149,23 @@ export default {
     handleClick(event) {
       this.$emit("click", event);
     },
+    submit() {
+      this.$emit("blur", this.value);
+    },
     handleBlur(event) {
-      if (this.rule1 && this.rule1.trigger === "blur") {
-        this.$parent.handleBlur(this.value);
-      }
+      // if (this.rule1 && this.rule1.trigger === "blur") {
+      //   this.$parent.handleBlur(this.value);
+      // }
       this.showTooltip = false;
-      this.$emit("blur", event);
+      this.$emit("blur", this.value, event);
     },
     handleFocus(event) {
       this.$refs.inputRef.focus();
       this.showTooltip = true;
       this.$emit("focus", event);
+    },
+    Blur() {
+      this.$refs.inputRef.blur();
     },
     handleChange(e) {
       this.$emit("change", e);
