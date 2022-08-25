@@ -36,7 +36,7 @@
       </YInput>
     </div>
 
-    <div v-show="isFocus" class="yys-cascader-box">
+    <div v-show="isFocus" class="yys-cascader-box" :class="popperClass">
       <div
         v-for="(item, index) in options"
         v-if="options.length > 0"
@@ -55,7 +55,11 @@
           aria-hidden="true"
         ></i>
       </div>
-      <div v-if="options.length === 0" class="yys-empty-option">
+      <div
+        v-if="options.length === 0"
+        class="yys-empty-option"
+        :class="popperClass"
+      >
         <svg
           height="41"
           viewBox="0 0 64 41"
@@ -79,7 +83,12 @@
       </div>
     </div>
 
-    <div v-if="showSecond" class="yys-cascader-box" style="left: 180px">
+    <div
+      v-if="showSecond"
+      class="yys-cascader-box"
+      style="left: 180px"
+      :class="popperClass"
+    >
       <div
         v-for="(item, index) in secondOptions"
         :key="index"
@@ -98,7 +107,12 @@
         ></i>
       </div>
     </div>
-    <div v-if="showThird" class="yys-cascader-box" style="left: 360px">
+    <div
+      v-if="showThird"
+      class="yys-cascader-box"
+      style="left: 360px"
+      :class="popperClass"
+    >
       <div
         v-for="(item, index) in thirdOptions"
         :key="index"
@@ -180,8 +194,10 @@ export default {
     open: Boolean,
     defaultOpen: Boolean,
     showArrow: { type: Boolean, default: true },
-    clearable: { type: Boolean, default: true },
+    clearable: { type: Boolean, default: false },
+    showAllLevels: { type: Boolean, default: true },
     rangeSeparator: { type: String, default: "-" },
+    separator: { type: String, default: " / " },
     prefixIcon: { type: String, default: "fa-calendar" },
     labelInValue: Boolean,
     loading: Boolean,
@@ -205,6 +221,7 @@ export default {
     onClick() {
       if (this.disabled) return;
       this.isFocus = !this.isFocus;
+      this.$emit("visibleChange", !this.isFocus);
     },
     onblur(e) {
       this.isFocus = false;
@@ -223,8 +240,8 @@ export default {
           this.firstSelect = index;
           if (!item.children) {
             this.label = `${this.options[this.firstSelect].label}`;
-            this.$refs.input.Blur();
             this.$emit("change", [this.options[this.firstSelect].value]);
+            this.$refs.input.Blur();
           }
           return;
         case 2:
@@ -232,32 +249,45 @@ export default {
           this.showThird = true;
           this.secondSelect = index;
           if (!item.children) {
-            this.label = `${this.options[this.firstSelect].label} / ${
-              this.secondOptions[this.secondSelect].label
-            }`;
+            if (this.showAllLevels) {
+              this.label = `${this.options[this.firstSelect].label}${
+                this.separator
+              }${this.secondOptions[this.secondSelect].label}`;
+              this.$emit("change", [
+                this.options[this.firstSelect].value,
+                this.secondOptions[this.secondSelect].value,
+              ]);
+            } else {
+              this.label = `${this.options[this.firstSelect].label}`;
+              this.$emit("change", [
+                this.secondOptions[this.secondSelect].value,
+              ]);
+            }
             this.$refs.input.Blur();
-            this.$emit("change", [
-              this.options[this.firstSelect].value,
-              this.secondOptions[this.secondSelect].value,
-            ]);
           }
           return;
         case 3:
           this.thirdSelect = index;
-          this.label = `${this.options[this.firstSelect].label} / ${
-            this.secondOptions[this.secondSelect].label
-          } / ${this.thirdOptions[this.thirdSelect].label}`;
+          if (this.showAllLevels) {
+            this.label = `${this.options[this.firstSelect].label}${
+              this.separator
+            }${this.secondOptions[this.secondSelect].label}${this.separator}${
+              this.thirdOptions[this.thirdSelect].label
+            }`;
+            this.$emit("change", [
+              this.options[this.firstSelect].value,
+              this.secondOptions[this.secondSelect].value,
+              this.thirdOptions[this.thirdSelect].value,
+            ]);
+          } else {
+            this.label = `${this.thirdOptions[this.thirdSelect].label}`;
+            this.$emit("change", [this.thirdOptions[this.thirdSelect].value]);
+          }
           this.$refs.input.Blur();
-          this.$emit("change", [
-            this.options[this.firstSelect].value,
-            this.secondOptions[this.secondSelect].value,
-            this.thirdOptions[this.thirdSelect].value,
-          ]);
           return;
         default:
           return;
       }
-      // this.$emit("change", `${this.year}-${this.month}-${item.value}`);
     },
     submit() {
       this.$emit("change", this.value);

@@ -36,7 +36,79 @@
       </YInput>
     </div>
 
-    <div v-show="isFocus" class="yys-date-box" :class="popperClass">
+    <div
+      v-if="isFocus && type === 'date'"
+      class="yys-date-box"
+      :class="popperClass"
+    >
+      <div class="yys-date-header">
+        <div>
+          <i
+            @mousedown.prevent="subtractYear"
+            class="fa fa-angle-double-left"
+            aria-hidden="true"
+          ></i>
+          <i
+            @mousedown.prevent="subtractMonth"
+            class="fa fa-angle-left"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div>
+          <span class="year">{{ year }} 年</span>
+          <span class="month">{{ month }} 月</span>
+        </div>
+        <div>
+          <i
+            @mousedown.prevent="addMonth"
+            class="fa fa-angle-right"
+            aria-hidden="true"
+          ></i>
+          <i
+            @mousedown.prevent="addYear"
+            class="fa fa-angle-double-right"
+            aria-hidden="true"
+          ></i>
+        </div>
+      </div>
+      <div class="yys-date-body">
+        <div class="yys-date-weekend">
+          <span>日</span>
+          <span>一</span>
+          <span>二</span>
+          <span>三</span>
+          <span>四</span>
+          <span>五</span>
+          <span>六</span>
+        </div>
+        <div class="yys-date-day">
+          <div v-for="(item, index) in dayList" :key="index">
+            <span
+              @mousedown.prevent="(e) => onSelect(item, e)"
+              :style="{
+                color: item.notCur
+                  ? '#c0c4cc'
+                  : item.value === day
+                  ? '#fff'
+                  : item.value === moment.date()
+                  ? '#1890ff'
+                  : '#000000a6',
+                background:
+                  item.value === day && !item.notCur
+                    ? '#1890ff'
+                    : 'transparent',
+              }"
+              >{{ item.value }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="isFocus && type === 'month'"
+      class="yys-date-box"
+      :class="popperClass"
+    >
       <div class="yys-date-header">
         <div>
           <i
@@ -184,6 +256,7 @@ export default {
     defaultOpen: Boolean,
     clearable: { type: Boolean, default: true },
     rangeSeparator: { type: String, default: "-" },
+    type: { type: String, default: "date" },
     prefixIcon: { type: String, default: "fa-calendar" },
     labelInValue: Boolean,
     loading: Boolean,
@@ -240,8 +313,14 @@ export default {
         e.preventDefault();
         return;
       }
+      const time = moment()
+        .year(this.year)
+        .month(this.month - 1)
+        .date(item.value);
+      console.log(time);
+      const value = time.format("yyyy-MM-DD");
+      this.$emit("change", value);
       this.isFocus = false;
-      this.$emit("change", `${this.year}-${this.month}-${item.value}`);
     },
     submit() {
       this.$emit("change", this.value);
