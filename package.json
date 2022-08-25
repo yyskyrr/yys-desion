@@ -1,6 +1,6 @@
 {
   "name": "yys-design",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
