@@ -7,7 +7,7 @@
       @click="onClick"
     >
       <YInput
-        v-model="value"
+        v-model="label"
         :disabled="disabled"
         :placeholder="newPlaceholder"
         :size="size"
@@ -134,14 +134,10 @@
             <span
               @mousedown.prevent="(e) => onMonthSelect(index, e)"
               :style="{
-                color: item.notCur
-                  ? '#c0c4cc'
-                  : item.value === month
-                  ? '#fff'
-                  : item.value === moment.date()
-                  ? '#1890ff'
-                  : '#000000a6',
-                background: item.value === month ? '#1890ff' : 'transparent',
+                color:
+                  index + 1 === Number(month) || index === moment.month()
+                    ? '#409eff'
+                    : '#000000a6',
               }"
               >{{ item }}
             </span>
@@ -182,14 +178,10 @@
             <span
               @mousedown.prevent="(e) => onYearSelect(item, e)"
               :style="{
-                color: item.notCur
-                  ? '#c0c4cc'
-                  : item.value === month
-                  ? '#fff'
-                  : item.value === moment.date()
-                  ? '#1890ff'
-                  : '#000000a6',
-                background: item.value === month ? '#1890ff' : 'transparent',
+                color:
+                  item === Number(year) || item === moment.year()
+                    ? '#409eff'
+                    : '#000000a6',
               }"
               >{{ item }}
             </span>
@@ -242,10 +234,12 @@ export default {
     value: {
       handler(newVal, oldVal) {
         console.log(newVal);
-        if (newVal.indexOf("-") !== -1) {
+        if (typeof newVal === "string" && newVal.indexOf("-") !== -1) {
           this.year = newVal.split("-")[0];
           this.month = newVal.split("-")[1];
           this.day = Number(newVal.split("-")[2]);
+        } else {
+          this.year = newVal;
         }
       },
       immediate: false,
@@ -307,7 +301,8 @@ export default {
     rangeSeparator: { type: String, default: "-" },
     type: { type: String, default: "date" },
     prefixIcon: { type: String, default: "fa-calendar" },
-    labelInValue: Boolean,
+    format: { type: String, default: "yyyy-MM-DD" },
+    valueFormat: String,
     loading: Boolean,
     pickerOptions: Object,
   },
@@ -374,14 +369,27 @@ export default {
         e.preventDefault();
         return;
       }
+      this.isFocus = false;
+
       const time = moment()
         .year(this.year)
         .month(this.month - 1)
         .date(item.value);
       console.log(time);
-      const value = time.format("yyyy-MM-DD");
+
+      const value = time.format(this.format);
+
+      this.label = value;
+
+      if (this.valueFormat === "timestamp") {
+        this.$emit("change", String(time.valueOf()));
+        return;
+      }
+      if (this.valueFormat) {
+        this.$emit("change", time.format(this.valueFormat));
+      }
+
       this.$emit("change", value);
-      this.isFocus = false;
     },
     submit() {
       this.$emit("change", this.value);
