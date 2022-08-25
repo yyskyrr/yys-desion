@@ -7,10 +7,12 @@
       @click="onClick"
     >
       <YInput
+        ref="input"
         v-model="label"
         :disabled="disabled"
         :placeholder="newPlaceholder"
         :size="size"
+        :name="name"
         @blur="onblur"
         @focus="onfocus"
       >
@@ -28,6 +30,7 @@
               v-show="showClose"
               aria-hidden="true"
               class="fa fa-times-circle"
+              :clearIcon="clearIcon"
               style="cursor: pointer; color: #d9d9d9"
               @click.stop="handleClear"
             ></i>
@@ -290,6 +293,7 @@ export default {
   props: {
     value: { default: "" },
     mode: String,
+    name: String,
     placeholder: String,
     emptyText: String,
     popperClass: String,
@@ -300,10 +304,10 @@ export default {
     clearable: { type: Boolean, default: true },
     rangeSeparator: { type: String, default: "-" },
     type: { type: String, default: "date" },
+    clearIcon: { type: String, default: "yys-circle-close" },
     prefixIcon: { type: String, default: "fa-calendar" },
     format: { type: String, default: "yyyy-MM-DD" },
     valueFormat: String,
-    loading: Boolean,
     pickerOptions: Object,
   },
   model: {
@@ -349,18 +353,21 @@ export default {
       this.isFocus = false;
       this.$emit("blur", e);
     },
+    focus() {
+      this.$refs.input.Focus();
+    },
     onfocus(e) {
       this.$emit("focus", e);
     },
     onYearSelect(item) {
-      // const time = moment().month(item);
-      // const value = time.format("yyyy");
+      this.label = String(item);
       this.$emit("change", String(item));
       this.isFocus = false;
     },
     onMonthSelect(index) {
       const time = moment().month(index);
       const value = time.format("yyyy-MM");
+      this.label = value;
       this.$emit("change", value);
       this.isFocus = false;
     },
@@ -370,25 +377,17 @@ export default {
         return;
       }
       this.isFocus = false;
-
-      const time = moment()
-        .year(this.year)
-        .month(this.month - 1)
-        .date(item.value);
-      console.log(time);
-
+      const time = moment().date(item.value);
       const value = time.format(this.format);
-
       this.label = value;
-
       if (this.valueFormat === "timestamp") {
         this.$emit("change", String(time.valueOf()));
         return;
       }
       if (this.valueFormat) {
         this.$emit("change", time.format(this.valueFormat));
+        return;
       }
-
       this.$emit("change", value);
     },
     submit() {

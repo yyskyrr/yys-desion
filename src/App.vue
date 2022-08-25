@@ -23,8 +23,9 @@
       <Slider v-else-if="currentIndex === 8" />
       <TimePicker v-else-if="currentIndex === 9" />
       <DatePicker v-else-if="currentIndex === 10" />
-      <Rate v-else-if="currentIndex === 11" />
-      <Form v-else-if="currentIndex === 12" />
+      <Upload v-else-if="currentIndex === 11" />
+      <Rate v-else-if="currentIndex === 12" />
+      <Form v-else-if="currentIndex === 13" />
     </div>
   </div>
 </template>
@@ -43,12 +44,14 @@ import Radio from "./pages/radio";
 import Rate from "./pages/rate";
 import Slider from "./pages/slider";
 import Switch_ from "./pages/switch";
+import Upload from "./pages/upload";
 
 export default {
   name: "App",
   components: {
     Button,
     Checkbox,
+    Upload,
     Input,
     InputNumber,
     Select,
@@ -76,6 +79,7 @@ export default {
         "Slider 滑块",
         "TimePicker 时间选择器",
         "DatePicker 日期选择器",
+        "Upload 上传",
         "Rate 评分",
         "Form 表单",
       ],

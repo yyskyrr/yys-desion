@@ -168,6 +168,199 @@
     >
     </YDatePicker>
     {{ value7 }}
+    <h3 id="attributes">Attributes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th>说明</th>
+          <th>类型</th>
+          <th>可选值</th>
+          <th>默认值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>value / v-model</td>
+          <td>绑定值</td>
+          <td>date(DatePicker) / array(DateRangePicker)</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>禁用</td>
+          <td>boolean</td>
+          <td>—</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>clearable</td>
+          <td>是否显示清除按钮</td>
+          <td>boolean</td>
+          <td>—</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>输入框尺寸</td>
+          <td>string</td>
+          <td>large, small, mini</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>placeholder</td>
+          <td>非范围选择时的占位内容</td>
+          <td>string</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <!--        <tr>-->
+        <!--          <td>start-placeholder</td>-->
+        <!--          <td>范围选择时开始日期的占位内容</td>-->
+        <!--          <td>string</td>-->
+        <!--          <td>—</td>-->
+        <!--          <td>—</td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--          <td>end-placeholder</td>-->
+        <!--          <td>范围选择时结束日期的占位内容</td>-->
+        <!--          <td>string</td>-->
+        <!--          <td>—</td>-->
+        <!--          <td>—</td>-->
+        <!--        </tr>-->
+        <tr>
+          <td>type</td>
+          <td>显示类型</td>
+          <td>string</td>
+          <td>
+            year/month/date/dates/ week/datetime/datetimerange/
+            daterange/monthrange
+          </td>
+          <td>date</td>
+        </tr>
+        <tr>
+          <td>format</td>
+          <td>显示在输入框中的格式</td>
+          <td>string</td>
+          <td>
+            见<a href="#/zh-CN/component/date-picker#ri-qi-ge-shi">日期格式</a>
+          </td>
+          <td>yyyy-MM-dd</td>
+        </tr>
+        <!--        <tr>-->
+        <!--          <td>align</td>-->
+        <!--          <td>对齐方式</td>-->
+        <!--          <td>string</td>-->
+        <!--          <td>left, center, right</td>-->
+        <!--          <td>left</td>-->
+        <!--        </tr>-->
+        <tr>
+          <td>popper-class</td>
+          <td>DatePicker 下拉框的类名</td>
+          <td>string</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <!--        <tr>-->
+        <!--          <td>picker-options</td>-->
+        <!--          <td>当前时间日期选择器特有的选项参考下表</td>-->
+        <!--          <td>object</td>-->
+        <!--          <td>—</td>-->
+        <!--          <td>{}</td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--          <td>range-separator</td>-->
+        <!--          <td>选择范围时的分隔符</td>-->
+        <!--          <td>string</td>-->
+        <!--          <td>—</td>-->
+        <!--          <td>'-'</td>-->
+        <!--        </tr>-->
+        <tr>
+          <td>value-format</td>
+          <td>可选，绑定值的格式。不指定则绑定值为 Date 对象</td>
+          <td>string</td>
+          <td>
+            见<a href="#/zh-CN/component/date-picker#ri-qi-ge-shi">日期格式</a>
+          </td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>原生属性</td>
+          <td>string</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <!--        <tr>-->
+        <!--          <td>unlink-panels</td>-->
+        <!--          <td>在范围选择器里取消两个日期面板之间的联动</td>-->
+        <!--          <td>boolean</td>-->
+        <!--          <td>—</td>-->
+        <!--          <td>false</td>-->
+        <!--        </tr>-->
+        <tr>
+          <td>prefix-icon</td>
+          <td>自定义头部图标的类名</td>
+          <td>string</td>
+          <td>—</td>
+          <td>fa-calendar</td>
+        </tr>
+        <tr>
+          <td>clear-icon</td>
+          <td>自定义清空图标的类名</td>
+          <td>string</td>
+          <td>—</td>
+          <td>yys-circle-close</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="events">Events</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>事件名称</th>
+          <th>说明</th>
+          <th>回调参数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>change</td>
+          <td>用户确认选定的值时触发</td>
+          <td>
+            组件绑定值。格式与绑定值一致，可受 <code>value-format</code> 控制
+          </td>
+        </tr>
+        <tr>
+          <td>blur</td>
+          <td>当 input 失去焦点时触发</td>
+          <td>组件实例</td>
+        </tr>
+        <tr>
+          <td>focus</td>
+          <td>当 input 获得焦点时触发</td>
+          <td>组件实例</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="methods">Methods</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>方法名</th>
+          <th>说明</th>
+          <th>参数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>focus</td>
+          <td>使 input 获取焦点</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

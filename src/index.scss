@@ -225,7 +225,6 @@ y-input-group {
 }
 
 .yys-btn {
-  margin: 10px;
   line-height: 1.499;
   position: relative;
   display: inline-block;
@@ -1578,6 +1577,64 @@ y-input-group {
       cursor: not-allowed;
     }
   }
+}
+.yys-upload__input{
+  display: none;
+}
+.yys-upload-btn{
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.yys-upload-files{
+  font-size: 14px;
+  color: #606266;
+  margin-top: 5px;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 4px;
+  width: 100%;
+  line-height: 1.8;
+  display: block;
+  margin-right: 40px;
+  overflow: hidden;
+  padding-left: 4px;
+  text-overflow: ellipsis;
+  transition: all .3s;
+  white-space: nowrap;
+  cursor: pointer;
+  &:hover{
+    color: $primary;
+    background-color: #f3f6f9;
+  }
+  .file-icon{
+    height: 100%;
+    margin-right: 7px;
+    color: #909399;
+    line-height: inherit;
+  }
+  .yys-icon-box{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    cursor: pointer;
+    .close-icon{
+      opacity: .75;
+      color: #606266;
+    }
+    .check-icon{
+      color: #67c23a;
+    }
+  }
+}
+
+.yys-upload__tip {
+  font-size: 12px;
+  color: #606266;
+  margin-top: 7px;
 }
 
 table {

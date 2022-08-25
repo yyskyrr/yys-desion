@@ -167,6 +167,9 @@ export default {
     Blur() {
       this.$refs.inputRef.blur();
     },
+    Focus() {
+      this.$refs.inputRef.focus();
+    },
     handleChange(e) {
       this.$emit("change", e);
     },

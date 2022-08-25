@@ -12,6 +12,7 @@ import radio from "./components/yys-radio/yys-radio";
 import radioGroup from "./components/yys-radio/yys-radio-group";
 import radioButton from "./components/yys-radio/yys-radio-button";
 import form from "./components/yys-form/yys-form";
+import upload from "./components/yys-upload/yys-upload";
 import formItem from "./components/yys-form/yys-form-item";
 import Switch from "./components/yys-switch/yys-switch";
 import rate from "./components/yys-rate/yys-rate";
@@ -21,6 +22,7 @@ import "./index.scss";
 const components = [
   button,
   checkbox,
+  upload,
   checkboxGroup,
   timePicker,
   datePicker,

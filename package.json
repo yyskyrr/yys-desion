@@ -9,6 +9,7 @@
     "lib": "vue-cli-service build --target lib --name yys-design  ./src/index.js"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "font-awesome": "^4.7.0",
     "moment": "^2.29.4"
   },

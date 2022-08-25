@@ -183,4 +183,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.yys-btn {
+  margin: 10px;
+}
+</style>
