@@ -1587,7 +1587,32 @@ y-input-group {
   cursor: pointer;
   outline: none;
 }
-
+.yys-upload-dragger {
+  background-color: #fff;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 360px;
+  height: 180px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & .yys-icon-upload {
+    font-size: 67px;
+    color: #c0c4cc;
+    margin: 40px 0 16px;
+    line-height: 50px;
+  }
+  & .yys-upload__text {
+    color: #606266;
+    font-size: 14px;
+    text-align: center;
+  }
+}
 .yys-upload-files{
   font-size: 14px;
   color: #606266;
@@ -1626,7 +1651,10 @@ y-input-group {
       color: #606266;
     }
     .check-icon{
-      color: #67c23a;
+      color: $success;
+    }
+    .error-icon{
+      color: $error;
     }
   }
 }
