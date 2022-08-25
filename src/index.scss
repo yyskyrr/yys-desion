@@ -924,7 +924,6 @@ y-input-group {
       }
       .yys-date-day{
         display: flex;
-        //justify-content: space-between;
         flex-wrap: wrap;
         div {
           width: 14.28%;
@@ -932,6 +931,31 @@ y-input-group {
           padding: 5px 0;
 
           span {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            &:hover{
+              color: $primary!important;
+            }
+          }
+        }
+      }
+      .yys-date-month{
+        height: 248px;
+        border-top: 1px solid $border;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        div {
+          width: 25%;
+          text-align: center;
+          padding: 5px 0;
+
+          span {
+            word-break: keep-all;
             display: inline-block;
             width: 24px;
             height: 24px;

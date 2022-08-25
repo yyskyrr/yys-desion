@@ -116,22 +116,11 @@
             class="fa fa-angle-double-left"
             aria-hidden="true"
           ></i>
-          <i
-            @mousedown.prevent="subtractMonth"
-            class="fa fa-angle-left"
-            aria-hidden="true"
-          ></i>
         </div>
         <div>
           <span class="year">{{ year }} 年</span>
-          <span class="month">{{ month }} 月</span>
         </div>
         <div>
-          <i
-            @mousedown.prevent="addMonth"
-            class="fa fa-angle-right"
-            aria-hidden="true"
-          ></i>
           <i
             @mousedown.prevent="addYear"
             class="fa fa-angle-double-right"
@@ -140,33 +129,69 @@
         </div>
       </div>
       <div class="yys-date-body">
-        <div class="yys-date-weekend">
-          <span>日</span>
-          <span>一</span>
-          <span>二</span>
-          <span>三</span>
-          <span>四</span>
-          <span>五</span>
-          <span>六</span>
-        </div>
-        <div class="yys-date-day">
-          <div v-for="(item, index) in dayList" :key="index">
+        <div class="yys-date-month">
+          <div v-for="(item, index) in monthList" :key="index">
             <span
-              @mousedown.prevent="(e) => onSelect(item, e)"
+              @mousedown.prevent="(e) => onMonthSelect(index, e)"
               :style="{
                 color: item.notCur
                   ? '#c0c4cc'
-                  : item.value === day
+                  : item.value === month
                   ? '#fff'
                   : item.value === moment.date()
                   ? '#1890ff'
                   : '#000000a6',
-                background:
-                  item.value === day && !item.notCur
-                    ? '#1890ff'
-                    : 'transparent',
+                background: item.value === month ? '#1890ff' : 'transparent',
               }"
-              >{{ item.value }}
+              >{{ item }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="isFocus && type === 'year'"
+      class="yys-date-box"
+      :class="popperClass"
+    >
+      <div class="yys-date-header">
+        <div>
+          <i
+            @mousedown.prevent="subtractYear"
+            class="fa fa-angle-double-left"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div>
+          <span class="year"
+            >{{ Math.floor(year / 10) * 10 }}年 -
+            {{ Math.ceil(year / 10) * 10 - 1 }} 年
+          </span>
+        </div>
+        <div>
+          <i
+            @mousedown.prevent="addYear"
+            class="fa fa-angle-double-right"
+            aria-hidden="true"
+          ></i>
+        </div>
+      </div>
+      <div class="yys-date-body">
+        <div class="yys-date-month">
+          <div v-for="(item, index) in yearList" :key="index">
+            <span
+              @mousedown.prevent="(e) => onYearSelect(item, e)"
+              :style="{
+                color: item.notCur
+                  ? '#c0c4cc'
+                  : item.value === month
+                  ? '#fff'
+                  : item.value === moment.date()
+                  ? '#1890ff'
+                  : '#000000a6',
+                background: item.value === month ? '#1890ff' : 'transparent',
+              }"
+              >{{ item }}
             </span>
           </div>
         </div>
@@ -182,6 +207,20 @@ export default {
   name: "YDatePicker",
   data() {
     return {
+      monthList: [
+        "一月",
+        "二月",
+        "三月",
+        "四月",
+        "五月",
+        "六月",
+        "七月",
+        "八月",
+        "九月",
+        "十月",
+        "十一月",
+        "十二月",
+      ],
       isFocus: this.defaultOpen || this.open,
       showClose: false,
       isSelectableRange: false,
@@ -202,15 +241,25 @@ export default {
   watch: {
     value: {
       handler(newVal, oldVal) {
-        this.year = newVal.split("-")[0];
-        this.month = newVal.split("-")[1];
-        this.day = Number(newVal.split("-")[2]);
+        console.log(newVal);
+        if (newVal.indexOf("-") !== -1) {
+          this.year = newVal.split("-")[0];
+          this.month = newVal.split("-")[1];
+          this.day = Number(newVal.split("-")[2]);
+        }
       },
       immediate: false,
       deep: true,
     },
   },
   computed: {
+    yearList() {
+      let list = Array(10).fill(Math.floor(this.year / 10) * 10);
+      list = list.map((item, index) => {
+        return item + index;
+      });
+      return list;
+    },
     dayList() {
       let list = Array(42).fill({ value: 0, notCur: false });
       const week = moment()
@@ -307,6 +356,18 @@ export default {
     },
     onfocus(e) {
       this.$emit("focus", e);
+    },
+    onYearSelect(item) {
+      // const time = moment().month(item);
+      // const value = time.format("yyyy");
+      this.$emit("change", String(item));
+      this.isFocus = false;
+    },
+    onMonthSelect(index) {
+      const time = moment().month(index);
+      const value = time.format("yyyy-MM");
+      this.$emit("change", value);
+      this.isFocus = false;
     },
     onSelect(item, e) {
       if (item.notCur) {
