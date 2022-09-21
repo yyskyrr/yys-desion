@@ -194,6 +194,8 @@
 }
 
 y-input-group {
+  display: inline-block;
+  white-space: nowrap;
   .yys-input {
     border-radius: 0 !important;
 
@@ -205,6 +207,9 @@ y-input-group {
       z-index: 1;
 
     }
+  }
+  .yys-select+.yys-select{
+    margin: 0;
   }
 
   & > .yys-input-affix-wrapper:first-child, .yys-select:first-child {

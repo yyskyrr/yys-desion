@@ -7,12 +7,14 @@
     <YCheckbox :checked="checked1" :disabled="disabled" @change="onChange"
       >Check
     </YCheckbox>
-    <YButton @click="checked1 = !checked1"
-      >{{ !checked1 ? "Check" : "Uncheck" }}
-    </YButton>
-    <YButton @click="disabled = !disabled"
-      >{{ !disabled ? "disabled" : "Undisabled" }}
-    </YButton>
+    <div style="margin-top: 10px">
+      <YButton @click="checked1 = !checked1"
+        >{{ !checked1 ? "Check" : "Uncheck" }}
+      </YButton>
+      <YButton @click="disabled = !disabled" style="margin-left: 10px"
+        >{{ !disabled ? "disabled" : "Undisabled" }}
+      </YButton>
+    </div>
 
     <h3>Checkbox 组</h3>
     <YCheckboxGroup
