@@ -498,6 +498,10 @@ y-input-group {
     align-items: center;
     position: relative;
 
+    &.yys-form-top{
+      display:block;
+    }
+
     .yys-form-label {
       flex-shrink: 0;
       text-align: right;
@@ -526,7 +530,7 @@ y-input-group {
     }
   }
 
-  &.yys-form-flex {
+  &.yys-form-inline {
     display: flex;
   }
 

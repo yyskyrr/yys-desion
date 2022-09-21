@@ -1,7 +1,7 @@
 <template>
   <div
-    :style="{ display: labelPosition === 'top' ? 'block' : '' }"
     class="yys-form-item"
+    :class="{ 'yys-form-top': labelPosition === 'top' }"
   >
     <span
       v-if="label"

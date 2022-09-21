@@ -1,5 +1,5 @@
 <template>
-  <div class="yys-form" :class="{ 'yys-form-flex': inline }">
+  <div class="yys-form" :class="{ 'yys-form-inline': inline }">
     <slot></slot>
   </div>
 </template>
