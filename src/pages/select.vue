@@ -1,23 +1,37 @@
 <template>
   <div id="app">
     <h3>基本使用</h3>
-    <YSelect :value="selectValue" @change="handleChange">
-      <YOption value="Lucy1">Lucy1</YOption>
-      <YOption value="Lucy2">Lucy2</YOption>
-      <YOption value="Lucy3">Lucy3</YOption>
-    </YSelect>
-    <br /><br />
-    <YSelect :value="selectValue" disabled>
-      <YOption value="Lucy1">Lucy1</YOption>
-      <YOption value="Lucy2">Lucy2</YOption>
-      <YOption value="Lucy3">Lucy3</YOption>
-    </YSelect>
-    <br /><br />
-    <YSelect v-model="selectValue2" loading @change="handleChange2">
-      <YOption value="Lucy1">Lucy1</YOption>
-      <YOption value="Lucy2">Lucy2</YOption>
-      <YOption value="Lucy3">Lucy3</YOption>
-    </YSelect>
+    <div class="yys-select">
+      <div class="yys-select-box">
+        <div class="yys-input">
+          <input type="text" placeholder="请选择" />
+          <span class="suffix">
+            <i class="fa fa-angle-down"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="yys-option-box">
+        <div>Lucy1</div>
+        <div>Lucy1</div>
+        <div>Lucy1</div>
+      </div>
+    </div>
+
+    <!--    <div class="yu-select">-->
+    <!--      <div class="yu-input">-->
+    <!--        <input type="text" class="suffix" placeholder="请选择" />-->
+    <!--        <span class="suffix icon">-->
+    <!--          <i class="iconfont icon-angle-down"></i>-->
+    <!--        </span>-->
+    <!--      </div>-->
+    <!--      <ul class="yu-option">-->
+    <!--        <li>猫</li>-->
+    <!--        <li>猫</li>-->
+    <!--        <li>猫</li>-->
+    <!--        <li>猫</li>-->
+    <!--      </ul>-->
+    <!--    </div>-->
 
     <h3>标签</h3>
     <YSelect
