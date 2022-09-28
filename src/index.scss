@@ -142,7 +142,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 10px;
+    margin-left: -25px;
     color: #bfbfbf;
     .fa-times-circle{
       cursor: pointer;
@@ -411,39 +411,79 @@
 }
 
 .yys-checkbox {
+  line-height: 1;
   user-select: none;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
-  line-height: 1.5;
-  list-style: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-
+  box-sizing: border-box;
+  padding: 0;
+  color: rgba(0, 0, 0, .65);
+  font-size: 14px;
+  list-style: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: sub;
   .checkbox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #dcdfe6;
     input{
-      border: 1px solid #dcdfe6;
-      width: 15px;
-      height: 15px;
-      vertical-align: top;
-      cursor: pointer;
-      margin-right: 5px;
+      display: none;
     }
   }
 
-  &.disabled {
-    color: #00000040;
-    cursor: not-allowed;
-    pointer-events: none;
-    input{
-      cursor: not-allowed;
+  &.checked:not(.disabled){
+    .checkbox{
+      border-color: $primary;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+      position: relative;
+      background-color: $primary;
+      &:before{
+        content: "";
+        display: inline-block;
+        border: 2px solid #fff;
+        border-top-width: 0;
+        border-right-width: 0;
+        width: 8px;
+        height: 4px;
+        transform: rotate(-50deg);
+        position: absolute;
+        top: 4px;
+        left: 2px;
+      }
     }
   }
-
+  &.checked.disabled{
+    .checkbox{
+      position: relative;
+      background-color: #f5f5f5;
+      &:before{
+        content: "";
+        display: inline-block;
+        border: 2px solid #b8b8b8;
+        border-top-width: 0;
+        border-right-width: 0;
+        width: 8px;
+        height: 4px;
+        -webkit-transform: rotate(-50deg);
+        position: absolute;
+        top: 4px;
+        left: 2px;
+      }
+    }
+  }
   span:last-child{
-    vertical-align: middle;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  &.disabled {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    .checkbox{
+      background-color: #f5f5f5;
+    }
   }
 }
 
@@ -550,24 +590,23 @@
   display: inline-block;
   position: relative;
 
-  &disabled {
-    cursor: not-allowed;
-  }
-
-  textarea {
-    resize: none;
-  }
-
   .yys-select-box {
-    .yys-input {
-      cursor: pointer;
-
-      &.yys-input-disabled {
-        cursor: not-allowed;
+    .fa-angle-down{
+      transition: .3s ease;
+    }
+    .yys-input.disabled{
+      input{
+        caret-color: transparent;
       }
-
-      &::selection {
-        background-color: transparent;
+    }
+    .yys-input:not(.disabled) {
+      input{
+        cursor: pointer;
+        &:focus +.suffix{
+          .fa-angle-down{
+            transform: rotate(180deg);
+          }
+        }
       }
     }
   }
@@ -882,12 +921,12 @@
     }
   }
 
-  .yys-cascader-box {
+  .yys-cascade-box {
+    margin-top: 10px;
     z-index: 10;
     position: absolute;
     background-color: #ffffff;
     box-sizing: border-box;
-    margin: 0;
     list-style: none;
     display: inline-block;
     width: 180px;
@@ -903,7 +942,19 @@
     overflow-y: auto;
     overflow-x: hidden;
 
-    .yys-cascader-item {
+    &:nth-child(3){
+      left: 180px;
+    }
+
+    &:nth-child(4){
+      left: 360px;
+    }
+
+     &:nth-child(5){
+      left: 540px;
+    }
+
+    &>li {
       height: 32px;
       padding: 0 11px;
       display: flex;
@@ -912,16 +963,18 @@
       cursor: pointer;
       line-height: 32px;
 
-      &.yys-option-selected {
+      &.active {
         background-color: #f5f5f5;
+        color: $primary;
       }
 
-      &.yys-option-disabled {
+      &.disabled {
         color: #e4e7ed;
         cursor: not-allowed;
+        background-color: #fff;
       }
 
-      &:hover {
+      &:hover:not(.disabled) {
         background-color: #e6f7ff;
       }
     }
@@ -948,8 +1001,9 @@
     overflow-y: auto;
     overflow-x: hidden;
 
-    & >div{
-      height: 32px;
+    & >li{
+      margin: 0;
+      min-height: 32px;
       width: 100%;
       text-align: left;
       cursor: pointer;
@@ -968,6 +1022,9 @@
       &:hover {
         background-color: #e6f7ff;
       }
+      *{
+        margin: 0;
+      }
     }
   }
 
@@ -981,10 +1038,6 @@
     font-size: 14px;
     color: #666;
   }
-}
-
-.yys-radio-border + .yys-radio-border {
-  margin-left: 10px;
 }
 
 .yys-radio {
@@ -1002,146 +1055,59 @@
   position: relative;
   white-space: nowrap;
   vertical-align: sub;
-  input{
-    margin: 0;
+  .radio {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #dcdfe6;
+    input{
+      display: none;
+    }
   }
 
+  &.checked:not(.disabled){
+    .radio{
+      border-color: $primary;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+      position: relative;
+      &:before{
+        content: '';
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        position: absolute;
+        background-color: $primary;
+      }
+    }
+  }
+  &.checked.disabled{
+    .radio{
+      position: relative;
+      &:before{
+        content: '';
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        position: absolute;
+        background-color: #e6e6e6;
+      }
+    }
+  }
   span:last-child{
       padding-right: 8px;
       padding-left: 8px;
   }
-
-  &.yys-radio-border {
-    padding: 12px 20px 12px 10px;
-    border-radius: 4px;
-    border: 1px solid $background;
-    box-sizing: border-box;
-    height: 40px;
-
-    &.yys-radio-active {
-      border: 1px solid #1c94fa;
-      color: #1c94fa;
-    }
-
-    &.yys-radio-medium {
-      padding: 10px 20px 10px 10px;
-    }
-
-    &.yys-radio-small {
-      padding: 6px 15px 6px 10px;
-      font-size: 12px;
-    }
-
-    &.yys-radio-mini {
-      padding: 6px 15px 6px 10px;
-      font-size: 12px;
-    }
-
-    &.yys-disabled-text {
-      color: #c0c4cc;
-      cursor: not-allowed;
-      border-color: #ebeef5;
-    }
-  }
-
-
   &.disabled {
     color: #c0c4cc;
     cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  .radio {
-    margin: 0;
-    outline: none;
-    cursor: inherit;
-  }
-
-  .yys-radio-input {
-    cursor: inherit;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.yys-radio-button {
-  user-select: none;
-  display: inline-block;
-  padding: 12px 20px;
-  font-size: 14px;
-  color: #606266;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0;
-  cursor: pointer;
-  transition: all .3s cubic-bezier(.645, .045, .355, 1);
-  border-radius: 0;
-  white-space: nowrap;
-  vertical-align: middle;
-  background: #fff;
-  border: 1px solid $background;
-  border-left: 0;
-
-  &.yys-radio-medium {
-    padding: 10px 20px;
-  }
-
-  &.yys-radio-small {
-    padding: 9px 15px;
-    font-size: 12px;
-  }
-
-  &.yys-radio-mini {
-    padding: 7px 15px;
-    font-size: 12px;
-  }
-
-  &:first-child {
-    border-left: 1px solid $background;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-
-  &:last-child {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-  }
-
-  &.yys-radio-button-active {
-    background-color: #1c94fa;
-
-    &.yys-radio-button-disabled {
-      cursor: not-allowed;
-      background-image: none;
-      background-color: #eff5fb;
-      border-color: #ebeef5;
-      box-shadow: none;
-    }
-  }
-
-  &.yys-radio-button-disabled {
-    cursor: not-allowed;
-    background-image: none;
-    background-color: #fff;
-    border-color: #ebeef5;
-    box-shadow: none;
-  }
-
-  &:hover {
-    color: #1c94fa;
-  }
-
-  .yys-radio-button-text {
-    &.yys-radio-button-text-active {
-      color: white;
-    }
-
-    &.yys-radio-button-text-disabled {
-      color: #c0c4cc;
-      cursor: not-allowed;
-      background-image: none;
-      border-color: #ebeef5;
-      box-shadow: none;
+    .radio{
+      background-color: #f5f5f5;
     }
   }
 }
@@ -1152,7 +1118,9 @@
   }
   &.vertical{
     .yys-radio{
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       margin-bottom: 20px;
     }
   }
@@ -1164,7 +1132,9 @@
   }
   &.vertical{
     .yys-checkbox{
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       margin-bottom: 20px;
     }
   }

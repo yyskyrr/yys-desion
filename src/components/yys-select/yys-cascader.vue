@@ -36,7 +36,7 @@
       </YInput>
     </div>
 
-    <div v-show="isFocus" class="yys-cascader-box" :class="popperClass">
+    <div v-show="isFocus" class="yys-cascade-box" :class="popperClass">
       <div
         v-for="(item, index) in options"
         v-if="options.length > 0"
@@ -45,7 +45,7 @@
           'yys-option-selected': currentValue == item.value,
           'yys-option-disabled': item.disabled,
         }"
-        class="yys-cascader-item"
+        class="yys-cascade-item"
         @mousedown.prevent="() => onSelect(item, index, 1)"
       >
         {{ item.label }}
@@ -85,7 +85,7 @@
 
     <div
       v-if="showSecond"
-      class="yys-cascader-box"
+      class="yys-cascade-box"
       style="left: 180px"
       :class="popperClass"
     >
@@ -96,7 +96,7 @@
           'yys-option-selected': currentValue == item.value,
           'yys-option-disabled': item.disabled,
         }"
-        class="yys-cascader-item"
+        class="yys-cascade-item"
         @mousedown.prevent="() => onSelect(item, index, 2)"
       >
         {{ item.label }}
@@ -109,7 +109,7 @@
     </div>
     <div
       v-if="showThird"
-      class="yys-cascader-box"
+      class="yys-cascade-box"
       style="left: 360px"
       :class="popperClass"
     >
@@ -120,7 +120,7 @@
           'yys-option-selected': currentValue == item.value,
           'yys-option-disabled': item.disabled,
         }"
-        class="yys-cascader-item"
+        class="yys-cascade-item"
         @mousedown.prevent="() => onSelect(item, index, 3)"
       >
         {{ item.label }}
@@ -132,7 +132,7 @@
       </div>
     </div>
 
-    <!--    <div v-show="isFocus" class="yys-cascader-box" :class="popperClass">-->
+    <!--    <div v-show="isFocus" class="yys-cascade-box" :class="popperClass">-->
     <!--      <div v-for="(item, index) in options" :key="index">-->
     <!--        {{ item.label }}-->
     <!--      </div>-->

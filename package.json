@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name yys-design  ./src/index.js"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.27.2",

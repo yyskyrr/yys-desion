@@ -90,6 +90,7 @@ export default {
   .content {
     padding: 20px;
     width: 100%;
+    margin-bottom: 150px;
   }
 }
 </style>

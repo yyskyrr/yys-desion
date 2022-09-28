@@ -6,9 +6,20 @@
       <span>苹果</span>
     </label>
 
+    <h3>选中</h3>
+    <label class="yys-checkbox checked">
+      <span class="checkbox"><input type="radio" /></span>
+      <span>苹果</span>
+    </label>
+
     <h3>禁用</h3>
     <label class="yys-checkbox disabled">
       <span class="checkbox"><input type="checkbox" value="apple" /></span>
+      <span>苹果</span>
+    </label>
+
+    <label class="yys-checkbox disabled checked">
+      <span class="checkbox"><input type="checkbox" /></span>
       <span>苹果</span>
     </label>
 

@@ -6,8 +6,19 @@
       <span>苹果</span>
     </label>
 
+    <h3>选中</h3>
+    <label class="yys-radio checked">
+      <span class="radio"><input type="radio" /></span>
+      <span>苹果</span>
+    </label>
+
     <h3>禁用</h3>
     <label class="yys-radio disabled">
+      <span class="radio"><input type="radio" /></span>
+      <span>苹果</span>
+    </label>
+
+    <label class="yys-radio disabled checked">
       <span class="radio"><input type="radio" /></span>
       <span>苹果</span>
     </label>
