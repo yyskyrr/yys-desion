@@ -1,6 +1,6 @@
 {
   "name": "yys-design",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -40,7 +40,7 @@
     "type": "git",
     "url": "git+https://github.com/yyskyrr/yys-desion.git"
   },
-  "homepage": "https://github.com/yyskyrr/yys-desion.git",
+  "homepage": "http://81.68.250.148/",
   "bugs": {
     "url": "https://github.com/yyskyrr/yys-desion/issues"
   },
