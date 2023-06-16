@@ -10,7 +10,6 @@
         {{ item }}
       </div>
     </div>
-
     <div class="content">
       <Button v-if="currentIndex === 0" />
       <Radio v-else-if="currentIndex === 1" />
@@ -26,6 +25,12 @@
       <Upload v-else-if="currentIndex === 11" />
       <Rate v-else-if="currentIndex === 12" />
       <Form v-else-if="currentIndex === 13" />
+      <div class="beian-bottom">
+        备案号：
+        <span @click="toBeian" style="cursor: pointer"
+          >豫ICP备2022026989号</span
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -91,6 +96,9 @@ export default {
     },
   },
   methods: {
+    toBeian() {
+      window.open("https://beian.miit.gov.cn/");
+    },
     handleClick(index) {
       this.$store.commit("UPDATE_SELECT_INDEX", index);
     },
@@ -99,6 +107,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.beian-bottom {
+  border-radius: 4px;
+  background-color: #eee;
+  padding: 14px;
+}
+
 .app {
   display: flex;
   flex-direction: row;
