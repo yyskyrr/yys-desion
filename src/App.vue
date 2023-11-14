@@ -28,7 +28,7 @@
       <div class="beian-bottom">
         备案号：
         <span @click="toBeian" style="cursor: pointer"
-          >豫ICP备2022026989号-1</span
+          >豫ICP备2022026989号-2</span
         >
       </div>
     </div>
